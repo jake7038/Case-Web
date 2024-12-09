@@ -11,6 +11,6 @@ fontSize?: number; //tamanho da fonte
 
 //feito isso podemos alterar dinâmicamente agora o nosso elemento HTML
 
-const Paragrafo = ({children, tipo = 'principal', fontSize}: props) => <P fontSize={fontSize} tipo={tipo}>{children}</P> 
+const Titulo = ({children, tipo = 'principal', fontSize = 36}: props) => <P fontSize={fontSize} tipo={tipo}>{children}</P> 
 
-export default Paragrafo
+export default Titulo
