@@ -3,7 +3,8 @@ import { EstiloTitulo, DivTitulo , DivConteudo } from "./styles"
 import  { useState } from 'react';
 import Titulo from "../Titulo";
 import Paragrafo from "../Paragrafo";
-import Form from "../Form";
+import FormCriarConta from "../FormCriarConta";
+import FormEntrar from "../FormEntrar";
 
 // acabei errando e fiz o forms inteiro aqui. por motivos de organização de código era para essse forms estar na pasta de containers e não de components... depois eu passo para a pasta correta e altero os import e exports
 
@@ -22,8 +23,41 @@ export type props = {
             setElementOne((prev) => !prev); 
             setElementTwo((prev) => !prev); 
             }
-        
         };
+
+        const TrocaForm = (elemento1: boolean) =>{
+            if (elemento1 == true){
+            return(  
+                <div>
+                    <DivConteudo>
+                        <Titulo fontSize={24}>Criar Conta</Titulo>
+                    </DivConteudo>
+        
+                    <DivConteudo>
+                        <Paragrafo fontSize={14} tipo="cinza">Preencha com suas informações nos campos abaixo para realizar o seu cadastro</Paragrafo>
+                    </DivConteudo>
+        
+                    <DivConteudo>
+                        <FormCriarConta></FormCriarConta>
+                    </DivConteudo>
+                </div>
+            )
+        }else if (Boolean(elemento1) == false){
+            return(<div>
+                <DivConteudo>
+                    <Titulo fontSize={24}>Bem Vindo (a)!</Titulo>
+                </DivConteudo>
+    
+                <DivConteudo>
+                    <Paragrafo fontSize={14} tipo="cinza">Preencha com suas informações nos campos abaixo para acessar a sua conta</Paragrafo>
+                </DivConteudo>
+    
+                <DivConteudo>
+                    <FormEntrar></FormEntrar>
+                </DivConteudo>
+            </div>)
+        }
+    }
 
     //esses EstiloTitulo vazios são para fazer de maneira facil a centralização no grid... não é o ideal mais funciona kkkkk       
     return(
@@ -36,18 +70,9 @@ export type props = {
         <EstiloTitulo></EstiloTitulo> 
         </DivTitulo>
         
-        <DivConteudo>
-        <Titulo fontSize={24}>Criar Conta</Titulo>
-        </DivConteudo>
-        
-        <DivConteudo>
-        <Paragrafo fontSize={14} tipo="cinza">Preencha com suas informações nos campos abaixo para realizar o seu cadastro</Paragrafo>
-        </DivConteudo>
-        
-        <DivConteudo>
-        <Form></Form>
+        {TrocaForm(elemento1)}
 
-        </DivConteudo>
+        
         
     </Estilo>
     
