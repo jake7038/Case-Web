@@ -26,6 +26,14 @@ const FormEntrar = () => {
         />
         </div>
 
+        <div className="row mb-3 w-100" style={{visibility: "hidden"}} >
+        <input
+            type="password"
+            className="form-control form-control-sm"
+            placeholder="Senha"
+        />
+        </div>
+
         <div className="row pt-4">
         <div className="col-md-3"></div>
         <div className="col-md-6 text-center">

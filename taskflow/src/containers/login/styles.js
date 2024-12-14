@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { props} from ".";
+
+
+//todo CSS deve ser exportado para poder ser utilizado. a sintaxe consiste em: Export (nome e tipo da variavel que será importada no arquivo .tsx) = (styled chama o import Styled-components) . (elemento HTML que será customizado) (o código css tem que estar entre as crases ``)
+
+
 
 export const Estilo = styled.div`    
     text-align: center;
@@ -37,12 +41,12 @@ export const DivConteudo = styled.div`
     text-align: start;
 `
 
-export const EstiloTitulo = styled.h2<props>`
+export const EstiloTitulo = styled.h2`
     
     text-align: center;
     font-size: 20px;
     cursor: pointer;
-    text-decoration: ${(props) => (props.select == true ? 'underline' : 'none')};
+    text-decoration: ${(props) => (props.select === true ? 'underline' : 'none')};
     text-decoration-color: gray;
     text-underline-offset: 8px;
 

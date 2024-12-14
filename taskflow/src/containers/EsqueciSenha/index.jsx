@@ -1,6 +1,3 @@
-
-
-
 const Teste = () => (
     
     <div>   Teste </div>
