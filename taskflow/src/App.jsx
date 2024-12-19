@@ -2,21 +2,28 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from './containers/login'
 import EstiloGlobal, { Container } from './styles'
-import Teste from "./containers/EsqueciSenha";
+import EsqueciSenha from "./containers/EsqueciSenha";
 
 
 function App() {
   return (
     <Router>
+      <EstiloGlobal/>
       <Routes>
         <Route path="/" element={   
           <>
           <EstiloGlobal/>
             <Container> 
-              <Login />
+              <Login/>
             </Container>
           </>} />
-        <Route path="/esqueci-senha" element={<Teste/>} />
+        <Route path="/esqueci-senha" element={
+          <>
+          <Container>
+            <EsqueciSenha/>
+          </Container>
+          </>
+        } />
       </Routes>
     </Router>
       
