@@ -10,7 +10,7 @@ const EstiloGlobal = createGlobalStyle`
 }
   body{
     padding-top: 80px;
-    background: linear-gradient(90deg, rgba(9,164,121,1) 6%, rgba(67,91,121,1) 47%, rgba(50,40,190,1) 100%);
+    background: linear-gradient(to right, #c1ff72, #0cc0df);
 
 
     @media (max-width:768px) {

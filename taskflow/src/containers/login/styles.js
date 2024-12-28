@@ -12,14 +12,14 @@ export const Estilo = styled.div`
     margin-bottom: 0px;
     margin-top: 64px;
     max-width: 570px;
-    height: 570px;
+    height: 430px;
     border-radius: 10px;
     border-width: 2px;
     box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.3);
     
 `
 export const DivTitulo = styled.div`
-    padding: 44px 52px 44px 52px;
+    padding: 20px 52px 30px 52px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     text-align: center;
@@ -45,7 +45,6 @@ export const EstiloTitulo = styled.h2`
     
     text-align: center;
     font-size: 20px;
-    cursor: pointer;
     text-decoration: ${(props) => (props.select === true ? 'underline' : 'none')};
     text-decoration-color: gray;
     text-underline-offset: 8px;

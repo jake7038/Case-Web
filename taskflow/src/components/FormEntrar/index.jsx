@@ -10,7 +10,7 @@ const FormEntrar = () => {
 
     return (
     <form action="" className="grid">
-        <div className="row mb-3 w-100 ">
+        <div className="row mb-3 w-100">
         <input
             type="email"
             className="form-control form-control-sm"
@@ -19,14 +19,6 @@ const FormEntrar = () => {
         </div>
 
         <div className="row mb-3 w-100">
-        <input
-            type="password"
-            className="form-control form-control-sm"
-            placeholder="Senha"
-        />
-        </div>
-
-        <div className="row mb-3 w-100" style={{visibility: "hidden"}} >
         <input
             type="password"
             className="form-control form-control-sm"

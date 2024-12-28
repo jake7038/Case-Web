@@ -1,14 +1,11 @@
-import {Estilo,DivTitulo,DivConteudo,EstiloTitulo} from "../login/styles";
+import {Estilo,DivConteudo} from "../login/styles";
 import Titulo from "../../components/Titulo";
 import Paragrafo from "../../components/Paragrafo";
 import FormEsqueciSenha from "../../components/FormEsqueciSenha";
 
 const EsqueciSenha = () => {
     return (
-        <Estilo style={{ height: '420px' }}>
-            <DivTitulo>
-                <EstiloTitulo></EstiloTitulo>
-            </DivTitulo>
+        <Estilo style={{ height: '300px',paddingTop:'50px' }}>
             <div>
                 <DivConteudo>
                     <Titulo fontSize={24}>Esqueci minha senha</Titulo>
@@ -17,7 +14,7 @@ const EsqueciSenha = () => {
                     <Paragrafo fontSize={14}>Enviaremos um link de acesso à sua conta por e-mail</Paragrafo>
                 </DivConteudo>
                 <DivConteudo>
-                    <FormEsqueciSenha/>
+                    <FormEsqueciSenha></FormEsqueciSenha>
                 </DivConteudo>
             </div>
         </Estilo>
