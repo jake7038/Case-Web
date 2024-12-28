@@ -57,8 +57,10 @@ import FormEntrar from "../../components/FormEntrar";
     //esses EstiloTitulo vazios são para fazer de maneira facil a centralização no grid     
 
     return(
-    
+    <>
+    <h1 className="text-center">TaskFlow</h1>
     <Estilo>
+        
         <DivTitulo>
             <EstiloTitulo></EstiloTitulo>
         <EstiloTitulo onClick={() => Click(elemento1)} select = {elemento1} style={{cursor:'pointer'}}>Criar Conta</EstiloTitulo>
@@ -71,7 +73,7 @@ import FormEntrar from "../../components/FormEntrar";
         
         
     </Estilo>
-    
+    </>
 )
     }
 export default Login
