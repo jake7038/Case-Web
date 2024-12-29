@@ -1,7 +1,9 @@
 import express from "express";
+import "dotenv/config";
 
-const porta = 3000;
-const host = "localhost";
+
+const porta = process.env.SERVER_PORT;
+const host = process.env.SERVER_HOST;
 
 const app = express();
 
