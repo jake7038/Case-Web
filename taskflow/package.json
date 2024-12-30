@@ -1,15 +1,18 @@
 {
   "name": "taskflow",
   "private": true,
-  "version": "0.0.0", 
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "node ./src/server.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
     "knex": "^3.1.0",
     "mysql": "^2.18.1",
     "react": "^18.3.1",
