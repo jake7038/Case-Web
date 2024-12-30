@@ -1,7 +1,6 @@
 import database from "../database/index.js";
 import bcrypt from "bcrypt";
-
-
+import jwt from "jsonwebtoken";
 
 
 async function readUser(){
@@ -82,7 +81,27 @@ async function deleteUser(id){
 }
 
 
-export default { readUser, createUser, readUserById, updateUser, deleteUser } ;
+async function login(email, senha) {
+    const usuario = await database("usuario").select("*").where({email:email}).first();
+
+    if(!usuario){
+        throw new Error("Desconhecido");
+    }
+
+    const comparePass = bcrypt.compareSync(senha, usuario.senha);
+    if(!comparePass){
+        throw new Error("Senha errada");
+    }
+
+    const payload = {
+        id: usuario.id
+    }
+
+    const token = jwt.sign(payload, process.env.JWT_KEY, {expiresIn: '24h'});
+    return token;
+}
+
+export default { readUser, createUser, readUserById, updateUser, deleteUser, login } ;
 
 /*
 async function readUserById(id){

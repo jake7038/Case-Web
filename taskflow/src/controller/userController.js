@@ -12,7 +12,7 @@ async function readUser(req, res) {
 
 async function readUserById(req,res){
     try{
-        const id = req.params.id;
+        const id = req.id;
         const usuario = await userService.readUserById(id)
 
         res.json({registro: usuario})
@@ -57,4 +57,16 @@ async function deleteUser(req,res){
     }
 }
 
-export { readUser, createUser, readUserById, updateUser, deleteUser };
+async function login(req,res){
+    try{
+        const {email, senha } = req.body;
+        const token = await userService.login(email, senha);
+
+        res.json({token: token})
+
+    } catch(e){
+        res.json({erro: e.message})
+    }
+}
+
+export { readUser, createUser, readUserById, updateUser, deleteUser, login };
