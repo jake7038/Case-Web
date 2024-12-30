@@ -60,12 +60,15 @@ async function deleteUser(req,res){
 async function login(req,res){
     try{
         const {email, senha } = req.body;
+        if (!email || !senha) {
+            return res.status(400).json({ erro: "E-mail e senha são obrigatórios" });
+        }
         const token = await userService.login(email, senha);
 
-        res.json({token: token})
+        res.status(200).json({ token });
 
     } catch(e){
-        res.json({erro: e.message})
+        res.status(401).json({ erro: e.message });
     }
 }
 

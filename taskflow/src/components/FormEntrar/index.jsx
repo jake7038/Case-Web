@@ -1,28 +1,71 @@
+import { useState } from "react";
 import Paragrafo from "../Paragrafo";
 import { useNavigate } from "react-router-dom"; 
 //css feito com css
 const FormEntrar = () => {
-    const janela = useNavigate(); 
+    const [formData, setFormData] = useState({
+        email: "",
+        senha: ""
+    });
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
+
+        try {
+            const response = await fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("Login realizado com sucesso!");
+                localStorage.setItem("token", data.token); 
+                navigate("/dashboard"); 
+            } else {
+                alert(`Erro: ${data.erro}`);
+            }
+        } catch (error) {
+            alert("Erro ao realizar login: " + error.message);
+        }
+    };
 
     const MudaJanela = () => {
     janela("/esqueci-senha"); 
     };
 
     return (
-    <form action="" className="grid">
+    <form onSubmit={handleSubmit} className="grid">
         <div className="row mb-3 w-100">
         <input
             type="email"
+            name="email"
             className="form-control form-control-sm"
             placeholder="E-mail"
+            value={formData.email}
+            onChange={handleChange}
         />
         </div>
 
         <div className="row mb-3 w-100">
         <input
             type="password"
+            name="senha"
             className="form-control form-control-sm"
             placeholder="Senha"
+            value={formData.senha}
+            onChange={handleChange}
         />
         </div>
 
