@@ -10,5 +10,5 @@ export const P = styled.p`
         ? "#ffffff"
         : "#282a35"};
     line-height: auto;
-    cursor: ${(props) => (props.cursor === "pointer" ? "pointer" : "none")};
+    cursor: ${(props) => (props.cursor === "pointer" ? "pointer" : "auto")};
 `;
