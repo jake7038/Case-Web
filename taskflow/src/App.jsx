@@ -1,7 +1,7 @@
 //arquivo .tsx principal
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from './containers/login'
-import EstiloGlobal, { Container } from './styles'
+import EstiloGlobal, { Container , Bodylogin } from './styles'
 import EsqueciSenha from "./containers/EsqueciSenha";
 import Dashboard from "./containers/Dashboard";
 import TaskPage from "./containers/TaskPage";
@@ -11,18 +11,18 @@ function App() {
       <EstiloGlobal/>
       <Routes>
         <Route path="/" element={   
-          <>
-          <EstiloGlobal/>
+          <Bodylogin>
+          
             <Container> 
               <Login/>
             </Container>
-          </>} />
+          </Bodylogin>} />
         <Route path="/esqueci-senha" element={
-          <>
+          <Bodylogin>
           <Container>
             <EsqueciSenha/>
           </Container>
-          </>
+          </Bodylogin>
         } />
 
         <Route path="/dashboard" element={
