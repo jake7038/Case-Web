@@ -1,10 +1,11 @@
 import { Router } from "express";
 const router = Router();
-import { readUser, createUser, readUserById, updateUser, deleteUser, login } from "./controller/userController.js";
+import { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo  } from "./controller/userController.js";
 import auth from "./middleware/auth.js";
 
-router.get("/user", auth, readUserById)
-router.get("/user", readUser)
+router.get("/user/:id", auth, readUserById)
+router.get("/user",  readUser)
+router.get("/user/info", readUserInfo) //puxa as informações do usuário
 router.post("/user", createUser)
 router.patch("/user/:id", updateUser)
 router.delete("/user/:id", deleteUser)

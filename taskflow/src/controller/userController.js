@@ -13,13 +13,17 @@ async function readUser(req, res) {
 async function readUserById(req,res){
     try{
         const id = req.id;
-        const usuario = await userService.readUserById(id)
+        const usuario = await userService.readUserById(id);
 
         res.json({registro: usuario})
     } catch(e){
         res.json({erro: e.message})
     }
 }
+
+
+
+
 
 async function createUser(req,res){
     try{
@@ -65,11 +69,23 @@ async function login(req,res){
         }
         const token = await userService.login(email, senha);
 
-        res.status(200).json({ token });
+        res.status(200).json({ token }); 
 
     } catch(e){
         res.status(401).json({ erro: e.message });
     }
 }
 
-export { readUser, createUser, readUserById, updateUser, deleteUser, login };
+async function readUserInfo(req, res) {
+    try {
+        const id = req.id; 
+        const usuario = await userService.readUserInfo(id);
+
+        res.json({ usuario }); // Retorna tudo do usuário
+    } catch (e) {
+        res.status(500).json({ erro: e.message });
+    }
+}
+
+
+export { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo };
