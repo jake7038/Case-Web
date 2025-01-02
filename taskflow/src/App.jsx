@@ -5,6 +5,7 @@ import EstiloGlobal, { Container , Bodylogin } from './styles'
 import EsqueciSenha from "./containers/EsqueciSenha";
 import Dashboard from "./containers/Dashboard";
 import TaskPage from "./containers/TaskPage";
+
 function App() {
   return (
     <Router>

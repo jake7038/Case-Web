@@ -14,7 +14,6 @@ export async function up(knex) {
             .inTable("quadro")
             .onDelete("CASCADE") 
             .onUpdate("CASCADE"); 
-        table.timestamp("criado_em").defaultTo(knex.fn.now()); 
     });
 }
 
