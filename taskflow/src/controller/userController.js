@@ -83,7 +83,7 @@ async function readUserInfo(req, res) {
 
         res.json({ usuario }); // Retorna tudo do usuário
     } catch (e) {
-        res.status(500).json({ erro: e.message });
+        res.json({ erro: e.message }); 
     }
 }
 

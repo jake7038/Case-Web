@@ -101,7 +101,7 @@ async function login(email, senha) {
     return token;
 }
 
-async function readUserinfo(id) { //puxa as informações do usuário... embora pela lógica devesse puxar puxar só o nome eu acho.
+async function readUserInfo(id) { //puxa as informações do usuário... embora pela lógica devesse puxar puxar só o nome eu acho.
     const usuario = await database("usuario").select("nome").where({ id: id }).first();
 
     if (!usuario) {
@@ -112,7 +112,7 @@ async function readUserinfo(id) { //puxa as informações do usuário... embora 
 }
 
 
-export default { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserinfo } ;
+export default { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo } ;
 
 /*
 async function readUserById(id){

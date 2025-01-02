@@ -18,7 +18,7 @@ const MenuSlideBar = () => {
             
 
             try {
-                const response = await fetch("http://localhost:3000/user/name", {
+                const response = await fetch("http://localhost:3000/user/info", {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${token}`, 
