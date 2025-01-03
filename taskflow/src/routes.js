@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
-import { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo  } from "./controller/userController.js";
-import auth from "./middleware/auth.js";
+import { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo  } from "./back/controller/userController.js";
+import auth from "./back/middleware/auth.js";
 
 router.get("/user/:id", auth, readUserById)
 router.get("/user",  readUser)
