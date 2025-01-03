@@ -5,7 +5,7 @@ import auth from "./back/middleware/auth.js";
 
 router.get("/user/:id", auth, readUserById)
 router.get("/user",  readUser)
-router.get("/user/info", readUserInfo) //puxa as informações do usuário
+router.get("/user/info", auth, readUserInfo) //puxa as informações do usuário
 router.post("/user", createUser)
 router.patch("/user/:id", updateUser)
 router.delete("/user/:id", deleteUser)
