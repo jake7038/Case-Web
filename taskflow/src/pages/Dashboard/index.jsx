@@ -12,7 +12,7 @@ const Dashboard = () => {
             </div>
 
             <div className="  min-vh-100 col-md-2  p-0 text-center">
-                <MenuSlideBar></MenuSlideBar>
+                {MenuSlideBar(true)}
             </div>
         </div>
         </body>

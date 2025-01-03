@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faArrowRightFromBracket, faPen, faGear } from '@fortawesome/free-solid-svg-icons'
 
-const MenuSlideBar = () => {
+const MenuSlideBar = (req) => {
     const [nomeUsuario, setNomeUsuario] = useState("");
     const [emailUsuario, setEmailUsuario] = useState("");
 
@@ -59,7 +59,7 @@ const MenuSlideBar = () => {
         <Divrow className=" mb-4 mt-4  p-3">
             <div className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> <FontAwesomeIcon icon={faPen} /> </Paragrafo>
-                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Criar Nova Tarefa</Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> {req? "Criar Novo Quadro": "Criar Nova Tarefa"}</Paragrafo>
             </div>
         </Divrow>
 
@@ -80,7 +80,7 @@ const MenuSlideBar = () => {
         <Divrowlast className="   p-3 ">
             <div className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="vermelho" fontSize={16}> <FontAwesomeIcon icon={faArrowRightFromBracket} /> </Paragrafo>
-                <Paragrafo cursor="pointer" marginb={0} tipo="vermelho" fontSize={16}>sair</Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="vermelho" fontSize={16}>{req? "Sair":"Voltar"}</Paragrafo>
             </div>
         
         </Divrowlast>

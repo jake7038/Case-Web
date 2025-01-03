@@ -11,7 +11,7 @@ const TaskPage = () => {
             </div>
 
             <div className=" bg-dark min-vh-100 col-md-2  p-0 text-center">
-                <MenuSlideBar></MenuSlideBar>
+            {MenuSlideBar(false)}
             </div>
         </div>
         </body>
