@@ -11,7 +11,7 @@ const Dashboard = () => {
             <Titulo>Bem vindo a pagina dos quadros </Titulo>
             </div>
 
-            <div className=" bg-dark min-vh-100 col-md-2  p-0 text-center">
+            <div className="  min-vh-100 col-md-2  p-0 text-center">
                 <MenuSlideBar></MenuSlideBar>
             </div>
         </div>

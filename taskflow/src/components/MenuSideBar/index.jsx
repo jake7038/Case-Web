@@ -1,5 +1,5 @@
 import Paragrafo from "../Paragrafo"; 
-import { DivSlide } from "./styles";
+import { DivSlide, Divrow, ImgUser, Divrowlast , DivFlex } from "./styles";
 import React, { useEffect, useState } from "react";
 
 
@@ -41,10 +41,52 @@ const MenuSlideBar = () => {
         fetchUsuario();
     }, []);
 
-    return(<DivSlide>
+    return(<DivSlide className="min-vh-100 ">
+        <div className="row pb-5 pt-2 ">
+            <div className="row mx-auto">
+            <div className="col-md-4 ">
+                <ImgUser className="w-100"  src="https://placehold.co/400" alt="" />
+            </div>
+            <div className="col-md-8 text-start pt-1">
+            <Paragrafo  marginb={0} tipo="preto" fontSize={18}>{nomeUsuario}</Paragrafo>
+            <Paragrafo  marginb={0} tipo="preto" fontSize={18}>{emailUsuario}</Paragrafo>
+            </div>
+            </div>
+        </div>
 
-        <Paragrafo tipo="branco">seu nome é {nomeUsuario}</Paragrafo>
-        <Paragrafo tipo="branco">seu email é {emailUsuario}</Paragrafo>
+        <DivFlex className="text-center d-flex flex-column  align-items-center pt-5 ">
+        <Divrow className=" mb-4 mt-4  p-3">
+            <div className="d-flex flex-row w-0 gap-2">
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>aaa</Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>{nomeUsuario}</Paragrafo>
+            </div>
+        </Divrow>
+
+        <Divrow className=" mb-4 mt-4   p-3 ">
+            <div className="d-flex flex-row w-0 gap-2">
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>aaa</Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>{nomeUsuario}</Paragrafo>
+            </div>
+        </Divrow>
+
+        <Divrow className=" mb-4 mt-4  p-3 ">
+            <div className="d-flex flex-row w-0 gap-2">
+                <Paragrafo cursor="pointer"  marginb={0} tipo="branco" fontSize={16}>aaa</Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>{nomeUsuario}</Paragrafo>
+            </div>
+        </Divrow>
+
+        <Divrowlast className="   p-3 ">
+            <div className="d-flex flex-row w-0 gap-2">
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>aaa</Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>{nomeUsuario}</Paragrafo>
+            </div>
+        
+        </Divrowlast>
+        </DivFlex>
+        
+
+        
     </DivSlide>)
 }
     
