@@ -8,6 +8,7 @@ export const P = styled.p`
         ? "#949494"
         : props.tipo === "branco"
         ? "#ffffff"
+        : props.tipo === "vermelho" ? "#ff5963"
         : "#282a35"};
     line-height: auto;
     cursor: ${(props) => (props.cursor === "pointer" ? "pointer" : "auto")};

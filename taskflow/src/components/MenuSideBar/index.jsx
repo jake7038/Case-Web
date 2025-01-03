@@ -1,7 +1,8 @@
 import Paragrafo from "../Paragrafo"; 
 import { DivSlide, Divrow, ImgUser, Divrowlast , DivFlex } from "./styles";
 import React, { useEffect, useState } from "react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon, faArrowRightFromBracket, faPen, faGear } from '@fortawesome/free-solid-svg-icons'
 
 const MenuSlideBar = () => {
     const [nomeUsuario, setNomeUsuario] = useState("");
@@ -56,30 +57,30 @@ const MenuSlideBar = () => {
 
         <DivFlex className="text-center d-flex flex-column  align-items-center pt-5 ">
         <Divrow className=" mb-4 mt-4  p-3">
-            <div className="d-flex flex-row w-0 gap-2">
-                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>aaa</Paragrafo>
-                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>{nomeUsuario}</Paragrafo>
+            <div className="d-flex flex-row w-0 gap-3">
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> <FontAwesomeIcon icon={faPen} /> </Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Criar Nova Tarefa</Paragrafo>
             </div>
         </Divrow>
 
         <Divrow className=" mb-4 mt-4   p-3 ">
-            <div className="d-flex flex-row w-0 gap-2">
-                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>aaa</Paragrafo>
-                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>{nomeUsuario}</Paragrafo>
+            <div className="d-flex flex-row w-0 gap-3">
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> <FontAwesomeIcon icon={faGear} /> </Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Alterar Perfil</Paragrafo>
             </div>
         </Divrow>
 
         <Divrow className=" mb-4 mt-4  p-3 ">
-            <div className="d-flex flex-row w-0 gap-2">
-                <Paragrafo cursor="pointer"  marginb={0} tipo="branco" fontSize={16}>aaa</Paragrafo>
-                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>{nomeUsuario}</Paragrafo>
+            <div className="d-flex flex-row w-0 gap-3">
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}><FontAwesomeIcon icon={faMoon} /></Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Alterar Aparência</Paragrafo>
             </div>
         </Divrow>
 
         <Divrowlast className="   p-3 ">
-            <div className="d-flex flex-row w-0 gap-2">
-                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>aaa</Paragrafo>
-                <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>{nomeUsuario}</Paragrafo>
+            <div className="d-flex flex-row w-0 gap-3">
+                <Paragrafo cursor="pointer" marginb={0} tipo="vermelho" fontSize={16}> <FontAwesomeIcon icon={faArrowRightFromBracket} /> </Paragrafo>
+                <Paragrafo cursor="pointer" marginb={0} tipo="vermelho" fontSize={16}>sair</Paragrafo>
             </div>
         
         </Divrowlast>

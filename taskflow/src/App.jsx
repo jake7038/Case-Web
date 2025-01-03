@@ -1,10 +1,10 @@
 //arquivo .tsx principal
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from './containers/login'
+import Login from './pages/login'
 import EstiloGlobal, { Container , Bodylogin } from './styles'
-import EsqueciSenha from "./containers/EsqueciSenha";
-import Dashboard from "./containers/Dashboard";
-import TaskPage from "./containers/TaskPage";
+import EsqueciSenha from "./pages/EsqueciSenha";
+import Dashboard from "./pages/Dashboard";
+import TaskPage from "./pages/TaskPage";
 
 function App() {
   return (
