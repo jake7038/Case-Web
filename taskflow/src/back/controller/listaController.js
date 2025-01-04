@@ -10,6 +10,7 @@ async function createLista(req, res) {
         }
 
         const message = await listaService.createLista(nome, quadroId);
+        
         res.json({message: message})
     } catch (e) {
         res.json({ erro: e.message });

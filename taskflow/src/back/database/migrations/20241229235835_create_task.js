@@ -10,7 +10,8 @@ export async function up(knex) {
         table.date("data").nullable(); 
         table.string("etapa1").nullable(); 
         table.string("etapa2").nullable(); 
-        table.string("etapa3").nullable(); 
+        table.string("etapa3").nullable();
+        table.boolean("estado").defaultTo(false).notNullable(); 
         table
             .integer("lista_id") 
             .unsigned()
