@@ -12,6 +12,6 @@ export default {
     },
     migrations: {
         tablename: "migration",
-        directory: `${process.cwd()}/src/database/migrations` //__dirname não está disponivel no export. Por isso foi feito a troca para o process.cwd() para retornar o local do arquivo
+        directory: `${process.cwd()}/src/back/database/migrations` //__dirname não está disponivel no export. Por isso foi feito a troca para o process.cwd() para retornar o local do arquivo
     }
 }

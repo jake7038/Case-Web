@@ -8,7 +8,7 @@ const FormEntrar = () => {
         senha: ""
     });
 
-    const navigate = useNavigate();
+    const janela = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -32,7 +32,7 @@ const FormEntrar = () => {
             if (response.ok) {
                 alert("Login realizado com sucesso!");
                 localStorage.setItem("token", data.token); 
-                navigate("/dashboard"); 
+                janela("/dashboard"); 
             } else {
                 alert(`Erro: ${data.erro}`);
             }
@@ -42,7 +42,7 @@ const FormEntrar = () => {
     };
 
     const MudaJanela = () => {
-    janela("/esqueci-senha"); 
+        janela("/esqueci-senha"); 
     };
 
     return (

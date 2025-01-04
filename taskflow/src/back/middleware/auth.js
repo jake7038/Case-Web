@@ -2,6 +2,7 @@ import "dotenv/config";
 import jwt from "jsonwebtoken";
 
 async function auth(req, res, next){
+
     try{
         const auth = req.headers.authorization;
         if(!auth){
