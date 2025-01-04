@@ -2,7 +2,7 @@ import { Router } from "express";
 import { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo  } from "./back/controller/userController.js";
 import { createQuadro, readQuadros, updateQuadro, deleteQuadro  } from "./back/controller/quadroController.js";
 import { createLista, readListas, updateLista, deleteLista } from "./back/controller/listaController.js";
-import {createTask} from "./back/controller/taskController.js"
+import {createTask, readTasks, updateTask, deleteTask} from "./back/controller/taskController.js"
 import auth from "./back/middleware/auth.js";
 
 
@@ -34,7 +34,9 @@ router.delete("/listas/:id", auth, deleteLista);            //status: postman ok
 
 //rotas da task
 
-router.post("/listas/:listaId/tasks", auth, createTask); //status: postman ok, integração ñ
-
+router.post("/listas/:lista_id/tasks", auth, createTask); //status: postman ok, integração ñ
+router.get("/listas/:lista_id/tasks", auth, readTasks); //status: postman ok, integração ñ
+router.patch("/tasks/:id", auth, updateTask); //status: postman ok, integração ñ
+router.delete("/tasks/:id", auth, deleteTask); //status: postman ok, integração ñ
 
 export default router;
