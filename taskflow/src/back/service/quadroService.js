@@ -14,7 +14,7 @@ async function createQuadro(nome, descricao, usuario_id) {
 }
 
 async function readQuadros(userId) {
-    const quadros = await database("quadros")
+    const quadros = await database("quadro")
         .select("*")
         .where({ usuario_id: userId });
 
@@ -26,7 +26,7 @@ async function readQuadros(userId) {
 }
 
 async function updateQuadro(quadroId, nome, descricao, userId) {
-    const quadro = await database("quadros")
+    const quadro = await database("quadro")
         .select("*")
         .where({ id: quadroId, usuario_id: userId })
         .first();
@@ -40,7 +40,7 @@ async function updateQuadro(quadroId, nome, descricao, userId) {
         descricao: descricao,
     };
 
-    await database("quadros")
+    await database("quadro")
         .update(quadroAtualizado)
         .where({ id: quadroId });
 
@@ -48,7 +48,7 @@ async function updateQuadro(quadroId, nome, descricao, userId) {
 }
 
 async function deleteQuadro(quadroId, userId) {
-    const quadro = await database("quadros")
+    const quadro = await database("quadro")
         .select("*")
         .where({ id: quadroId, usuario_id: userId })
         .first();
@@ -57,7 +57,7 @@ async function deleteQuadro(quadroId, userId) {
         throw new Error("Quadro não encontrado ou não pertence ao usuário.");
     }
 
-    await database("quadros")
+    await database("quadro")
         .delete()
         .where({ id: quadroId });
 

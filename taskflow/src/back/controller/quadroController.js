@@ -19,12 +19,12 @@ async function createQuadro(req, res) {
 
 async function readQuadros(req, res) {
     try {
-        const userId = req.id; // ID do usuário autenticado
+        const userId = req.id; 
         const quadros = await quadroService.readQuadros(userId);
 
-        res.status(200).json({ registros: quadros });
+        res.json({ registros: quadros });
     } catch (e) {
-        res.status(500).json({ erro: e.message });
+        res.json({ erro: e.message });
     }
 }
 
@@ -32,30 +32,30 @@ async function updateQuadro(req, res) {
     try {
         const { nome, descricao } = req.body;
         const quadroId = req.params.id;
-        const userId = req.id; // ID do usuário autenticado
+        const userId = req.id; 
 
         if (!nome || !descricao) {
-            return res.status(400).json({ erro: "Nome e descrição são obrigatórios." });
+            return res.json({ erro: "Nome e descrição são obrigatórios." });
         }
 
         const message = await quadroService.updateQuadro(quadroId, nome, descricao, userId);
 
-        res.status(200).json({ message });
+        res.json({ message });
     } catch (e) {
-        res.status(500).json({ erro: e.message });
+        res.json({ erro: e.message });
     }
 }
 
 async function deleteQuadro(req, res) {
     try {
         const quadroId = req.params.id;
-        const userId = req.id; // ID do usuário autenticado
+        const userId = req.id; 
 
         const message = await quadroService.deleteQuadro(quadroId, userId);
 
-        res.status(200).json({ message });
+        res.json({ message });
     } catch (e) {
-        res.status(500).json({ erro: e.message });
+        res.json({ erro: e.message });
     }
 }
 
