@@ -27,9 +27,9 @@ router.delete("/quadros/:id", auth, deleteQuadro); //status: postman ok, integra
 //rotas da lista, somente usuarios autenticados podem criar uma lista dentro de um quadro já criado
 
 router.post("/quadros/:quadroId/listas", auth, createLista); //status: postman ok, integração ñ
-router.get("/quadros/:quadroId/listas", auth, readListas);   //status: postman ñ, integração ñ 
-router.patch("/listas/:id", auth, updateLista);             //status: postman ñ, integração ñ
-router.delete("/listas/:id", auth, deleteLista);            //status: postman ñ, integração ñ
+router.get("/quadros/:quadroId/listas", auth, readListas);   //status: postman ok, integração ñ 
+router.patch("/listas/:id", auth, updateLista);             //status: postman ok, integração ñ
+router.delete("/listas/:id", auth, deleteLista);            //status: postman ok, integração ñ
 
 
 
