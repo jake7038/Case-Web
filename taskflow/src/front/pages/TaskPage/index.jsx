@@ -17,6 +17,7 @@ const TaskPage = () => {
                                 <CategoriaTarefas></CategoriaTarefas>
                                 <CategoriaEmProgresso></CategoriaEmProgresso>
                                 <CategoriaConcluidas></CategoriaConcluidas>
+                                
                             </div>
                             <div style={{display:"flex"}}>
                                 <ListaTarefas>
