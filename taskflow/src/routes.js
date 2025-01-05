@@ -5,17 +5,15 @@ import { createLista, readListas, updateLista, deleteLista } from "./back/contro
 import {createTask, readTasks, updateTask, deleteTask} from "./back/controller/taskController.js"
 import auth from "./back/middleware/auth.js";
 
-
 const router = Router();
 router.get("/user/:id", auth, readUserById)
 router.get("/user",  readUser)
 router.get("/user/info", auth,readUserInfo) //retorna todas as informações do usuario
 router.post("/user", createUser)
-router.patch("/user/:id", updateUser)
+router.patch("/user/:id",  updateUser)
 router.delete("/user/:id", deleteUser)
 
 router.post("/login", login);
-
 
 //rotas do quadro, somente usuarios autenticados podem criar um quadro
 

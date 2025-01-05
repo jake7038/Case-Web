@@ -3,10 +3,16 @@ import { DivSlide, Divrow, ImgUser, Divrowlast , DivFlex } from "./styles";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faArrowRightFromBracket, faPen, faGear } from '@fortawesome/free-solid-svg-icons'
+import ModalPerfil from "../ModalPerfil";
+
 
 const MenuSlideBar = (req) => {
     const [nomeUsuario, setNomeUsuario] = useState("");
     const [emailUsuario, setEmailUsuario] = useState("");
+    const [modalPerfilOpen, setModalPerfilOpen] = useState(false);
+    const [idUsuario, setIdUsuario] = useState();
+
+    const closeModal = () => setModalPerfilOpen(false);
 
     useEffect(() => {
         const fetchUsuario = async () => {
@@ -30,7 +36,7 @@ const MenuSlideBar = (req) => {
                     const data = await response.json();
                     setNomeUsuario(data.registro.nome);
                     setEmailUsuario(data.registro.email);  
-                    
+                    setIdUsuario(data.registro.id);
                 } else {
                     alert("Erro ao buscar informações do usuário");
                 }
@@ -40,6 +46,7 @@ const MenuSlideBar = (req) => {
         };
 
         fetchUsuario();
+        
     }, []);
 
     return(<DivSlide className="min-vh-100 ">
@@ -63,7 +70,7 @@ const MenuSlideBar = (req) => {
             </div>
         </Divrow>
 
-        <Divrow className=" mb-4 mt-4   p-3 ">
+        <Divrow onClick={() => setModalPerfilOpen(true)} className=" mb-4 mt-4   p-3 ">
             <div className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> <FontAwesomeIcon icon={faGear} /> </Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Alterar Perfil</Paragrafo>
@@ -86,8 +93,9 @@ const MenuSlideBar = (req) => {
         </Divrowlast>
         </DivFlex>
         
-
         
+        <ModalPerfil isOpen={modalPerfilOpen} userId={idUsuario} closeModal={closeModal}></ModalPerfil>
+
     </DivSlide>)
 }
     

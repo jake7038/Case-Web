@@ -4,6 +4,8 @@ import MenuSlideBar from "../../components/MenuSideBar";
 import { body } from "./styles";
 
 const Dashboard = () => {
+    
+
     return (
         <body className="">
             <div className="row flex-row gx-0">

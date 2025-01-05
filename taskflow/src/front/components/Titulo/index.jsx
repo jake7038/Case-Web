@@ -1,4 +1,3 @@
-//código teste em .tsx para fins de demonstração.
 //aqui deve ser escrito código html com js e exportado para ser usado no  App.tsx
 
 import { P  } from "./styles" //import do TS que criamos

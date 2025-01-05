@@ -37,6 +37,8 @@ async function createUser(req,res){
     }
 }
 
+
+
 async function updateUser(req,res){
     try{
         const { nome, email, senha, foto } = req.body;
@@ -49,6 +51,7 @@ async function updateUser(req,res){
         res.json({erro: e.message})
     }
 }
+
 
 async function deleteUser(req,res){
     try{

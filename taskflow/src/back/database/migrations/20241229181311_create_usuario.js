@@ -8,7 +8,7 @@ export async function up(knex) {
         table.string("nome").notNullable();
         table.string("email").notNullable();
         table.string("senha").notNullable();
-        table.binary("foto").nullable();
+        table.string("foto").nullable();
 
     })
     
