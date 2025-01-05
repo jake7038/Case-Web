@@ -2,16 +2,15 @@ import { EstiloTarefa } from "./styles";
 import Titulo from "../Titulo";
 import Paragrafo from "../Paragrafo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faR } from "@fortawesome/free-solid-svg-icons";
-import { faCalendar, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faCircleCheck, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Tarefa = () => {
     return (
         <EstiloTarefa>
             <div style={{display:'flex'}}>
                 <Titulo fontSize={22}>Nome da Tarefa</Titulo>
-                <div style={{paddingLeft:'40%'}}></div>
-                <div style={{paddingLeft:'5%'}}></div>
+                <div style={{paddingLeft:'42%'}}><FontAwesomeIcon icon={faPen} color="#54CDD0"/></div>
+                <div style={{paddingLeft:'5%'}}><FontAwesomeIcon icon={faTrash} color="#e14c4c"/></div>
             </div>
             <div>
                 <Paragrafo>Descrição da Tarefa...</Paragrafo>
@@ -31,7 +30,7 @@ const Tarefa = () => {
                     <div><FontAwesomeIcon icon={faCalendar} color="#fff"/></div>
                     <div style={{paddingLeft:'5px'}}><p style={{color:"white", fontWeight:"bold"}}>05/01</p></div>
                 </div>
-                <div style={{padding:'7px',paddingLeft:'73%'}}><FontAwesomeIcon icon={faCircleCheck} color="#54B85A" size="lg"/></div>
+                <div style={{padding:'7px',paddingLeft:'73%'}}><FontAwesomeIcon icon={faCircleCheck} size="lg"/></div>
             </div>
         </EstiloTarefa>
     );

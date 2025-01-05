@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const ListaTarefas = styled.div`
-    height: 70vh;
+    height: 74vh;
     width: 27rem;
     overflow-x: hidden;
     overflow-y: auto;
