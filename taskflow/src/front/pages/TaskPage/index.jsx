@@ -13,7 +13,7 @@ const TaskPage = () => {
 
     return (
         <body className="">
-           <div className="row flex-row gx-0">
+            <div className="row flex-row gx-0">
                     <div className="col-md-10 p-4">
                         <Titulo><img src="src/front/assets/logo.png" width={80}></img>TaskFlow</Titulo>
                         <div className="row flex-row gx-0">

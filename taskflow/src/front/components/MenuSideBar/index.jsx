@@ -9,6 +9,7 @@ import ModalPerfil from "../ModalPerfil";
 const MenuSlideBar = (req) => {
     const [nomeUsuario, setNomeUsuario] = useState("");
     const [emailUsuario, setEmailUsuario] = useState("");
+    const [fotoUsuario, setFotoUsuario] = useState("../../assets/4foto.jpeg");
     const [modalPerfilOpen, setModalPerfilOpen] = useState(false);
     const [idUsuario, setIdUsuario] = useState();
 
@@ -37,6 +38,7 @@ const MenuSlideBar = (req) => {
                     setNomeUsuario(data.registro.nome);
                     setEmailUsuario(data.registro.email);  
                     setIdUsuario(data.registro.id);
+                    setFotoUsuario(data.registro.foto);
                 } else {
                     alert("Erro ao buscar informações do usuário");
                 }
@@ -53,7 +55,7 @@ const MenuSlideBar = (req) => {
         <div className="row pb-5 pt-2 ">
             <div className="row mx-auto">
             <div className="col-md-4 ">
-                <ImgUser className="w-100"  src="https://placehold.co/400" alt="" />
+                <ImgUser className="w-100"  src={fotoUsuario} alt="" />
             </div>
             <div className="col-md-8 text-start pt-1">
             <Paragrafo  marginb={0} tipo="preto" fontSize={18}>{nomeUsuario}</Paragrafo>

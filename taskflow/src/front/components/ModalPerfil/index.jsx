@@ -33,15 +33,38 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
 
     const submit = async (e) => {
         e.preventDefault();
-
+    
         if (formData.senha !== formData.confirmarSenha) {
             alert("As senhas não coincidem.");
             return;
         }
-
-        console.log("Dados enviados:", formData);
-
+    
         try {
+            
+           // Verifica se há um arquivo selecionado
+        const fileInput = document.querySelector('input[type="file"]');
+        if (!fileInput.files[0]) {
+            alert("Por favor, selecione uma foto.");
+            return;
+        }
+
+        // Prepara os dados para upload da foto
+        const photoFormData = new FormData();
+        photoFormData.append("foto", fileInput.files[0]);
+
+        // Realiza o upload da foto
+        const uploadResponse = await fetch(`http://localhost:3000/user/${userId}/foto`, {
+            method: "POST",
+            body: photoFormData,
+        });
+    
+            if (!uploadResponse.ok) {
+                throw new Error("Erro ao fazer upload da foto");
+            }
+    
+            const { path } = await uploadResponse.json();
+            alert(path); //está dando undefinied
+            // Atualizar os dados do usuário
             const response = await fetch(`http://localhost:3000/user/${userId}`, {
                 method: "PATCH",
                 headers: {
@@ -51,10 +74,10 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                     nome: formData.nome,
                     email: formData.email,
                     senha: formData.senha,
-                    foto: formData.foto, 
+                    foto: path, 
                 }),
             });
-
+    
             if (response.ok) {
                 alert("Usuário alterado com sucesso!");
             } else {
@@ -62,9 +85,11 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                 alert(`Erro: ${data.erro || "Não foi possível atualizar o usuário."}`);
             }
         } catch (error) {
-            alert("Erro ao atualizar usuário.");
+            alert("Erro ao atualizar usuário ou fazer upload.");
+            console.error(error);
         }
     };
+    
 
     if (isOpen) {
         return (

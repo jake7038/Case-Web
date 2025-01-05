@@ -1,4 +1,6 @@
 import { Router } from "express";
+import multer from "multer";
+import path from "path";
 import { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo  } from "./back/controller/userController.js";
 import { createQuadro, readQuadros, updateQuadro, deleteQuadro  } from "./back/controller/quadroController.js";
 import { createLista, readListas, updateLista, deleteLista } from "./back/controller/listaController.js";
@@ -6,6 +8,27 @@ import {createTask, readTasks, updateTask, deleteTask} from "./back/controller/t
 import auth from "./back/middleware/auth.js";
 
 const router = Router();
+
+//salva localmente a foto de perfil
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const userId = req.params.id;
+        const folderPath = path.resolve(`./src/front/assets`);
+        cb(null, folderPath);
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${req.params.id}foto.jpeg`);
+    },
+});
+
+//salva o caminho no banco
+const upload = multer({ storage });
+router.post("/user/:id/foto", upload.single("foto"), (req, res) => {
+    const filePath = `src/front/assets/${req.params.id}foto.jpeg`;
+    res.json({ message: "Foto salva com sucesso", path: filePath });
+});
+
+
 router.get("/user/:id", auth, readUserById)
 router.get("/user",  readUser)
 router.get("/user/info", auth,readUserInfo) //retorna todas as informações do usuario
