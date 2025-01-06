@@ -33,6 +33,8 @@ export const Divrowlast = styled.button`
 `;
 
 export const ImgUser = styled.img`
-    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
 `;
 

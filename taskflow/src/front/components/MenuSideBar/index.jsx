@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faArrowRightFromBracket, faPen, faGear } from '@fortawesome/free-solid-svg-icons'
 import ModalPerfil from "../ModalPerfil";
+import ModalCriarQuadro from "../ModalCriarQuadro";
+import ModalCriarLista from "../ModalCriarLista";
 import ModalCriarTask from "../ModalCriarTask";
-
 
 const MenuSlideBar = (req) => {
     const [nomeUsuario, setNomeUsuario] = useState("");
@@ -13,11 +14,15 @@ const MenuSlideBar = (req) => {
     const [fotoUsuario, setFotoUsuario] = useState("../../assets/4foto.jpeg");
     const [modalPerfilOpen, setModalPerfilOpen] = useState(false);
     const [idUsuario, setIdUsuario] = useState();
-    const [modalCriarTask, setModalCriarTask] = useState(false);
+    const [modalQuadroOpen, setQuadroOpen] = useState(false);
+    const [modalListaOpen, setListaOpen] = useState(false);
+    const [modalTaskOpen, setTaskOpen] = useState(false);
 
     const closeModal = () =>{
         setModalPerfilOpen(false);
-        setModalCriarTask(false);
+        setQuadroOpen(false);
+        setListaOpen(false);
+        setTaskOpen(false);
     } 
 
     useEffect(() => {
@@ -70,7 +75,9 @@ const MenuSlideBar = (req) => {
         </div>
 
         <DivFlex className="text-center d-flex flex-column  align-items-center pt-5 ">
-        <Divrow onClick={() => setModalCriarTask(true)} className=" mb-4 mt-4  p-3">
+        <Divrow onClick={() =>{
+                req ? setQuadroOpen(true) : setListaOpen(true) 
+        } } className=" mb-4 mt-4  p-3">
             <div className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> <FontAwesomeIcon icon={faPen} /> </Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> {req? "Criar Novo Quadro": "Criar Nova Tarefa"}</Paragrafo>
@@ -91,6 +98,7 @@ const MenuSlideBar = (req) => {
             </div>
         </Divrow>
 
+        
         <Divrowlast className="   p-3 ">
             <div className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="vermelho" fontSize={16}> <FontAwesomeIcon icon={faArrowRightFromBracket} /> </Paragrafo>
@@ -102,8 +110,9 @@ const MenuSlideBar = (req) => {
         
         
         <ModalPerfil isOpen={modalPerfilOpen} userId={idUsuario} closeModal={closeModal}></ModalPerfil>
-        <ModalCriarTask isOpen={modalCriarTask} closeModal={closeModal}></ModalCriarTask>
-
+        <ModalCriarQuadro isOpen={modalQuadroOpen} userId={idUsuario} closeModal={closeModal}></ModalCriarQuadro>
+        <ModalCriarLista isOpen={modalListaOpen} closeModal={closeModal}></ModalCriarLista>
+        <ModalCriarTask isOpen={modalTaskOpen} closeModal={closeModal}></ModalCriarTask>
     </DivSlide>)
 }
     

@@ -5,10 +5,15 @@ import CategoriaConcluidas from "../../components/CategoriaConcluidas";
 import Tarefa from "../../components/Tarefa";
 import { ListaTarefas} from "./styles";
 import MenuSlideBar from "../../components/MenuSideBar";
-
+import ModalCriarTask from "../../components/ModalCriarTask";
+import { useEffect, useState } from "react";
 const TaskPage = () => {
 
+    const [modalCriarTask, setModalCriarTask] = useState(false);
     
+        const closeModal = () =>{
+            setModalCriarTask(false);
+        } 
 
 
     return (
@@ -37,6 +42,7 @@ const TaskPage = () => {
                         </div>
                     </div>
                     <div className=" bg-dark min-vh-100 col-md-2  p-0 text-center">
+                        
                     {MenuSlideBar(false)}
                     </div>
         </div>

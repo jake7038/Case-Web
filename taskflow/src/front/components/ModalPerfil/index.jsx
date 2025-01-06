@@ -157,11 +157,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                             {preview && (
                                 <div className="text-center">
                                     <Paragrafo>Pré-visualização:</Paragrafo>
-                                    <img
-                                        src={preview}
-                                        alt="Preview"
-                                        style={{ maxWidth: "200px", marginTop: "4px" }}
-                                    />
+                                    <img src={preview} alt="Preview" style={{ maxWidth: "200px", marginTop: "4px" }}/>
                                 </div>
                             )}
                         </div>
