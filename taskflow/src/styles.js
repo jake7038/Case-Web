@@ -9,8 +9,7 @@ const EstiloGlobal = createGlobalStyle`
   list-style: none;
 }
   body{
-    padding-top: 80px;
-    background: linear-gradient(to right, #c1ff72, #0cc0df);
+    
 
 
     @media (max-width:768px) {
@@ -21,6 +20,14 @@ const EstiloGlobal = createGlobalStyle`
 
 `
 export default EstiloGlobal;
+
+export const Bodylogin = styled.body`
+  padding-top: 80px;
+  padding-bottom: 40px;
+  background: linear-gradient(to right, #c1ff72, #0cc0df);
+  min-height: 100vh;
+  
+`
 
 export const Container = styled.div`
   max-width: 1024 px;
