@@ -123,7 +123,14 @@ const ModalCriarTask = ({ isOpen, closeModal }) => {
                             <button
                                 type="button"
                                 className="btn btn-success btn-sm mt-3"
-                                onClick={adicionarEtapa}
+                                onClick={() => {
+                                    if(formData.etapas.length < 3){
+                                        adicionarEtapa()
+                                    }else{
+                                        alert("Você só pode adicionar até 3 etapas.");
+                                    }
+
+                                }}
                             >
                                 Adicionar Etapa
                             </button>

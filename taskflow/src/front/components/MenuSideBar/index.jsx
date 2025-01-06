@@ -15,7 +15,10 @@ const MenuSlideBar = (req) => {
     const [idUsuario, setIdUsuario] = useState();
     const [modalCriarTask, setModalCriarTask] = useState(false);
 
-    const closeModal = () => setModalPerfilOpen(false);
+    const closeModal = () =>{
+        setModalPerfilOpen(false);
+        setModalCriarTask(false);
+    } 
 
     useEffect(() => {
         const fetchUsuario = async () => {
