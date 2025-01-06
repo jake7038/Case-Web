@@ -17,21 +17,21 @@ const TaskPage = () => {
                     <div className="col-md-10 p-4">
                         <Titulo><img src="src/front/assets/logo.png" width={80}></img>TaskFlow</Titulo>
                         <div className="row flex-row gx-0">
-                            <hr style={{marginTop:'15px'}}></hr>
                             <div style={{display:'flex'}}>
                                 <CategoriaTarefas></CategoriaTarefas>
                                 <CategoriaEmProgresso></CategoriaEmProgresso>
                                 <CategoriaConcluidas></CategoriaConcluidas>
+                                
                             </div>
                             <div style={{display:"flex"}}>
                                 <ListaTarefas>
-                                    <Tarefa></Tarefa>
+                                    <Tarefa/>
                                 </ListaTarefas>
                                 <ListaTarefas>
-                                    
+                                
                                 </ListaTarefas>
                                 <ListaTarefas>
-                                    
+                                
                                 </ListaTarefas>
                             </div>
                         </div>
