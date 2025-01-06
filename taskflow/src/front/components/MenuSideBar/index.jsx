@@ -112,7 +112,6 @@ const MenuSlideBar = (req) => {
         <ModalPerfil isOpen={modalPerfilOpen} userId={idUsuario} closeModal={closeModal}></ModalPerfil>
         <ModalCriarQuadro isOpen={modalQuadroOpen} userId={idUsuario} closeModal={closeModal}></ModalCriarQuadro>
         <ModalCriarLista isOpen={modalListaOpen} closeModal={closeModal}></ModalCriarLista>
-        <ModalCriarTask isOpen={modalTaskOpen} closeModal={closeModal}></ModalCriarTask>
     </DivSlide>)
 }
     
