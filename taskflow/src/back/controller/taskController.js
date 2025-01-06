@@ -3,8 +3,8 @@ import taskService from "../service/taskService.js";
 async function createTask(req, res) {
     try {
         const { lista_id } = req.params; // Pega lista_id da URL
-        const { nome, descricao, data } = req.body;
-        const task = await taskService.createTask(nome, descricao, data, lista_id);
+        const { nome, descricao, data, etapa1, etapa2, etapa3 } = req.body;
+        const task = await taskService.createTask(nome, descricao, data, etapa1, etapa2, etapa3, lista_id);
         res.json({ message: "Tarefa criada com sucesso!", task });
     } catch (error) {
         res.json({ erro: error.message });

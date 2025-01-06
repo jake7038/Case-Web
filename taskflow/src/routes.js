@@ -12,7 +12,7 @@ const router = Router();
 //salva localmente a foto de perfil
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const userId = req.params.id;
+        const userId = req.params.id; //adicionar depois para ele pedir o token para fazer essa ação
         const folderPath = path.resolve(`./src/front/assets`);
         cb(null, folderPath);
     },

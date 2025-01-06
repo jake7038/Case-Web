@@ -8,8 +8,9 @@ import { EstiloCategoria } from "../../components/CategoriaTarefas/styles";
 
 const Dashboard = () => {
     // Estados para armazenar os quadros do usuário
-    const [quadros, setQuadros] = useState([]);
-    const [erro, setErro] = useState(""); // Estado para armazenar erros
+    const [quadros, setQuadros] = useState([]); //armazena os quadros
+    const [erro, setErro] = useState(""); //estado que pega o erro para mandar a mensagem de quando não tem quadro
+
     useEffect(() => {
         const fetchQuadros = async () => {
             const token = localStorage.getItem("token"); // Pega o token armazenado
@@ -30,7 +31,7 @@ const Dashboard = () => {
                 if (response.ok) {
                     const data = await response.json();
                     if (data.registros && data.registros.length > 0) {
-                        setQuadros(data.registros); // Define os quadros recebidos no estado
+                        setQuadros(data.registros); // Pega os quadors
                     } else {
                         setErro("sem quadro "); 
                     }

@@ -15,12 +15,52 @@ const TaskPage = () => {
     const location = useLocation();
     const quadroId = location.state?.quadroId; //pega a variavel do quadro
 
+    const [listas, setListas] = useState([]); //armazena as listas
 
     const [modalCriarTask, setModalCriarTask] = useState(false);
-    
+
         const closeModal = () =>{
             setModalCriarTask(false);
         } 
+
+
+        useEffect(() => {
+                const fetchListas = async () => {
+                    const token = localStorage.getItem("token"); // Pega o token armazenado
+            
+                    if (!token) {
+                        setErro("Token ausente. Usuário não autenticado.");
+                        return;
+                    }
+                        
+                    try {
+                        const response = await fetch(`http://localhost:3000/quadros/${quadroId}/listas`, {
+                            method: "GET",
+                            headers: {
+                                Authorization: `Bearer ${token}`, 
+                            },
+                        });
+                            
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.registros && data.registros.length > 0) {
+                                setListas(data.registros); //pega as listas do banco
+                            } else {
+                                setErro("sem lista "); 
+                            }
+                        } else {
+                            const errorData = await response.json();
+                            setErro(errorData.erro || "Erro ao buscar as listas.");
+                        }
+                    } catch (error) {
+                        console.error("Erro ao buscar as listas:", error);
+                        
+                    }
+                };
+            
+                fetchListas();
+            }, []);
+
 
 
     return (
@@ -30,7 +70,12 @@ const TaskPage = () => {
                         <Titulo><img src="src/front/assets/logo.png" width={80}></img>TaskFlow {quadroId}</Titulo>
                         <div className="row flex-row gx-0">
                             <div style={{display:'flex'}}>
-                                <CategoriaTarefas></CategoriaTarefas>
+                                    {listas.map((lista) => (
+                                        <CategoriaTarefas 
+                                            listaId={lista.id} 
+                                            nome={lista.nome} 
+                                        />
+                                    ))}
                             </div>
                             <div style={{display:"flex"}}>
                                 <ListaTarefas>

@@ -1,10 +1,13 @@
 import database from "../database/index.js";
 
-async function createTask(nome, descricao, data, lista_id) {
+async function createTask(nome, descricao, data, etapa1, etapa2, etapa3, lista_id) {
     const newTask = {
         nome,
         descricao,
         data,
+        etapa1,
+        etapa2,
+        etapa3,
         estado: false, // Inicia sempre como false
         lista_id
     };
