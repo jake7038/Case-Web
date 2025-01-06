@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import Titulo from "../Titulo";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
@@ -178,6 +179,12 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
     } else {
         return null;
     }
+};
+
+ModalPerfil.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    userId: PropTypes.string.isRequired,
+    closeModal: PropTypes.func.isRequired,
 };
 
 export default ModalPerfil;

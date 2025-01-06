@@ -1,9 +1,10 @@
 import Paragrafo from "../Paragrafo"; 
 import { DivSlide, Divrow, ImgUser, Divrowlast , DivFlex } from "./styles";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faArrowRightFromBracket, faPen, faGear } from '@fortawesome/free-solid-svg-icons'
 import ModalPerfil from "../ModalPerfil";
+import ModalCriarTask from "../ModalCriarTask";
 
 
 const MenuSlideBar = (req) => {
@@ -12,6 +13,7 @@ const MenuSlideBar = (req) => {
     const [fotoUsuario, setFotoUsuario] = useState("../../assets/4foto.jpeg");
     const [modalPerfilOpen, setModalPerfilOpen] = useState(false);
     const [idUsuario, setIdUsuario] = useState();
+    const [modalCriarTask, setModalCriarTask] = useState(false);
 
     const closeModal = () => setModalPerfilOpen(false);
 
@@ -65,7 +67,7 @@ const MenuSlideBar = (req) => {
         </div>
 
         <DivFlex className="text-center d-flex flex-column  align-items-center pt-5 ">
-        <Divrow className=" mb-4 mt-4  p-3">
+        <Divrow onClick={() => setModalCriarTask(true)} className=" mb-4 mt-4  p-3">
             <div className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> <FontAwesomeIcon icon={faPen} /> </Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> {req? "Criar Novo Quadro": "Criar Nova Tarefa"}</Paragrafo>
@@ -97,6 +99,7 @@ const MenuSlideBar = (req) => {
         
         
         <ModalPerfil isOpen={modalPerfilOpen} userId={idUsuario} closeModal={closeModal}></ModalPerfil>
+        <ModalCriarTask isOpen={modalCriarTask} closeModal={closeModal}></ModalCriarTask>
 
     </DivSlide>)
 }
