@@ -6,7 +6,8 @@ import { faMoon, faArrowRightFromBracket, faPen, faGear } from '@fortawesome/fre
 import ModalPerfil from "../ModalPerfil";
 import ModalCriarQuadro from "../ModalCriarQuadro";
 import ModalCriarLista from "../ModalCriarLista";
-import ModalCriarTask from "../ModalCriarTask";
+
+import { useNavigate } from "react-router-dom"; 
 
 const MenuSlideBar = (req) => {
     const [nomeUsuario, setNomeUsuario] = useState("");
@@ -24,6 +25,16 @@ const MenuSlideBar = (req) => {
         setListaOpen(false);
         setTaskOpen(false);
     } 
+
+    const changeurl = useNavigate();
+
+    const goLogin = () => {
+        changeurl("/"); 
+    };
+
+    const goQuadro = () => {
+        changeurl("/dashboard"); 
+    };
 
     useEffect(() => {
         const fetchUsuario = async () => {
@@ -99,8 +110,8 @@ const MenuSlideBar = (req) => {
         </Divrow>
 
         
-        <Divrowlast className="   p-3 ">
-            <div className="d-flex flex-row w-0 gap-3">
+        <Divrowlast onClick={req? () => goLogin() : () => goQuadro()} className="   p-3 ">
+            <div  className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="vermelho" fontSize={16}> <FontAwesomeIcon icon={faArrowRightFromBracket} /> </Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="vermelho" fontSize={16}>{req? "Sair":"Voltar"}</Paragrafo>
             </div>
