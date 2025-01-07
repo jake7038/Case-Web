@@ -1,17 +1,65 @@
 import { DivModal, DivOverlay } from "./styles";
 import Titulo from "../Titulo";
 import Paragrafo from "../Paragrafo";
+import { useState } from "react";
+
 const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
+    const [formData, setFormData] = useState({
+        nome: "",
+        descricao: "",
+        usuario_id: userId
+    });
 
 
-    const closseButton = () => {
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const closeButton = () => {
         closeModal();
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
+        console.log("handleSubmit foi acionado");
+
+
+
+        if (!formData.nome || !formData.descricao) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
+        const dataToSend = { ...formData, usuario_id: userId };
+
+        try {
+            const response = await fetch("http://localhost:3000/quadros", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify(dataToSend) 
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert("Quadro criado com sucesso!");
+            } else {
+                alert(`Erro: ${data.erro}`);
+            }
+        } catch (error) {
+            alert("Erro ao criar quadro: " + error.message);
+        }
     };
 
     if(isOpen){
         return (
             <DivOverlay>
                 <DivModal >
+                    
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 text-center">
@@ -19,7 +67,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
-                                <button onClick={closseButton} type="button" className="btn btn-danger">X</button>
+                                <button onClick={closeButton} type="button" className="btn btn-danger">X</button>
                             </div>
                             <div className="col-md-12">
                                 <Paragrafo>Nome do Quadro</Paragrafo>
@@ -28,19 +76,23 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                                     name="nome"
                                     className="form-control mb-5 form-control-sm w-100"
                                     placeholder="Nome do Quadro"
+                                    value={formData.nome}
+                                    onChange={handleChange}
                                 />
     
                                 <Paragrafo>Descrição do Quadro</Paragrafo>
                                 <input
                                     type="text"
-                                    name="email"
+                                    name="descricao"
                                     className="form-control mb-5 form-control-sm w-100"
                                     placeholder="Descrição"
+                                    value={formData.descricao}
+                                    onChange={handleChange}
                                 />
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button type="submit" className="btn mt-5 btn-primary w-100">
+                                <button onClick={handleSubmit} className="btn mt-5 btn-primary w-100">
                                     Salvar as mudanças
                                 </button>
                             </div>
@@ -49,7 +101,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
     
                 </DivModal>
             </DivOverlay>
-    
+            
         );
     
     } else{
