@@ -47,6 +47,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
             const data = await response.json();
             if (response.ok) {
                 alert("Quadro criado com sucesso!");
+                window.location.reload();
             } else {
                 alert(`Erro: ${data.erro}`);
             }

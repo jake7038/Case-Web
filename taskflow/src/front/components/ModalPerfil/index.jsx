@@ -81,6 +81,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
     
             if (response.ok) {
                 alert("Usuário alterado com sucesso!");
+                window.location.reload();
             } else {
                 const data = await response.json();
                 alert(`Erro: ${data.erro || "Não foi possível atualizar o usuário."}`);

@@ -79,7 +79,7 @@ const TaskPage = () => {
                             </div>
                             <div style={{display:"flex"}}>
                                 <ListaTarefas>
-                                    <Tarefa/>
+                                
                                 </ListaTarefas>
                             </div>
                         </div>
