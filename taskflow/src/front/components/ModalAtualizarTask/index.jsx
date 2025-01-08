@@ -4,7 +4,7 @@ import Titulo from "../Titulo";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
 
-const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
+const ModalCriarTask = ({ isOpen, closeModal, taskId }) => {
     const [formData, setFormData] = useState({
         nomeTask: "",
         descricaoTask: "",
@@ -15,12 +15,12 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
     const redButton = () => {
         closeModal();
     };
-    //post não está funcionando, alterar corretamente a URL e passar corretamente cada etapa
+
     const submit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:3000/tasks/${listaId}`, {
-                method: "POST",
+            const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -92,21 +92,11 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                             />
 
                             <Paragrafo>Descrição da Task</Paragrafo>
-                            <input
+                            <textarea
                                 name="descricaoTask"
                                 className="form-control mb-4 form-control-sm w-100"
                                 placeholder="Descrição"
                                 value={formData.descricaoTask}
-                                onChange={handleInputChange}
-                            />
-
-                            <Paragrafo>Vencimento da Task</Paragrafo>
-                            <input
-                                type="text"
-                                name="nomeTask"
-                                className="form-control mb-4 form-control-sm w-100"
-                                placeholder="Vencimento da Task"
-                                value={formData.data}
                                 onChange={handleInputChange}
                             />
                         </div>

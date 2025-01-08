@@ -69,7 +69,7 @@ const TaskPage = () => {
                     <div className="col-md-10 p-4">
                         <Titulo><img src="src/front/assets/logo.png" width={80}></img>TaskFlow</Titulo>
                         <div className="row flex-row gx-0">
-                            <div style={{display:'flex'}}>
+                            <div style={{display:'flex', columnGap: "1.5rem"}}>
                                     {listas.map((lista) => (
                                         <CategoriaTarefas 
                                             listaId={lista.id} 
@@ -77,11 +77,7 @@ const TaskPage = () => {
                                         />
                                     ))}
                             </div>
-                            <div style={{display:"flex"}}>
-                                <ListaTarefas>
-                                
-                                </ListaTarefas>
-                            </div>
+                            
                         </div>
                     </div>
                     <div className=" bg-dark min-vh-100 col-md-2  p-0 text-center">
