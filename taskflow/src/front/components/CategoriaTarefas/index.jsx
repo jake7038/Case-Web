@@ -78,7 +78,7 @@ const CategoriaTarefas = ({listaId, nome}) => {
 
             </div>
             
-            <ModalCriarTask isOpen={modalCriarTask} closeModal={closeModal}></ModalCriarTask>
+            <ModalCriarTask isOpen={modalCriarTask} closeModal={closeModal} listaId={listaId}></ModalCriarTask>
             <ModalAtualizarLista isOpen={modalAtualizar} closeModal={closeModal} listaId={listaId}></ModalAtualizarLista>
         </>
         

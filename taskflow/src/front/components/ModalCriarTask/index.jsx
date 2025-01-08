@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Titulo from "../Titulo";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
-
+import InputMask from "react-input-mask";
 const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
     const [formData, setFormData] = useState({
         nomeTask: "",
@@ -15,25 +15,35 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
     const redButton = () => {
         closeModal();
     };
+
+    const modificaData = (data) => {
+        const [dia, mes, ano] = data.split("/"); 
+        return `${ano}-${mes}-${dia}`; 
+    };
+
     //post não está funcionando, alterar corretamente a URL e passar corretamente cada etapa
     const submit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:3000/tasks/${listaId}`, {
+            const response = await fetch(`http://localhost:3000/listas/${listaId}/task`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
                 body: JSON.stringify({
-                    nomeTask: formData.nomeTask,
-                    descricaoTask: formData.descricaoTask,
-                    etapas: formData.etapas,
+                    nome: formData.nomeTask,
+                    descricao: formData.descricaoTask,
+                    data: modificaData(formData.data),
+                    etapa1: formData.etapas[0] || "",
+                    etapa2: formData.etapas[1] || "",
+                    etapa3: formData.etapas[2] || "",
                 }),
             });
 
             if (response.ok) {
                 alert("Task criada com sucesso!");
-                closeModal();
+                window.location.reload();
             } else {
                 const data = await response.json();
                 alert(`Erro ao criar task: ${data.message}`);
@@ -101,11 +111,12 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                             />
 
                             <Paragrafo>Vencimento da Task</Paragrafo>
-                            <input
+                            <InputMask
+                                mask="99/99/9999"
                                 type="text"
-                                name="nomeTask"
+                                name="data"
                                 className="form-control mb-4 form-control-sm w-100"
-                                placeholder="Vencimento da Task"
+                                placeholder="dd/mm/aaaa"
                                 value={formData.data}
                                 onChange={handleInputChange}
                             />

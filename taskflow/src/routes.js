@@ -55,7 +55,7 @@ router.delete("/listas/:id", auth, deleteLista);            //status: postman ok
 
 //rotas da task
 
-router.post("/listas/:lista_id/tasks", auth, createTask); //status: postman ok, integração ñ
+router.post("/listas/:lista_id/task", auth, createTask); //status: postman ok, integração ñ
 router.get("/listas/:lista_id/tasks", auth, readTasks); //status: postman ok, integração ñ
 router.patch("/tasks/:id", auth, updateTask); //status: postman ok, integração ñ
 router.delete("/tasks/:id", auth, deleteTask); //status: postman ok, integração ñ
