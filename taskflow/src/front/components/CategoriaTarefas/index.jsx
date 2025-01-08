@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 import Tarefa from "../../components/Tarefa";
 import {format} from "date-fns";
 import ModalAtualizarLista from "../ModalAtualizarLista";
+
 const CategoriaTarefas = ({listaId, nome}) => {
 
     const [modalCriarTask, setModalCriarTask] = useState(false);
     const [modalAtualizar, setModalAtualizar] = useState(false);
     const [tasks, setTask] = useState([]); //armazena as tasks
+    const [erro, setErro] = useState("");
     
     const closeModal = () =>{
         setModalCriarTask(false);
@@ -44,7 +46,7 @@ const CategoriaTarefas = ({listaId, nome}) => {
                     }
                 } else {
                     const errorData = await response.json();
-                    setErro(errorData.erro || "Erro ao buscar as listas.");
+                    setErro(errorData.erro || "Erro ao buscar as tarefas.");
                 }
             } catch (error) {
                 console.error("Erro ao buscar as listas:", error);

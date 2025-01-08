@@ -3,14 +3,20 @@ import PropTypes from "prop-types";
 import Titulo from "../Titulo";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
+import InputMask from "react-input-mask";
 
-const ModalCriarTask = ({ isOpen, closeModal, taskId }) => {
+const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     const [formData, setFormData] = useState({
         nomeTask: "",
         descricaoTask: "",
         data: "",
         etapas: [""],
     });
+
+    const modificaData = (data) => {
+        const [dia, mes, ano] = data.split("/"); 
+        return `${ano}-${mes}-${dia}`; 
+    };
 
     const redButton = () => {
         closeModal();
@@ -23,17 +29,22 @@ const ModalCriarTask = ({ isOpen, closeModal, taskId }) => {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
                 body: JSON.stringify({
-                    nomeTask: formData.nomeTask,
-                    descricaoTask: formData.descricaoTask,
-                    etapas: formData.etapas,
+                    nome: formData.nomeTask,
+                    descricao: formData.descricaoTask,
+                    data: modificaData(formData.data),
+                    etapa1: formData.etapas[0] || "",
+                    etapa2: formData.etapas[1] || "",
+                    etapa3: formData.etapas[2] || "",
+                    lista_id: taskId
                 }),
             });
 
             if (response.ok) {
-                alert("Task criada com sucesso!");
-                closeModal();
+                alert("Task atualizada com sucesso!");
+                window.location.reload();
             } else {
                 const data = await response.json();
                 alert(`Erro ao criar task: ${data.message}`);
@@ -73,7 +84,7 @@ const ModalCriarTask = ({ isOpen, closeModal, taskId }) => {
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 text-center">
-                            <Titulo fontSize={24}>Criar Task</Titulo>
+                            <Titulo fontSize={24}>Atualizar a Task{taskId}</Titulo>
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">
@@ -97,6 +108,16 @@ const ModalCriarTask = ({ isOpen, closeModal, taskId }) => {
                                 className="form-control mb-4 form-control-sm w-100"
                                 placeholder="Descrição"
                                 value={formData.descricaoTask}
+                                onChange={handleInputChange}
+                            />
+                            <Paragrafo>Vencimento da Task</Paragrafo>
+                            <InputMask
+                                mask="99/99/9999"
+                                type="text"
+                                name="data"
+                                className="form-control mb-4 form-control-sm w-100"
+                                placeholder="dd/mm/aaaa"
+                                value={formData.data}
                                 onChange={handleInputChange}
                             />
                         </div>
@@ -153,9 +174,9 @@ const ModalCriarTask = ({ isOpen, closeModal, taskId }) => {
     return null;
 };
 
-ModalCriarTask.propTypes = {
+ModalAtualizarTask.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
 };
 
-export default ModalCriarTask;
+export default ModalAtualizarTask;

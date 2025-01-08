@@ -14,7 +14,8 @@ const TaskPage = () => {
 
     const location = useLocation();
     const quadroId = location.state?.quadroId; //pega a variavel do quadro
-
+    const [erro, setErro] = useState("");
+    
     const [listas, setListas] = useState([]); //armazena as listas
 
     const [modalCriarTask, setModalCriarTask] = useState(false);

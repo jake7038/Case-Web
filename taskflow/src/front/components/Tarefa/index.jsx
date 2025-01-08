@@ -3,14 +3,24 @@ import Titulo from "../Titulo";
 import Paragrafo from "../Paragrafo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faCircleCheck, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
-
+import ModalAtualizarTask from "../ModalAtualizarTask";
+import { useState } from "react";
+import { id } from "date-fns/locale";
 const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, idTask}) => {
-    return (
+
+    const [modalAtualizar, setModalAtualizar] = useState(false);
+
+    const closeModal = () =>{
+        setModalAtualizar(false);
         
-        <EstiloTarefa>
+    } 
+
+    return (
+        <>
+            <EstiloTarefa>
             <div style={{display:'flex'}}>
                 <Titulo  fontSize={22}>{nome}</Titulo>
-                <div style={{paddingLeft:'42%'}}><FontAwesomeIcon icon={faPen} color="#54CDD0"/></div>
+                <div onClick={() => setModalAtualizar(true)} style={{paddingLeft:'42%'}}><FontAwesomeIcon icon={faPen} color="#54CDD0"/></div>
                 <div style={{paddingLeft:'5%'}}><FontAwesomeIcon icon={faTrash} color="#e14c4c"/></div>
             </div>
             <div>
@@ -34,6 +44,9 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, idTask}) => {
                 <div style={{padding:'7px',paddingLeft:'73%'}}><FontAwesomeIcon icon={faCircleCheck} size="lg"/></div>
             </div>
         </EstiloTarefa>
+            <ModalAtualizarTask isOpen={modalAtualizar} closeModal={closeModal} taskId={idTask} ></ModalAtualizarTask>
+        </>
+        
     );
 };
 
