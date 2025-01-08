@@ -3,11 +3,11 @@ import Titulo from "../Titulo";
 import Paragrafo from "../Paragrafo";
 import { useState } from "react";
 
-const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
+const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
+    
     const [formData, setFormData] = useState({
         nome: "",
         descricao: "",
-        usuario_id: userId
     });
 
 
@@ -31,11 +31,11 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
             return;
         }
 
-        const dataToSend = { ...formData, usuario_id: userId };
+        const dataToSend = { ...formData, quadro_id: quadroId };
 
         try {
-            const response = await fetch("http://localhost:3000/quadros", {
-                method: "POST",
+            const response = await fetch(`http://localhost:3000/quadros/${quadroId}`, {
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -45,7 +45,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Quadro criado com sucesso!");
+                alert("Quadro Alterado com sucesso!");
                 window.location.reload();
             } else {
                 alert(`Erro: ${data.erro}`);
@@ -63,7 +63,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Criar Quadro</Titulo>
+                                <Titulo fontSize={24}>Atualizar Quadro</Titulo>
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
@@ -110,4 +110,4 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
     
 }
 
-export default ModalCriarQuadro;
+export default ModalAtualizarQuadro;

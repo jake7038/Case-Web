@@ -6,13 +6,16 @@ import ModalCriarTask from "../ModalCriarTask";
 import { useEffect, useState } from "react";
 import Tarefa from "../../components/Tarefa";
 import {format} from "date-fns";
-
+import ModalAtualizarLista from "../ModalAtualizarLista";
 const CategoriaTarefas = ({listaId, nome}) => {
 
     const [modalCriarTask, setModalCriarTask] = useState(false);
+    const [modalAtualizar, setModalAtualizar] = useState(false);
     const [tasks, setTask] = useState([]); //armazena as tasks
+    
     const closeModal = () =>{
         setModalCriarTask(false);
+        setModalAtualizar(false);
     } 
 
     useEffect(() => {
@@ -56,9 +59,11 @@ const CategoriaTarefas = ({listaId, nome}) => {
     return(
         <>
             <div  style={{display: "flex" , flexFlow: "column nowrap"}}>
-                <EstiloCategoria onClick={() => setModalCriarTask(true)} style={{margin:'2% 5% 0% 5%' , paddingBottom: "0.5rem"} }>
-                    <FontAwesomeIcon style={{marginLeft: "0.5rem"}} icon={faPlus} size="lg" />
-                    <Titulo  fontSize={28}>{nome}</Titulo>
+                <EstiloCategoria  style={{margin:'2% 5% 0% 5%' , paddingBottom: "0.5rem"} }>
+                    <FontAwesomeIcon onClick={() => setModalCriarTask(true)} style={{marginLeft: "0.5rem"}} icon={faPlus} size="lg" />
+                    <div onClick={() => setModalAtualizar(true)}>
+                        <Titulo fontSize={28}>{nome}</Titulo>
+                    </div>
                     <FontAwesomeIcon style={{marginRight: "0.5rem"}} icon={faListCheck} color="#000" size="lg"/>
                 </EstiloCategoria>
                 
@@ -72,6 +77,7 @@ const CategoriaTarefas = ({listaId, nome}) => {
             </div>
             
             <ModalCriarTask isOpen={modalCriarTask} closeModal={closeModal}></ModalCriarTask>
+            <ModalAtualizarLista isOpen={modalAtualizar} closeModal={closeModal} listaId={listaId}></ModalAtualizarLista>
         </>
         
     );
