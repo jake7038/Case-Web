@@ -15,16 +15,17 @@ const Quadro = ({quadroId, nome, descricao}) => {
 
     return (
         <EstiloQuadro onClick={() => goTask()} >
-            <div style={{display:'flex', alignItems:'center', justifyContent: "space-between", MarginBottom:'8px', paddingBottom: "8px", borderBottom: "2px solid #949494"  }}>
-            <Titulo fontSize={30}>{nome}</Titulo>
-            <div style={{paddingLeft:'42%'}}><FontAwesomeIcon icon={faPen} color="#54CDD0"/></div>
-            <div style={{paddingLeft:'5%'}}><FontAwesomeIcon icon={faTrash} color="#e14c4c"/></div>
+            <div style={{display:'flex', alignItems:'center', justifyContent: "space-between",  MarginBottom:'8px', paddingBottom: "8px", borderBottom: "2px solid #949494"  }}>
+            <Titulo  fontSize={30}>{nome}</Titulo>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", columnGap: "1rem"}}>
+            <div ><FontAwesomeIcon icon={faPen} color="#54CDD0"/></div>
+            <div ><FontAwesomeIcon icon={faTrash} color="#e14c4c"/></div>
+            </div>
             
             </div>
             <div style={{display:'flex', alignItems:'start', height:'20%', marginTop: "1rem"}}>
             <Paragrafo fontSize={18}>{descricao}</Paragrafo>
             </div>
-            <Paragrafo>{quadroId}</Paragrafo>
         </EstiloQuadro>
     );
 };

@@ -64,7 +64,6 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
             }
     
             const { path } = await uploadResponse.json();
-            alert(path); //está dando undefinied
             // Atualizar os dados do usuário
             const response = await fetch(`http://localhost:3000/user/${userId}`, {
                 method: "PATCH",

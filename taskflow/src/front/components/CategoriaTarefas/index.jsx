@@ -5,6 +5,7 @@ import { faPlus, faClock , faListCheck } from "@fortawesome/free-solid-svg-icons
 import ModalCriarTask from "../ModalCriarTask";
 import { useEffect, useState } from "react";
 import Tarefa from "../../components/Tarefa";
+import {format} from "date-fns";
 
 const CategoriaTarefas = ({listaId, nome}) => {
 
@@ -63,7 +64,7 @@ const CategoriaTarefas = ({listaId, nome}) => {
                 
                 <div style={{display:'flex', flexFlow: "column nowrap"}}>
                                     {tasks.map((task) => (
-                                        <Tarefa nome = {task.nome} descricao = {task.descricao} data = {new Date(task.data).toISOString().slice(0, 10)} etapa1 = {task.etapa1} etapa2 = {task.etapa2} etapa3 = {task.etapa3} idTask = {task.id} />
+                                        <Tarefa nome = {task.nome} descricao = {task.descricao} data = {format(new Date(task.data), "dd/MM/yyyy")} etapa1 = {task.etapa1} etapa2 = {task.etapa2} etapa3 = {task.etapa3} idTask = {task.id} />
                                     ))}
                             </div>
                 

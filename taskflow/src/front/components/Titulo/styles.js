@@ -11,5 +11,5 @@ import styled from "styled-components"; //para usar CSS com TypeScript é necess
 export const P = styled.h1`    
     font-size:${(props) => (props.fontSize ? props.fontSize + 'px' : '24px')}; 
     color: ${(props) => (props.tipo === 'principal' ? '#282a35' : '#949494')};
-    line-height: 22px;
+    line-height: auto;
 `
