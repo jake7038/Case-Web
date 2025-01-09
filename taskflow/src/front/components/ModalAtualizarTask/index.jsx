@@ -84,7 +84,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 text-center">
-                            <Titulo fontSize={24}>Atualizar a Task{taskId}</Titulo>
+                            <Titulo fontSize={24}>Atualizar a Task</Titulo>
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">

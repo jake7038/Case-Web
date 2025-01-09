@@ -24,7 +24,7 @@ async function readTasks(lista_id) {
     return tasks;
 }
 
-async function updateTask(id, nome, descricao, data, etapa1, etapa2, etapa3) {
+async function updateTask(id, nome, descricao, data, etapa1, etapa2, etapa3, estado) {
     const task = await database("task").where({ id }).first();
     if (!task) {
         throw new Error("Tarefa não encontrada.");
@@ -37,6 +37,7 @@ async function updateTask(id, nome, descricao, data, etapa1, etapa2, etapa3) {
         etapa1:  etapa1 || task.etapa1,
         etapa2:  etapa2 || task.etapa2,
         etapa3:  etapa3 || task.etapa3,
+        estado:  estado || task.estado,
     };
 
     await database("task").update(updatedTask).where({ id });

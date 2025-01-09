@@ -24,7 +24,7 @@ const Quadro = ({quadroId, nome, descricao}) => {
         <>
             <EstiloQuadro   >
             <div style={{display:'flex', alignItems:'center', justifyContent: "space-between",  MarginBottom:'8px', paddingBottom: "8px", borderBottom: "2px solid #949494"  }}>
-            <Titulo  fontSize={30}>{nome}{quadroId}</Titulo>
+            <Titulo  fontSize={30}>{nome}</Titulo>
             <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", columnGap: "1rem"}}>
             <div style={{cursor: "pointer"}} ><FontAwesomeIcon onClick={() =>setAtualizaOpen(true) } style={{cursor: "pointer"}} icon={faPen} color="#54CDD0"/></div>
             <div ><FontAwesomeIcon icon={faTrash} color="#e14c4c"/></div>

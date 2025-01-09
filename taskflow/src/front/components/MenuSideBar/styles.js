@@ -4,7 +4,8 @@ export const DivSlide = styled.div`
     background: linear-gradient(to bottom, #c1ff72, #0cc0df);
     position: sticky;
     height: 100vh; 
-    overflow: hidden
+    overflow-X: hidden;
+    top: "0";
 `;
 
 export const DivFlex = styled.div`

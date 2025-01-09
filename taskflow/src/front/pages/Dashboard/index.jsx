@@ -75,8 +75,8 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="min-vh-100 col-md-2 p-0 text-center">
-                    <MenuSlideBar />
+                <div style={{position: "sticky", top: "0", height: "100vh", overflowY: "auto"}} className="min-vh-100 col-md-2 p-0 text-center">
+                    <MenuSlideBar req={true}  />
                 </div>
             </div>
         </body>

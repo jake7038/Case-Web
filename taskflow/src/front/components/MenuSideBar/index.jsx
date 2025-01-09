@@ -9,7 +9,7 @@ import ModalCriarLista from "../ModalCriarLista";
 
 import { useNavigate } from "react-router-dom"; 
 
-const MenuSlideBar = (req, quadroId) => {
+const MenuSlideBar = ({req, quadroId}) => {
     const [nomeUsuario, setNomeUsuario] = useState("");
     const [emailUsuario, setEmailUsuario] = useState("");
     const [fotoUsuario, setFotoUsuario] = useState("../../assets/4foto.jpeg");

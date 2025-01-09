@@ -71,7 +71,7 @@ const CategoriaTarefas = ({listaId, nome}) => {
                 
                 <div style={{display:'flex', flexFlow: "column nowrap"}}>
                                     {tasks.map((task) => (
-                                        <Tarefa nome = {task.nome} descricao = {task.descricao} data = {format(new Date(task.data), "dd/MM/yyyy")} etapa1 = {task.etapa1} etapa2 = {task.etapa2} etapa3 = {task.etapa3} idTask = {task.id} />
+                                        <Tarefa nome = {task.nome} descricao = {task.descricao} data = {format(new Date(task.data), "dd/MM/yyyy")} etapa1 = {task.etapa1} etapa2 = {task.etapa2} etapa3 = {task.etapa3} idTask = {task.id}  estado={task.estado} />
                                     ))}
                             </div>
                 

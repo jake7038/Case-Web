@@ -25,8 +25,8 @@ async function readTasks(req, res) {
 async function updateTask(req, res) {
     try {
         const { id } = req.params;
-        const { nome, descricao, data, etapa1, etapa2, etapa3 } = req.body;
-        const updatedTask = await taskService.updateTask(id, nome, descricao, data, etapa1, etapa2, etapa3);
+        const { nome, descricao, data, etapa1, etapa2, etapa3, estado } = req.body;
+        const updatedTask = await taskService.updateTask(id, nome, descricao, data, etapa1, etapa2, etapa3, estado);
         res.json({ message: "Tarefa atualizada com sucesso!", updatedTask });
     } catch (error) {
         res.json({ erro: error.message });
