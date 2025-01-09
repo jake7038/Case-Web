@@ -4,7 +4,6 @@ import Titulo from "../../components/Titulo";
 import MenuSlideBar from "../../components/MenuSideBar";
 import { GridQuadros } from "./styles";
 import Quadro from "../../components/Quadro";
-import { EstiloCategoria } from "../../components/CategoriaTarefas/styles";
 
 const Dashboard = () => {
     // Estados para armazenar os quadros do usuário

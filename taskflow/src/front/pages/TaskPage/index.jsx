@@ -82,7 +82,7 @@ const TaskPage = () => {
                         </div>
                     </div>
                     <div className=" bg-dark min-vh-100 col-md-2  p-0 text-center">
-                    {MenuSlideBar(false)}
+                    {MenuSlideBar(false, quadroId)}
                     </div>
         </div>
         </body>
