@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import Tarefa from "../../components/Tarefa";
 import {format} from "date-fns";
 import ModalAtualizarLista from "../ModalAtualizarLista";
-import { id } from "date-fns/locale";
 
 const CategoriaTarefas = ({listaId, nome}) => {
 

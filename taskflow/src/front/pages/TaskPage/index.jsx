@@ -1,7 +1,7 @@
 import Titulo from "../../components/Titulo";
 import CategoriaTarefas from "../../components/CategoriaTarefas";
 import Tarefa from "../../components/Tarefa";
-import { ListaTarefas} from "./styles";
+import { ListaTarefas, GridListas} from "./styles";
 import MenuSlideBar from "../../components/MenuSideBar";
 import ModalCriarTask from "../../components/ModalCriarTask";
 import { useEffect, useState } from "react";
@@ -69,15 +69,16 @@ const TaskPage = () => {
             <div className="row flex-row gx-0">
                     <div className="col-md-10 p-4">
                         <Titulo><img src="src/front/assets/logo.png" width={80}></img>TaskFlow</Titulo>
-                        <div className="row flex-row gx-0">
-                            <div style={{display:'flex', columnGap: "1.5rem"}}>
+                        <div className="row gx-0">
+                            <GridListas>
                                     {listas.map((lista) => (
                                         <CategoriaTarefas 
                                             listaId={lista.id} 
                                             nome={lista.nome} 
                                         />
                                     ))}
-                            </div>
+                            
+                            </GridListas>
                             
                         </div>
                     </div>
