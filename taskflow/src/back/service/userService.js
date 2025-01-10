@@ -57,10 +57,10 @@ async function updateUser(id, nome, email, senha, foto) {
     }
 
     const usuario_novo = {
-        nome: nome,
-        email: email,
-        senha: hash,
-        foto: foto
+        nome: nome || busca.nome,
+        email: email || busca.email, 
+        senha: hash || busca.senha,
+        foto: foto || busca.foto,
     }
 
     await database("usuario").update(usuario_novo).where({id:id})

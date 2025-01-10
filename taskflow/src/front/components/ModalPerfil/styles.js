@@ -13,7 +13,7 @@ export const DivOverlay = styled.div`
 
 export const DivModal = styled.form`
     width: 700px;
-    height: 600px;
+    height: auto;
     top: 50%;
     left: 50%;
     position: absolute ;

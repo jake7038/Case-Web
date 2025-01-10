@@ -163,7 +163,10 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-8 text-center">
-                            <button type="submit" className="btn mt-5 btn-primary w-100">
+                        <button type="button" className="btn mt-5 btn-primary w-100">
+                                Excluir Usuário
+                            </button>
+                            <button type="submit"  className="btn mt-5 btn-primary w-100">
                                 Salvar as mudanças
                             </button>
                         </div>

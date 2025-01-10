@@ -28,6 +28,34 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
         
     } 
 
+    const deleteTask = async() => {
+        const resp = confirm("Tem certeza que deseja excluir a Task?");
+        if(resp){
+            
+                try {
+                    const response = await fetch(`http://localhost:3000/tasks/${idTask}`, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    });
+        
+                    if (response.ok) {
+                        alert("Task Deletada com sucesso!");
+                        window.location.reload();
+                    } else {
+                        const data = await response.json();
+                        alert(`Erro ao deletar task: ${data.message}`);
+                    }
+                } catch (error) {
+                    console.error("Erro ao deletar task:", error);
+                    alert("Erro ao deletar a tarefa.");
+                }
+        }else{
+        }
+    }
+
     const changeEstado = async (e) =>{
         if(isEtapa1Checked == true && isEtapa2Checked == true && isEtapa3Checked == true){
             try {
@@ -66,8 +94,8 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
             <EstiloTarefa style={{backgroundColor: taskDate.getTime() == dateToday.getTime() && estado == false ? "#f0f8ff" : taskDate.getTime() < dateToday.getTime() && estado == false ? "#ffe4e4" : estado == true ? "#e4ffe4" :  "#fffee4" }}>
             <div style={{display:'flex'}}>
                 <Titulo  fontSize={22}>{nome}</Titulo>
-                <div onClick={() => setModalAtualizar(true)} style={{paddingLeft:'42%'}}><FontAwesomeIcon style={{cursor: "pointer"}} icon={faPen}  color="#54CDD0"/></div>
-                <div style={{paddingLeft:'5%'}}><FontAwesomeIcon icon={faTrash} color="#e14c4c"/></div>
+                <div  style={{paddingLeft:'42%'}}><FontAwesomeIcon onClick={() => setModalAtualizar(true)} style={{cursor: "pointer"}} icon={faPen}  color="#54CDD0"/></div>
+                <div  style={{paddingLeft:'5%'}}><FontAwesomeIcon onClick={() => deleteTask()} style={{cursor: "pointer"}} icon={faTrash} color="#e14c4c"/></div>
             </div>
             <div>
                 <Paragrafo>{descricao}</Paragrafo>
