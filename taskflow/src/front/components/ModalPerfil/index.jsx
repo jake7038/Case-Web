@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Titulo from "../Titulo";
 import { DivModal, DivOverlay } from "./styles";
@@ -17,6 +18,38 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
     const redButton = () => {
         closeModal();
     };
+
+    const janela = useNavigate();
+
+    const deleteUsuario = async () => {
+        if(confirm("Tem certeza que quer deletar sua conta? Todas suas informações serão perdidas!")) {
+            const token = localStorage.getItem("token");
+            if(!token) {
+                alert("Usuário não autenticado!");
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/user/${userId}` , {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "applications/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if(response.ok) {
+                    alert("Usuário deletado com sucesso!");
+                    janela("/");
+                } else {
+                    alert("Erro ao deletar usuário");
+                }
+            } catch (error) {
+                console.error("Erro ao deletar usuário:", error);
+            } 
+        }
+    };
+    
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -163,10 +196,10 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-8 text-center">
-                        <button type="button" className="btn mt-5 btn-primary w-100">
+                        <button type="button" className="btn mt-4 btn-primary w-100" onClick={() => deleteUsuario()}>
                                 Excluir Usuário
                             </button>
-                            <button type="submit"  className="btn mt-5 btn-primary w-100">
+                            <button type="submit"  className="btn mt-4 btn-primary w-100">
                                 Salvar as mudanças
                             </button>
                         </div>
