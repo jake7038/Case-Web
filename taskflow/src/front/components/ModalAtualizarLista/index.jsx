@@ -2,6 +2,9 @@ import { DivModal, DivOverlay } from "./styles";
 import Titulo from "../Titulo";
 import Paragrafo from "../Paragrafo";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+import e from "cors";
 
 
 const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
@@ -51,11 +54,39 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
         }
     };
 
+    const deleteLista = async(e) => {
+        e.preventDefault();
+
+        const resp = confirm("Tem certeza que deseja excluir Toda a Lista? As tasks atreladas a ela também serão excluidas.");
+        if(resp){
+            
+                try {
+                    const response = await fetch(`http://localhost:3000/listas/${listaId}`, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    });
+        
+                    if (response.ok) {
+                        alert("Lista Deletada com sucesso!");
+                        window.location.reload();
+                    } else {
+                        const data = await response.json();
+                        alert(`Erro ao deletar Lista: ${data.message}`);
+                    }
+                } catch (error) {
+                    console.error("Erro ao deletar Lista:", error);
+                    alert("Erro ao deletar a Lista.");
+                }
+            }
+        };
 
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal  >
+                <DivModal style={{height:'330px'}}>
                     <div  className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 text-center">
@@ -63,7 +94,7 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
-                                <button onClick={closeButton} type="button" className="btn btn-danger">X</button>
+                                <FontAwesomeIcon icon={faX} onClick={closeButton} color="#e14c4c" style={{cursor:'pointer'}}></FontAwesomeIcon>
                             </div>
                             <div className="col-md-12">
                                 <Paragrafo>Novo Nome da Lista</Paragrafo>
@@ -78,8 +109,11 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button onClick={Submit}    className="btn mt-5 btn-primary w-100">
+                                <button onClick={Submit}   className="btn mt-2 btn-primary w-100">
                                     Salvar as mudanças
+                                </button>
+                                <button onClick={deleteLista} className="btn mt-3 btn-danger w-100">
+                                    Excluir Lista
                                 </button>
                             </div>
                             <div className="col-md-2"></div>

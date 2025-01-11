@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Titulo from "../Titulo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
 
@@ -15,7 +17,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
         foto: "",
     });
 
-    const redButton = () => {
+    const closeButton = () => {
         closeModal();
     };
 
@@ -145,7 +147,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">
-                            <button onClick={redButton} type="button" className="btn btn-danger">X</button>
+                            <FontAwesomeIcon icon={faX} onClick={closeButton} color="#e14c4c" style={{cursor:'pointer'}}></FontAwesomeIcon>
                         </div>
                         <div className="col-md-6">
                             <Paragrafo>Alterar nome</Paragrafo>

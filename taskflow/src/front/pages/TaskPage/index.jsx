@@ -68,7 +68,13 @@ const TaskPage = () => {
         <body className="">
             <div className="row flex-row gx-0">
                     <div className="col-md-10 p-4">
-                        <Titulo><img src="src/front/assets/logo.png" width={80}></img>TaskFlow</Titulo>
+                        <div style={{display:'flex', justifyContent:'center'}}>
+                            <Titulo fontSize={45}>
+                                <img src="src/front/assets/logo.png" width={90}/>
+                                TaskFlow
+                            </Titulo>
+                        </div>
+                        <hr style={{marginTop:'1rem'}}></hr>
                         <div className="row gx-0">
                             <GridListas>
                                     {listas.map((lista) => (

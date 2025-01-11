@@ -4,6 +4,8 @@ import Titulo from "../Titulo";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
 import InputMask from "react-input-mask";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     const [formData, setFormData] = useState({
@@ -18,7 +20,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
         return `${ano}-${mes}-${dia}`; 
     };
 
-    const redButton = () => {
+    const closeButton = () => {
         closeModal();
     };
 
@@ -80,7 +82,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     if (isOpen) {
         return (
             <DivOverlay>
-                <DivModal onSubmit={submit}>
+                <DivModal onSubmit={submit} style={{height:'500px'}}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 text-center">
@@ -88,7 +90,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">
-                            <button onClick={redButton} type="button" className="btn btn-danger">X</button>
+                            <FontAwesomeIcon icon={faX} onClick={closeButton} color="#e14c4c" style={{cursor:'pointer'}}></FontAwesomeIcon>
                         </div>
 
                         <div className="col-md-6">

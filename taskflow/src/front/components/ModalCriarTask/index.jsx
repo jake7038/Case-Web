@@ -4,6 +4,10 @@ import Titulo from "../Titulo";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
 import InputMask from "react-input-mask";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
+
 const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
     const [formData, setFormData] = useState({
         nomeTask: "",
@@ -12,7 +16,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
         etapas: [""],
     });
 
-    const redButton = () => {
+    const closeButton = () => {
         closeModal();
     };
 
@@ -91,7 +95,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">
-                            <button onClick={redButton} type="button" className="btn btn-danger">X</button>
+                            <FontAwesomeIcon icon={faX} onClick={closeButton} color="#e14c4c" style={{cursor:'pointer'}}></FontAwesomeIcon>
                         </div>
 
                         <div className="col-md-6">

@@ -51,16 +51,20 @@ const Dashboard = () => {
         <body className="">
             <div className="row flex-row gx-0">
                 <div className="col-md-10 p-4">
-                    <Titulo>
-                        <img src="src/front/assets/logo.png" width={80} alt="TaskFlow Logo" />
-                        TaskFlow
-                    </Titulo>
+                    <div style={{display:'flex', justifyContent:'center'}}>
+                        <Titulo fontSize={45}>
+                            <img src="src/front/assets/logo.png" width={90} alt="TaskFlow Logo"/>
+                            TaskFlow
+                        </Titulo>
+                    </div>
+                    <hr style={{marginTop:'1rem'}}></hr>
                     <div className="row flex-row gx-0">
-                        <div style={{ display: "flex" }}>
+                        <div style={{ display: "flex"}}>
                             <GridQuadros>
                                 {erro ? (
-                                    <div style={{ textAlign: "center", color: "#787878", marginTop: "20px" }}>
-                                        <p>Comece criando seu primeiro Quadro no menu lateral! </p>
+                                    <div style={{ textAlign: "left", color: "#787878", marginTop: "15rem" }}>
+                                        <h1>Bem-vindo ao TaskFlow!</h1>
+                                        <p>Comece criando seu primeiro quadro no menu lateral</p>
                                     </div>
                                 ) : (
                                     quadros.map((quadro) => (

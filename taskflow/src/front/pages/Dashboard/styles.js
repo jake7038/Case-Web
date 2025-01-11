@@ -10,6 +10,5 @@ export const GridQuadros = styled.div`
     overflow-y: auto;
     margin: 2% 0% 0% 5%;
     padding: 1rem;
-    background-color: #f9f9f9; 
     border-radius: 8px; 
 `;

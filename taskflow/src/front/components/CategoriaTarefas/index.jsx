@@ -1,7 +1,7 @@
 import { EstiloCategoria } from "./styles";
 import Titulo from "../Titulo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faClock , faListCheck } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faPen } from "@fortawesome/free-solid-svg-icons";
 import ModalCriarTask from "../ModalCriarTask";
 import { useEffect, useState } from "react";
 import Tarefa from "../../components/Tarefa";
@@ -57,45 +57,16 @@ const CategoriaTarefas = ({listaId, nome}) => {
         fetchListas();
     }, []);
 
-    const deleteLista = async() => {
-        const resp = confirm("Tem certeza que deseja excluir Toda a Lista? As tasks atreladas a ela também serão excluidas.");
-        if(resp){
-            
-                try {
-                    const response = await fetch(`http://localhost:3000/listas/${listaId}`, {
-                        method: "DELETE",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${localStorage.getItem("token")}`,
-                        },
-                    });
-        
-                    if (response.ok) {
-                        alert("Lista Deletada com sucesso!");
-                        window.location.reload();
-                    } else {
-                        const data = await response.json();
-                        alert(`Erro ao deletar Lista: ${data.message}`);
-                    }
-                } catch (error) {
-                    console.error("Erro ao deletar Lista:", error);
-                    alert("Erro ao deletar a Lista.");
-                }
-        }else{
-            
-        }
-    }
-
 
     return(
         <>
-            <div  style={{display: "flex" , flexFlow: "column nowrap"}}>
-                <EstiloCategoria  style={{margin:'2% 5% 0% 5%' , paddingBottom: "0.5rem"} }>
+            <div style={{display: "flex" , flexFlow: "column nowrap"}}>
+                <EstiloCategoria  style={{margin:'2% 5% 0% 0%', paddingTop:'0.3rem'}}>
                     <FontAwesomeIcon onClick={() => setModalCriarTask(true)} style={{marginLeft: "0.5rem", cursor: "pointer"}} icon={faPlus} size="lg" />
-                    <div onClick={() => setModalAtualizar(true)}>
+                    <div style={{marginTop:'0.5rem', cursor:'pointer'}}>
                         <Titulo fontSize={28}>{nome}</Titulo>
                     </div>
-                    <FontAwesomeIcon onClick={() => deleteLista()} style={{marginRight: "0.5rem", cursor:"pointer"}} icon={faListCheck} color="#000" size="lg"/>
+                    <FontAwesomeIcon onClick={() => setModalAtualizar(true)} style={{marginRight: "0.5rem", cursor:"pointer"}} icon={faPen} size="lg"/>
                 </EstiloCategoria>
                 
                 <div style={{display:'flex', flexFlow: "column nowrap"}}>

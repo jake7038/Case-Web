@@ -1,6 +1,8 @@
 import { DivModal, DivOverlay } from "./styles";
 import Titulo from "../Titulo";
 import Paragrafo from "../Paragrafo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
@@ -58,7 +60,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal >
+                <DivModal style={{height:'390px'}}>
                     
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
@@ -67,7 +69,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
-                                <button onClick={closeButton} type="button" className="btn btn-danger">X</button>
+                                <FontAwesomeIcon icon={faX} onClick={closeButton} color="#e14c4c" style={{cursor:'pointer'}}></FontAwesomeIcon>
                             </div>
                             <div className="col-md-12">
                                 <Paragrafo>Nome do Quadro</Paragrafo>
@@ -75,7 +77,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                                     type="text"
                                     name="nome"
                                     className="form-control mb-5 form-control-sm w-100"
-                                    placeholder="Nome do Quadro"
+                                    placeholder="Nome"
                                     value={formData.nome}
                                     onChange={handleChange}
                                 />
@@ -92,7 +94,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button onClick={Submit} className="btn mt-5 btn-primary w-100">
+                                <button onClick={Submit} className="btn mt-2 btn-primary w-100">
                                     Salvar as mudanças
                                 </button>
                             </div>

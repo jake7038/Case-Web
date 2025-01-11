@@ -8,5 +8,5 @@ export const EstiloTarefa = styled.div`
     margin-bottom: 20px;
     height: auto;
     width: 25rem;
-    margin:2% 5% 0% 5%;
+    margin:2% 5% 0% 0%;
 `
