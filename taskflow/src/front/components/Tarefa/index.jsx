@@ -101,15 +101,40 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
             <div>
                 <Paragrafo>{descricao}</Paragrafo>
             </div>
+            
             <div>
-                <input type="checkbox" checked={isEtapa1Checked} onChange={(e)=>setIsEtapa1Checked(e.target.checked)}></input><label style={{paddingLeft:'5px'}}>{etapa1}</label>
-            </div>
-            <div>
-                <input type="checkbox" checked={isEtapa2Checked} onChange={(e)=> setIsEtapa2Checked(e.target.checked)} ></input><label style={{paddingLeft:'5px'}}>{etapa2}</label>
-            </div>
-            <div>
-                <input type="checkbox" checked={isEtapa3Checked} onChange={(e)=> setIsEtapa3Checked(e.target.checked)} ></input><label style={{paddingLeft:'5px'}}>{etapa3}</label>
-            </div>
+    {etapa1 && (
+        <div>
+            <input
+                type="checkbox"
+                checked={isEtapa1Checked}
+                onChange={(e) => setIsEtapa1Checked(e.target.checked)}
+            />
+            <label style={{ paddingLeft: "5px" }}>{etapa1}</label>
+        </div>
+    )}
+    {etapa2 && (
+        <div>
+            <input
+                type="checkbox"
+                checked={isEtapa2Checked}
+                onChange={(e) => setIsEtapa2Checked(e.target.checked)}
+            />
+            <label style={{ paddingLeft: "5px" }}>{etapa2}</label>
+        </div>
+    )}
+    {etapa3 && (
+        <div>
+            <input
+                type="checkbox"
+                checked={isEtapa3Checked}
+                onChange={(e) => setIsEtapa3Checked(e.target.checked)}
+            />
+            <label style={{ paddingLeft: "5px" }}>{etapa3}</label>
+        </div>
+    )}
+</div>
+
             <hr/>
             <div style={{display:'flex', justifyContent:'space-between', height:'4vh'}}>
                 <div style={{display:'flex',background: '#e14c4c', borderRadius: '5px', padding:'7px'}}>
