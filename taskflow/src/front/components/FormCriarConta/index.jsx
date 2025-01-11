@@ -15,25 +15,29 @@ const Form = () =>  {
     
         const handleSubmit = async (e) => {
             e.preventDefault(); 
-    
-            try {
-                const response = await fetch("http://localhost:3000/user", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData) 
-                });
-    
-                const data = await response.json();
-                if (response.ok) {
-                    alert("Conta criada com sucesso!");
-                } else {
-                    alert(`Erro: ${data.erro}`);
+            if(formData.senha.length < 4 || formData.senha === "1234" || formData.senha === "4321" || !/[a-zA-Z]/.test(formData.senha) || !/[0-9]/.test(formData.senha)  ){
+                alert("senha Muito Fraca. Ela deve conter ao menos um número e uma letra");
+            }else{
+                try {
+                    const response = await fetch("http://localhost:3000/user", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formData) 
+                    });
+        
+                    const data = await response.json();
+                    if (response.ok) {
+                        alert("Conta criada com sucesso!");
+                    } else {
+                        alert(`Erro: ${data.erro}`);
+                    }
+                } catch (error) {
+                    alert("Erro ao criar conta: " + error.message);
                 }
-            } catch (error) {
-                alert("Erro ao criar conta: " + error.message);
             }
+            
         };
     
     return (

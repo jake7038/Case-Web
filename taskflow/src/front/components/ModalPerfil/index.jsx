@@ -72,7 +72,16 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
             alert("As senhas não coincidem.");
             return;
         }
-    
+        if(formData.senha === ""){
+
+        }else{
+            if(formData.senha.length < 4 || formData.senha === "1234" || formData.senha === "4321" || !/[a-zA-Z]/.test(formData.senha) || !/[0-9]/.test(formData.senha)  ){
+                alert("senha Muito Fraca. Ela deve conter ao menos um número e uma letra");
+                return;
+            }
+        }
+        
+
         try {
             
            // Verifica se há um arquivo selecionado
