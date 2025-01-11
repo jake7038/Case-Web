@@ -28,8 +28,8 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
 
 
 
-        if (!formData.nome || !formData.descricao) {
-            alert("Preencha todos os campos!");
+        if (!formData.nome) {
+            alert("Nome do Quadro é necessário para criar o quadro!");
             return;
         }
 

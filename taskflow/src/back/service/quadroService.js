@@ -36,8 +36,8 @@ async function updateQuadro(quadroId, nome, descricao, userId) {
     }
 
     const quadroAtualizado = {
-        nome: nome,
-        descricao: descricao,
+        nome: nome|| quadro.nome,
+        descricao: descricao || quadro.descricao,
     };
 
     await database("quadro")

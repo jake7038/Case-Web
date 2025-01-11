@@ -77,8 +77,8 @@ const MenuSlideBar = ({req, quadroId}) => {
     return(<DivSlide className="min-vh-100 ">
         <div className="row pb-5 pt-2 ">
             <div className="row mx-auto">
-            <div className="col-md-4 ">
-                <ImgUser className="w-100"  src={fotoUsuario? fotoUsuario : "src/front/assets/semfoto.png"} alt="" />
+            <div className="col-md-4 " style={{backgroundSize: "contain"}}>
+                <ImgUser   src={fotoUsuario? fotoUsuario : "src/front/assets/semfoto.png"} alt="" />
             </div>
             <div className="col-md-8 text-start pt-2">
             <Paragrafo  marginb={0} tipo="preto" fontSize={18}>{nomeUsuario}</Paragrafo>

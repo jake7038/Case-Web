@@ -24,10 +24,10 @@ export const DivModal = styled.form`
     padding: 16px;
     z-index: 999;
 
-    position: absolute; /* Permite ajustar a posição */
-    top: 50%; /* Posição central vertical */
-    left: 50%; /* Posição central horizontal */
-    transform: translate(-50%, -50%); /* Move o modal para o centro exato */
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* Move o modal para o centro da pagina */
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     text-align: center;

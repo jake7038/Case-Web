@@ -34,9 +34,6 @@ async function updateQuadro(req, res) {
         const quadroId = req.params.id;
         const userId = req.id; 
 
-        if (!nome || !descricao) {
-            return res.json({ erro: "Nome e descrição são obrigatórios." });
-        }
 
         const message = await quadroService.updateQuadro(quadroId, nome, descricao, userId);
 

@@ -94,7 +94,7 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
             <div style={{display:'flex', justifyContent:'space-between'}}>
                 <Titulo  fontSize={22}>{nome}</Titulo>
                 <div style={{display:'flex'}}>
-                    <div  style={{marginRight:'0.7rem'}}><FontAwesomeIcon onClick={() => setModalAtualizar(true)} style={{cursor: "pointer"}} icon={faPen}  color="#54CDD0"/></div>
+                    <div  style={{marginRight:'0.7rem'}}><FontAwesomeIcon onClick={() => setModalAtualizar(true)} style={{cursor: "pointer", display: estado == true ? "none" :  "auto"}} icon={faPen}  color="#54CDD0"/></div>
                     <div style={{marginRight:'0.2rem'}}><FontAwesomeIcon onClick={() => deleteTask()} style={{cursor: "pointer"}} icon={faTrash} color="#e14c4c"/></div>
                 </div>
             </div>

@@ -28,11 +28,6 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
 
 
 
-        if (!formData.nome || !formData.descricao) {
-            alert("Preencha todos os campos!");
-            return;
-        }
-
         const dataToSend = { ...formData, quadro_id: quadroId };
 
         try {
