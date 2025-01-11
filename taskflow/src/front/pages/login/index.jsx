@@ -38,6 +38,7 @@ import FormEntrar from "../../components/FormEntrar";
             )
         }else if (elemento1 === false){
             return(<div>
+                
                 <DivConteudo>
                     <Titulo fontSize={24}>Bem Vindo (a)!</Titulo>
                 </DivConteudo>
@@ -59,8 +60,11 @@ import FormEntrar from "../../components/FormEntrar";
     return(
     <>
     <h1 className="text-center">TaskFlow</h1>
-    <Estilo>
-        
+    <Estilo
+        style={{
+          height: elemento2 ? "390px" : "430px", // Cor de fundo muda para preto ao clicar em "Entrar"
+        }}>
+         
         <DivTitulo>
             <EstiloTitulo></EstiloTitulo>
         <EstiloTitulo onClick={() => Click(elemento1)} select = {elemento1} style={{cursor:'pointer'}}>Criar Conta</EstiloTitulo>
