@@ -10,9 +10,9 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
 
     const [modalAtualizar, setModalAtualizar] = useState(false);
 
-    const [isEtapa1Checked, setIsEtapa1Checked] = useState(false);
-    const [isEtapa2Checked, setIsEtapa2Checked] = useState(false);
-    const [isEtapa3Checked, setIsEtapa3Checked] = useState(false);
+    const [isEtapa1Checked, setIsEtapa1Checked] = !etapa1? useState(true) : useState(false);
+    const [isEtapa2Checked, setIsEtapa2Checked] = !etapa2? useState(true) : useState(false);
+    const [isEtapa3Checked, setIsEtapa3Checked] = !etapa3? useState(true) : useState(false);
 
 
     //tratando a data pra saber se hj é maior que a data de vencimento
@@ -101,40 +101,18 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
             <div>
                 <Paragrafo>{descricao}</Paragrafo>
             </div>
-            
-            <div>
-    {etapa1 && (
-        <div>
-            <input
-                type="checkbox"
-                checked={isEtapa1Checked}
-                onChange={(e) => setIsEtapa1Checked(e.target.checked)}
-            />
-            <label style={{ paddingLeft: "5px" }}>{etapa1}</label>
-        </div>
-    )}
-    {etapa2 && (
-        <div>
-            <input
-                type="checkbox"
-                checked={isEtapa2Checked}
-                onChange={(e) => setIsEtapa2Checked(e.target.checked)}
-            />
-            <label style={{ paddingLeft: "5px" }}>{etapa2}</label>
-        </div>
-    )}
-    {etapa3 && (
-        <div>
-            <input
-                type="checkbox"
-                checked={isEtapa3Checked}
-                onChange={(e) => setIsEtapa3Checked(e.target.checked)}
-            />
-            <label style={{ paddingLeft: "5px" }}>{etapa3}</label>
-        </div>
-    )}
-</div>
-
+            <div style={{display: !etapa1? "none": "auto"}}>
+                <input  type="checkbox" checked={estado == true ? true : isEtapa1Checked} onChange={(e)=> setIsEtapa1Checked(e.target.checked)}>
+                </input><label style={{paddingLeft:'5px'}}>{etapa1}</label>
+            </div>
+            <div style={{display: !etapa2? "none": "auto"}}>
+                <input type="checkbox" checked={estado == true ? true : isEtapa2Checked} onChange={(e)=>  setIsEtapa2Checked(e.target.checked)} >
+                </input><label style={{paddingLeft:'5px'}}>{etapa2}</label>
+            </div>
+            <div style={{display: !etapa3? "none": "auto"}}>
+                <input type="checkbox" checked={estado == true ? true : isEtapa3Checked} onChange={(e)=> setIsEtapa3Checked(e.target.checked)}  >
+                </input><label style={{paddingLeft:'5px'}}>{etapa3}</label>
+            </div>
             <hr/>
             <div style={{display:'flex', justifyContent:'space-between', height:'4vh'}}>
                 <div style={{display:'flex',background: '#e14c4c', borderRadius: '5px', padding:'7px'}}>
