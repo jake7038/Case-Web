@@ -26,7 +26,17 @@ async function readUserById(id){
 
 async function createUser(nome, email, senha, foto) {
 
-    const salt = bcrypt.genSaltSync();
+    const val = 0
+    const existingUser = await database("usuario").where({ email: email }).first();
+
+
+    if (existingUser) {
+        val = 1;
+        return "Este email já está registrado!";
+    }
+    
+    if(val == 0){
+         const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(senha, salt);
 
     const usuario = {
@@ -39,17 +49,29 @@ async function createUser(nome, email, senha, foto) {
     await database("usuario").insert(usuario);
 
     return "Registrado!"
+    }
+       
+    
+    
 }
 
 
 async function updateUser(id, nome, email, senha, foto) {
-
+  
     const busca = await database("usuario").select("*").where({id:id}).first();
 
     if(!busca){
         throw new Error("Desconhecido");
     }
 
+    const val = 0
+    const existingUser = await database("usuario").where({ email: email }).first();
+    if (existingUser) {
+        val = 1;
+        return "Este email já está registrado!";
+    }
+
+    if(val == 0){
     let hash
     if(senha){
         const salt = bcrypt.genSaltSync();
@@ -66,6 +88,7 @@ async function updateUser(id, nome, email, senha, foto) {
     await database("usuario").update(usuario_novo).where({id:id})
 
     return "Atualizado!"
+}
 }
 
 
