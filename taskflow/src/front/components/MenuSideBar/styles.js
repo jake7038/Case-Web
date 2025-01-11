@@ -12,8 +12,8 @@ export const DivFlex = styled.div`
     display: flex;
     flex-direction: column; 
     justify-content: flex-start; 
-    height: 80%;
-    
+    margin-top: 7rem;
+    height: 70%;
 `
 
 export const Divrow = styled.button`

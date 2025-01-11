@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
+import { ToastContainer, toast } from "react-toastify";
 
 const ModalPerfil = ({ isOpen, userId, closeModal }) => {
     const [preview, setPreview] = useState(null);
@@ -142,8 +143,8 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                 <DivModal onSubmit={submit}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
-                        <div className="col-md-4 text-center">
-                            <Titulo fontSize={24}>Alterar Perfil</Titulo>
+                        <div className="col-md-4 mb-3 text-center">
+                            <h3>Alterar Perfil</h3>
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">
@@ -154,7 +155,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                             <input
                                 type="text"
                                 name="nome"
-                                className="form-control mb-5 form-control-sm w-100"
+                                className="form-control mb-4 form-control-sm w-100"
                                 placeholder="Novo nome"
                                 value={formData.nome}
                                 onChange={handleChange}
@@ -164,7 +165,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                             <input
                                 type="text"
                                 name="email"
-                                className="form-control mb-5 form-control-sm w-100"
+                                className="form-control mb-4 form-control-sm w-100"
                                 placeholder="Novo E-mail"
                                 value={formData.email}
                                 onChange={handleChange}
@@ -198,27 +199,30 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                                 onChange={handleFileChange}
                                 className="form-control mb-3"
                             />
-                            {preview && (
+                            {preview ? (
                                 <div className="text-center">
-                                    <Paragrafo>Pré-visualização:</Paragrafo>
                                     <img src={preview} alt="Preview" style={{ maxWidth: "200px", marginTop: "4px" }}/>
+                                </div>
+                            ) : (
+                                <div style={{background:'#e6e8eb', borderRadius:'10px', width:'15rem', height:'15rem', display:'flex', justifyContent:'center', alignItems:'center', margin:'auto'}}>
+                                    <Paragrafo>Pré-visualização da foto</Paragrafo>
                                 </div>
                             )}
                         </div>
                         <div className="col-md-2"></div>
-                        <div className="col-md-8 text-center">
-                        
-                            <button type="submit"  className="btn mt-4 btn-primary w-100">
+                        <div className="col-md-8 text-center" style={{display:'grid', marginLeft:'6.5rem'}}>
+                            <button type="submit"  className="btn mt-1 btn-primary w-50">
                                 Salvar as mudanças
                             </button>
 
-                            <button type="button" className="btn mt-4 btn-danger w-100" onClick={() => deleteUsuario()}>
+                            <button type="button" className="btn mt-3 btn-danger w-50" onClick={() => deleteUsuario()}>
                                 Excluir Usuário
                             </button>
                         </div>
                         <div className="col-md-2"></div>
                     </div>
                 </DivModal>
+                <ToastContainer autoClose={2000}></ToastContainer>
             </DivOverlay>
         );
     } else {

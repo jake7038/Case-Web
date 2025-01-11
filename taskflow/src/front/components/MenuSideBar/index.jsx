@@ -90,7 +90,7 @@ const MenuSlideBar = ({req, quadroId}) => {
         <DivFlex className="text-center d-flex flex-column  align-items-center pt-5 ">
         <Divrow onClick={() =>{
                 req ? setQuadroOpen(true) : setListaOpen(true) 
-        } } className=" mb-4 mt-4  p-3">
+        } } className=" mb-4 mt-5  p-3">
             <div className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> <FontAwesomeIcon icon={faPen} /> </Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}> {req? "Criar Novo Quadro": "Criar Nova Lista"}</Paragrafo>
@@ -104,7 +104,7 @@ const MenuSlideBar = ({req, quadroId}) => {
             </div>
         </Divrow>
 
-        <Divrow className=" mb-4 mt-4  p-3 ">
+        <Divrow className=" mb-3 mt-4  p-3 ">
             <div className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}><FontAwesomeIcon icon={faMoon} /></Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Alterar Aparência</Paragrafo>

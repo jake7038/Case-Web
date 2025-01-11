@@ -24,7 +24,7 @@ import FormEntrar from "../../components/FormEntrar";
             return(  
                 <div>
                     <DivConteudo>
-                        <Titulo fontSize={24}>Criar Conta</Titulo>
+                        <h3>Criar Conta</h3>
                     </DivConteudo>
         
                     <DivConteudo>
@@ -40,7 +40,7 @@ import FormEntrar from "../../components/FormEntrar";
             return(<div>
                 
                 <DivConteudo>
-                    <Titulo fontSize={24}>Bem Vindo (a)!</Titulo>
+                    <h3>Bem Vindo (a)!</h3>
                 </DivConteudo>
     
                 <DivConteudo>
@@ -59,12 +59,11 @@ import FormEntrar from "../../components/FormEntrar";
 
     return(
     <>
-    <h1 className="text-center">TaskFlow</h1>
-    <Estilo
-        style={{
-          height: elemento2 ? "390px" : "430px", // Cor de fundo muda para preto ao clicar em "Entrar"
-        }}>
-         
+    <div style={{display:'flex', justifyContent:'center'}}>
+        <Titulo fontSize={70}>TaskFlow</Titulo>
+    </div>
+    <Estilo>
+        
         <DivTitulo>
             <EstiloTitulo></EstiloTitulo>
         <EstiloTitulo onClick={() => Click(elemento1)} select = {elemento1} style={{cursor:'pointer'}}>Criar Conta</EstiloTitulo>

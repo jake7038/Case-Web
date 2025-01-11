@@ -5,7 +5,7 @@ import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
 import InputMask from "react-input-mask";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import { faX, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 
 const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
@@ -90,8 +90,8 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                 <DivModal onSubmit={submit}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
-                        <div className="col-md-4 text-center">
-                            <Titulo fontSize={24}>Criar Task</Titulo>
+                        <div className="col-md-4 mb-3 text-center">
+                            <h3>Criar Task</h3>
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">
@@ -128,6 +128,11 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                                 value={formData.data}
                                 onChange={handleInputChange}
                             />
+
+                            <div style={{display:'flex'}}>
+                                <FontAwesomeIcon icon={faCircleInfo} size="xs" color="#949494" style={{marginRight:'0.5rem', marginTop:'0.1rem'}}></FontAwesomeIcon>
+                                <Paragrafo fontSize={12}>Tasks podem ter, no máximo, três etapas.</Paragrafo>
+                            </div>
                         </div>
 
                         <div className="col-md-6">
@@ -168,7 +173,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
 
                         <div className="col-md-2"></div>
                         <div className="col-md-8 text-center">
-                            <button type="submit" className="btn mt-5 btn-primary w-100">
+                            <button type="submit" className="btn mt-3 btn-primary w-75">
                                 Salvar as mudanças
                             </button>
                         </div>

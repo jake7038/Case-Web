@@ -63,8 +63,8 @@ const CategoriaTarefas = ({listaId, nome}) => {
             <div style={{display: "flex" , flexFlow: "column nowrap"}}>
                 <EstiloCategoria  style={{margin:'2% 5% 0% 0%', paddingTop:'0.3rem'}}>
                     <FontAwesomeIcon onClick={() => setModalCriarTask(true)} style={{marginLeft: "0.5rem", cursor: "pointer"}} icon={faPlus} size="lg" />
-                    <div style={{marginTop:'0.5rem', cursor:'pointer'}}>
-                        <Titulo fontSize={28}>{nome}</Titulo>
+                    <div style={{marginTop:'0.5rem'}}>
+                        <h3 fontSize={28}>{nome}</h3>
                     </div>
                     <FontAwesomeIcon onClick={() => setModalAtualizar(true)} style={{marginRight: "0.5rem", cursor:"pointer"}} icon={faPen} size="lg"/>
                 </EstiloCategoria>

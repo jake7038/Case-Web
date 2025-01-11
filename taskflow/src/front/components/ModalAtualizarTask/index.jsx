@@ -82,7 +82,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     if (isOpen) {
         return (
             <DivOverlay>
-                <DivModal onSubmit={submit} style={{height:'500px'}}>
+                <DivModal onSubmit={submit} style={{height:'480px'}}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 text-center">
@@ -105,7 +105,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                             />
 
                             <Paragrafo>Descrição da Task</Paragrafo>
-                            <textarea
+                            <textarea style={{resize:'none'}}
                                 name="descricaoTask"
                                 className="form-control mb-4 form-control-sm w-100"
                                 placeholder="Descrição"
@@ -117,7 +117,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                                 mask="99/99/9999"
                                 type="text"
                                 name="data"
-                                className="form-control mb-4 form-control-sm w-100"
+                                className="form-control form-control-sm w-100"
                                 placeholder="dd/mm/aaaa"
                                 value={formData.data}
                                 onChange={handleInputChange}
@@ -162,7 +162,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
 
                         <div className="col-md-2"></div>
                         <div className="col-md-8 text-center">
-                            <button type="submit" className="btn mt-5 btn-primary w-100">
+                            <button type="submit" className="btn mt-4 btn-primary w-50">
                                 Salvar as mudanças
                             </button>
                         </div>

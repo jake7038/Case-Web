@@ -86,11 +86,11 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'330px'}}>
+                <DivModal style={{height:'310px', width:'620px'}}>
                     <div  className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Atualizar Lista</Titulo>
+                                <h3>Atualizar Lista</h3>
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
@@ -101,18 +101,18 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="nome"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-4 form-control-sm w-100"
                                     placeholder="Nome da Lista"
                                     value={formData.nome}
                                     onChange={handleChange}
                                 />
                             </div>
                             <div className="col-md-2"></div>
-                            <div className="col-md-8 text-center">
-                                <button onClick={Submit}   className="btn mt-2 btn-primary w-100">
+                            <div className="col-md-8 text-center" style={{display:'grid', marginLeft:'5.7rem'}}>
+                                <button onClick={Submit}   className="btn mt-2 btn-primary w-50">
                                     Salvar as mudanças
                                 </button>
-                                <button onClick={deleteLista} className="btn mt-3 btn-danger w-100">
+                                <button onClick={deleteLista} className="btn mt-3 btn-danger w-50">
                                     Excluir Lista
                                 </button>
                             </div>

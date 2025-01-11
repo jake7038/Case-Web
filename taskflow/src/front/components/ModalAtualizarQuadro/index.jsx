@@ -43,7 +43,6 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
             const data = await response.json();
             if (response.ok) {
                 alert("Quadro Alterado com sucesso!");
-                window.location.reload();
             } else {
                 alert(`Erro: ${data.erro}`);
             }
@@ -55,12 +54,12 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'390px'}}>
+                <DivModal style={{height:'350px', width:'720px'}}>
                     
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Atualizar Quadro</Titulo>
+                                <h3>Atualizar Quadro</h3>
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
@@ -71,7 +70,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="nome"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-4 form-control-sm w-100"
                                     placeholder="Nome"
                                     value={formData.nome}
                                     onChange={handleChange}
@@ -81,7 +80,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="descricao"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-4 form-control-sm w-100"
                                     placeholder="Descrição"
                                     value={formData.descricao}
                                     onChange={handleChange}
@@ -89,13 +88,12 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button onClick={Submit} className="btn mt-2 btn-primary w-100">
+                                <button onClick={Submit} className="btn mt-2 btn-primary w-75">
                                     Salvar as mudanças
                                 </button>
                             </div>
                             <div className="col-md-2"></div>
                     </div>
-    
                 </DivModal>
             </DivOverlay>
             

@@ -98,7 +98,7 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
                     <div style={{marginRight:'0.2rem'}}><FontAwesomeIcon onClick={() => deleteTask()} style={{cursor: "pointer"}} icon={faTrash} color="#e14c4c"/></div>
                 </div>
             </div>
-            <div>
+            <div style={{wordBreak:'break-word'}}>
                 <Paragrafo>{descricao}</Paragrafo>
             </div>
             <div style={{display: !etapa1? "none": "auto"}}>
