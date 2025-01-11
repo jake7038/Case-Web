@@ -205,11 +205,13 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-8 text-center">
-                        <button type="button" className="btn mt-4 btn-primary w-100" onClick={() => deleteUsuario()}>
-                                Excluir Usuário
-                            </button>
+                        
                             <button type="submit"  className="btn mt-4 btn-primary w-100">
                                 Salvar as mudanças
+                            </button>
+
+                            <button type="button" className="btn mt-4 btn-danger w-100" onClick={() => deleteUsuario()}>
+                                Excluir Usuário
                             </button>
                         </div>
                         <div className="col-md-2"></div>

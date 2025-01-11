@@ -24,6 +24,10 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
     //post não está funcionando, alterar corretamente a URL e passar corretamente cada etapa
     const submit = async (e) => {
         e.preventDefault();
+        if(!formData.nomeTask || !formData.data){
+            alert("Tasks tem que ter ao menos Nome e Data!")
+            return
+        }
         try {
             const response = await fetch(`http://localhost:3000/listas/${listaId}/task`, {
                 method: "POST",
