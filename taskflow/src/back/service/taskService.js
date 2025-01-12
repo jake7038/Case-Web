@@ -29,7 +29,7 @@ async function updateTask(id, nome, descricao, data, etapa1, etapa2, etapa3, est
     if (!task) {
         throw new Error("Tarefa não encontrada.");
     }
-    if(data = ""){
+    if(data == ""){
         data = task.data;
     }
 
