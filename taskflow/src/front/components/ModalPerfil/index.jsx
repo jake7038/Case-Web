@@ -90,10 +90,6 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
             
            // Verifica se há um arquivo selecionado
         const fileInput = document.querySelector('input[type="file"]');
-        if (!fileInput.files[0]) {
-            toast.error("Por favor, selecione uma foto.");
-            return;
-        }
 
         // Prepara os dados para upload da foto
         const photoFormData = new FormData();
@@ -108,8 +104,10 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
             if (!uploadResponse.ok) {
                 throw new Error("Erro ao fazer upload da foto");
             }
-    
+            
             const { path } = await uploadResponse.json();
+        
+
             // Atualizar os dados do usuário
             const response = await fetch(`http://localhost:3000/user/${userId}`, {
                 method: "PATCH",
@@ -120,7 +118,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                     nome: formData.nome,
                     email: formData.email,
                     senha: formData.senha,
-                    foto: path, 
+                    foto: !fileInput.files[0]? null :path, 
                 }),
             });
     

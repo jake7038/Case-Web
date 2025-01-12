@@ -65,8 +65,9 @@ const Quadro = ({quadroId, nome, descricao}) => {
             <div onClick={() => goTask()} style={{display:'flex', alignItems:'start', height:'100%', marginTop: "1rem", cursor: "pointer"}}>
             <Paragrafo cursor="pointer" fontSize={18}>{descricao}</Paragrafo>
             </div>
-            </EstiloQuadro>
             <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
+            </EstiloQuadro>
+
             <ModalAtualizarQuadro isOpen={modalAtualizaOpen} quadroId={quadroId} closeModal={closeModal}></ModalAtualizarQuadro>
         </>
         

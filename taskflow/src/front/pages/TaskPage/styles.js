@@ -15,7 +15,6 @@ export const GridListas = styled.div`
     width: 100%; 
     overflow-x: hidden;
     overflow-y: auto;
-    margin: 2% 0% 0% 5%;
     padding: 1rem;
     
     border-radius: 8px; 
