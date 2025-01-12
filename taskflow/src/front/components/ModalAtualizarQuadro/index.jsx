@@ -57,7 +57,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'390px'}}>
+                <DivModal style={{height:'320px', width:'630px'}}>
                     
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
@@ -73,7 +73,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="nome"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-3 form-control-sm w-100"
                                     placeholder="Nome"
                                     value={formData.nome}
                                     onChange={handleChange}
@@ -83,7 +83,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="descricao"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-3 form-control-sm w-100"
                                     placeholder="Descrição"
                                     value={formData.descricao}
                                     onChange={handleChange}
@@ -91,7 +91,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button onClick={Submit} className="btn mt-2 btn-primary w-100">
+                                <button onClick={Submit} className="btn mt-2 btn-primary w-50">
                                     Salvar as mudanças
                                 </button>
                             </div>

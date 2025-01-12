@@ -151,12 +151,12 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                             <FontAwesomeIcon icon={faX} onClick={closeButton} color="#e14c4c" style={{cursor:'pointer'}}></FontAwesomeIcon>
                         </div>
                         <div className="col-md-6">
-                            <Paragrafo>Alterar nome</Paragrafo>
+                            <Paragrafo>Alterar Nome</Paragrafo>
                             <input
                                 type="text"
                                 name="nome"
-                                className="form-control mb-5 form-control-sm w-100"
-                                placeholder="Novo nome"
+                                className="form-control mb-4 form-control-sm w-100"
+                                placeholder="Novo Nome"
                                 value={formData.nome}
                                 onChange={handleChange}
                             />
@@ -165,7 +165,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                             <input
                                 type="text"
                                 name="email"
-                                className="form-control mb-5 form-control-sm w-100"
+                                className="form-control mb-4 form-control-sm w-100"
                                 placeholder="Novo E-mail"
                                 value={formData.email}
                                 onChange={handleChange}
@@ -199,21 +199,24 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                                 onChange={handleFileChange}
                                 className="form-control mb-3"
                             />
-                            {preview && (
-                                <div className="text-center">
-                                    <Paragrafo>Pré-visualização:</Paragrafo>
+                            {preview ? (
+                                <div>
                                     <img src={preview} alt="Preview" style={{ maxWidth: "200px", marginTop: "4px" }}/>
+                                </div>
+                            ) : (
+                                <div style={{display:'flex', justifyContent:'center', alignItems:'center', margin:'auto', background: '#dbdbdb', borderRadius:'10px', width:'14vw', height:'25vh'}}>
+                                    <Paragrafo>Pré-visualização da foto</Paragrafo>
                                 </div>
                             )}
                         </div>
-                        <div className="col-md-2"></div>
-                        <div className="col-md-8 text-center">
+                        <div className="col-md-4"></div>
+                        <div className="col-md-8" style={{display:'grid'}}>
                         
-                            <button type="submit"  className="btn mt-4 btn-primary w-100">
+                            <button type="submit"  className="btn mt-3 btn-primary w-50">
                                 Salvar as mudanças
                             </button>
 
-                            <button type="button" className="btn mt-4 btn-danger w-100" onClick={() => deleteUsuario()}>
+                            <button type="button" className="btn mt-3 btn-danger w-50" onClick={() => deleteUsuario()}>
                                 Excluir Usuário
                             </button>
                         </div>

@@ -87,8 +87,8 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'330px'}}>
-                    <div  className="row pt-4">
+                <DivModal style={{height:'300px', width:'550px'}}>
+                    <div className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 text-center">
                                 <Titulo fontSize={24}>Atualizar Lista</Titulo>
@@ -102,7 +102,7 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="nome"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-4 form-control-sm w-100"
                                     placeholder="Nome da Lista"
                                     value={formData.nome}
                                     onChange={handleChange}
@@ -110,10 +110,10 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button onClick={Submit}   className="btn mt-2 btn-primary w-100">
+                                <button onClick={Submit}   className="btn mt-2 btn-primary w-75">
                                     Salvar as mudanças
                                 </button>
-                                <button onClick={deleteLista} className="btn mt-3 btn-danger w-100">
+                                <button onClick={deleteLista} className="btn mt-3 btn-danger w-75">
                                     Excluir Lista
                                 </button>
                             </div>
