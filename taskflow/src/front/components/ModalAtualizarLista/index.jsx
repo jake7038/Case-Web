@@ -44,13 +44,14 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Lista Alterada com sucesso!");
-                window.location.reload();
+                toast.success("Lista alterada com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
-                alert(`Erro: ${data.erro}`);
+                toast.error(`Erro: ${data.erro}`);
             }
         } catch (error) {
-            alert("Erro ao alterar a lista: " + error.message);
+            toast.error("Erro ao alterar a lista: " + error.message);
         }
     };
 
