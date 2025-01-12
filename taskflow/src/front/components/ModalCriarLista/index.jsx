@@ -4,6 +4,7 @@ import Paragrafo from "../Paragrafo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import {ToastContainer,toast} from "react-toastify";
 
 const ModalCriarLista  = ({isOpen, quadroId, closeModal}) => {
 
@@ -26,7 +27,7 @@ const ModalCriarLista  = ({isOpen, quadroId, closeModal}) => {
         e.preventDefault();
 
         if (!formData.nome) {
-            alert("Preencha o nome da lista!");
+            toast.error("Preencha o nome da lista!");
             return;
         }
 
@@ -45,13 +46,14 @@ const ModalCriarLista  = ({isOpen, quadroId, closeModal}) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Lista criada com sucesso!");
-                window.location.reload();
+                toast.success("Lista criada com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
-                alert(`Erro: ${data.erro}`);
+                toast.error(`Erro: ${data.erro}`);
             }
         } catch (error) {
-            alert("Erro ao criar lista: " + error.message);
+            toast.error("Erro ao criar lista: " + error.message);
         }
     };
 
@@ -75,7 +77,7 @@ const ModalCriarLista  = ({isOpen, quadroId, closeModal}) => {
                                     type="text"
                                     name="nome"
                                     className="form-control mb-5 form-control-sm w-100"
-                                    placeholder="Nome do Quadro"
+                                    placeholder="Nome"
                                     value={formData.nome}
                                 onChange={handleChange}
                                 />
@@ -90,6 +92,7 @@ const ModalCriarLista  = ({isOpen, quadroId, closeModal}) => {
                     </div>
     
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
     
         );

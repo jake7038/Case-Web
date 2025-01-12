@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faCircleCheck, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ModalAtualizarTask from "../ModalAtualizarTask";
 import { useState } from "react";
+import { ToastContainer,toast } from "react-toastify";
 
 const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask}) => {
 
@@ -28,7 +29,7 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
     } 
 
     const deleteTask = async() => {
-        const resp = confirm("Tem certeza que deseja excluir a Task?");
+        const resp = confirm("Tem certeza que deseja excluir a task?");
         if(resp){
             
                 try {
@@ -41,15 +42,16 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
                     });
         
                     if (response.ok) {
-                        alert("Task Deletada com sucesso!");
-                        window.location.reload();
+                        toast.success("Task excluída com sucesso!", {
+                            onClose: () => window.location.reload()
+                        });
                     } else {
                         const data = await response.json();
-                        alert(`Erro ao deletar task: ${data.message}`);
+                        toast.error(`Erro ao deletar task: ${data.message}`);
                     }
                 } catch (error) {
                     console.error("Erro ao deletar task:", error);
-                    alert("Erro ao deletar a tarefa.");
+                    toast.error("Erro ao deletar a tarefa.");
                 }
         }else{
         }
@@ -70,19 +72,20 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
                 });
     
                 if (response.ok) {
-                    alert("Task concluida com sucesso!");
-                    window.location.reload();
+                    toast.success("Task concluida com sucesso!", {
+                        onClose: () => window.location.reload()
+                    });
                 } else {
                     const data = await response.json();
-                    alert(`Erro ao concluir a task: ${data.message}`);
+                    toast.error(`Erro ao concluir a task: ${data.message}`);
                 }
             } catch (error) {
                 console.error("Erro ao concluir task:", error);
-                alert("Erro ao concluir a tarefa.");
+                toast.error("Erro ao concluir a tarefa.");
             }
         }
         else{
-            alert("selecione todas as etapas para concluir a Tarefa!")
+            toast.error("Cumpra todas as etapas para concluir a task!")
         }
         
     } 
@@ -122,6 +125,7 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
                 <div onClick={estado == true? {} : () => changeEstado()}  style={{marginTop:'0.5rem',cursor: estado == false? "pointer" : "auto" }}><FontAwesomeIcon style={{color: estado == false? "#000" : "green" }} icon={faCircleCheck} size="lg"/></div>
             </div>
         </EstiloTarefa>
+            <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             <ModalAtualizarTask isOpen={modalAtualizar} closeModal={closeModal} taskId={idTask} ></ModalAtualizarTask>
         </>
         

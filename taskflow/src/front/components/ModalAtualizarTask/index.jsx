@@ -6,6 +6,7 @@ import Paragrafo from "../Paragrafo";
 import InputMask from "react-input-mask";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer,toast } from "react-toastify";
 
 const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     const [formData, setFormData] = useState({
@@ -45,15 +46,16 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
             });
 
             if (response.ok) {
-                alert("Task atualizada com sucesso!");
-                window.location.reload();
+                toast.success("Task atualizada com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
                 const data = await response.json();
-                alert(`Erro ao criar task: ${data.message}`);
+                toast.error(`Erro ao criar task: ${data.message}`);
             }
         } catch (error) {
             console.error("Erro ao criar task:", error);
-            alert("Erro ao criar a tarefa.");
+            toast.error("Erro ao criar a tarefa.");
         }
     };
 
@@ -151,7 +153,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                                     if(formData.etapas.length < 3){
                                         adicionarEtapa()
                                     }else{
-                                        alert("Você só pode adicionar até 3 etapas.");
+                                        toast.error("Você só pode adicionar até 3 etapas.");
                                     }
 
                                 }}
@@ -169,6 +171,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                         <div className="col-md-2"></div>
                     </div>
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
         );
     }

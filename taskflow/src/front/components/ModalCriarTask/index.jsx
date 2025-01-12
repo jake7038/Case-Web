@@ -6,6 +6,7 @@ import Paragrafo from "../Paragrafo";
 import InputMask from "react-input-mask";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import {ToastContainer, toast} from "react-toastify";
 
 
 const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
@@ -29,7 +30,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
     const submit = async (e) => {
         e.preventDefault();
         if(!formData.nomeTask || !formData.data){
-            alert("Tasks tem que ter ao menos Nome e Data!")
+            toast.error("Tasks precisam ter ao menos nome e data!")
             return
         }
         try {
@@ -50,15 +51,16 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
             });
 
             if (response.ok) {
-                alert("Task criada com sucesso!");
-                window.location.reload();
+                toast.success("Task criada com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
                 const data = await response.json();
-                alert(`Erro ao criar task: ${data.message}`);
+                toast.error(`Erro ao criar task: ${data.message}`);
             }
         } catch (error) {
             console.error("Erro ao criar task:", error);
-            alert("Erro ao criar a tarefa.");
+            toast.error("Erro ao criar a tarefa.");
         }
     };
 
@@ -157,7 +159,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                                     if(formData.etapas.length < 3){
                                         adicionarEtapa()
                                     }else{
-                                        alert("Você só pode adicionar até 3 etapas.");
+                                        toast.error("Você só pode adicionar até 3 etapas.");
                                     }
 
                                 }}
@@ -175,6 +177,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                         <div className="col-md-2"></div>
                     </div>
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
         );
     }

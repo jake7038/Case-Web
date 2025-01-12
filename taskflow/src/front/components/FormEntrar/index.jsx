@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Paragrafo from "../Paragrafo";
 import { useNavigate } from "react-router-dom"; 
+import { ToastContainer,toast } from "react-toastify";
+
 //css feito com css
 const FormEntrar = () => {
     const [formData, setFormData] = useState({
@@ -30,14 +32,17 @@ const FormEntrar = () => {
             const data = await response.json();
 
             if (response.ok) {
-                alert("Login realizado com sucesso!");
-                localStorage.setItem("token", data.token); 
-                janela("/dashboard"); 
+                toast.success("Login realizado com sucesso!", {
+                    onClose: () => {
+                        localStorage.setItem("token", data.token);
+                        janela("/dashboard");
+                    }
+                });
             } else {
-                alert(`Erro: ${data.erro}`);
+                toast.error(`Erro: ${data.erro}`);
             }
         } catch (error) {
-            alert("Erro ao realizar login: " + error.message);
+            toast.error("Erro ao realizar login: " + error.message);
         }
     };
 
@@ -84,6 +89,7 @@ const FormEntrar = () => {
             <Paragrafo cursor="pointer">Esqueceu a Senha?</Paragrafo>
         </div>
         </div>
+        <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
     </form>
     );
 };

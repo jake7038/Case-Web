@@ -4,6 +4,7 @@ import Paragrafo from "../Paragrafo";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import {ToastContainer,toast} from "react-toastify";
 
 const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
     
@@ -42,13 +43,14 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Quadro Alterado com sucesso!");
-                window.location.reload();
+                toast.success("Quadro alterado com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
-                alert(`Erro: ${data.erro}`);
+                toast.error(`Erro: ${data.erro}`);
             }
         } catch (error) {
-            alert("Erro ao criar quadro: " + error.message);
+            toast.error("Erro ao criar quadro: " + error.message);
         }
     };
 
@@ -97,6 +99,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                     </div>
     
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
             
         );

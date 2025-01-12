@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
+import { ToastContainer,toast } from "react-toastify";
 
 const ModalPerfil = ({ isOpen, userId, closeModal }) => {
     const [preview, setPreview] = useState(null);
@@ -27,7 +28,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
         if(confirm("Tem certeza que quer deletar sua conta? Todas suas informações serão perdidas!")) {
             const token = localStorage.getItem("token");
             if(!token) {
-                alert("Usuário não autenticado!");
+                toast.error("Usuário não autenticado!");
                 return;
             }
 
@@ -41,10 +42,11 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                 });
 
                 if(response.ok) {
-                    alert("Usuário deletado com sucesso!");
-                    janela("/");
+                    toast.success("Usuário excluído com sucesso!", {
+                        onClose: () => janela("/")
+                    });
                 } else {
-                    alert("Erro ao deletar usuário");
+                    toast.error("Erro ao deletar usuário");
                 }
             } catch (error) {
                 console.error("Erro ao deletar usuário:", error);
@@ -71,14 +73,14 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
         e.preventDefault();
     
         if (formData.senha !== formData.confirmarSenha) {
-            alert("As senhas não coincidem.");
+            toast.error("As senhas não coincidem.");
             return;
         }
         if(formData.senha === ""){
 
         }else{
             if(formData.senha.length < 4 || formData.senha === "1234" || formData.senha === "4321" || !/[a-zA-Z]/.test(formData.senha) || !/[0-9]/.test(formData.senha)  ){
-                alert("senha Muito Fraca. Ela deve conter ao menos um número e uma letra");
+                toast.error("Senha muito fraca. Ela deve conter ao menos um número e uma letra");
                 return;
             }
         }
@@ -89,7 +91,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
            // Verifica se há um arquivo selecionado
         const fileInput = document.querySelector('input[type="file"]');
         if (!fileInput.files[0]) {
-            alert("Por favor, selecione uma foto.");
+            toast.error("Por favor, selecione uma foto.");
             return;
         }
 
@@ -123,14 +125,15 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
             });
     
             if (response.ok) {
-                alert("Usuário alterado com sucesso!");
-                window.location.reload();
+                toast.success("Usuário alterado com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
                 const data = await response.json();
-                alert(`Erro: ${data.erro || "Não foi possível atualizar o usuário."}`);
+                toast.error(`Erro: ${data.erro || "Não foi possível atualizar o usuário."}`);
             }
         } catch (error) {
-            alert("Erro ao atualizar usuário ou fazer upload.");
+            toast.error("Erro ao atualizar usuário ou fazer upload.");
             console.error(error);
         }
     };
@@ -219,6 +222,7 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                         <div className="col-md-2"></div>
                     </div>
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
         );
     } else {

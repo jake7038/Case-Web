@@ -4,6 +4,7 @@ import Paragrafo from "../Paragrafo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { ToastContainer, toast} from "react-toastify";
 
 const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
     const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
 
 
         if (!formData.nome) {
-            alert("Nome do Quadro é necessário para criar o quadro!");
+            toast.error("O quadro precisa de um nome para ser criado!");
             return;
         }
 
@@ -47,13 +48,14 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Quadro criado com sucesso!");
-                window.location.reload();
+                toast.success("Quadro criado com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
-                alert(`Erro: ${data.erro}`);
+                toast.error(`Erro: ${data.erro}`);
             }
         } catch (error) {
-            alert("Erro ao criar quadro: " + error.message);
+            toast.error("Erro ao criar quadro: " + error.message);
         }
     };
 
@@ -102,6 +104,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                     </div>
     
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
             
         );
