@@ -38,7 +38,6 @@ import FormEntrar from "../../components/FormEntrar";
             )
         }else if (elemento1 === false){
             return(<div>
-                
                 <DivConteudo>
                     <h3>Bem Vindo (a)!</h3>
                 </DivConteudo>
