@@ -64,7 +64,7 @@ const CategoriaTarefas = ({listaId, nome}) => {
                 <EstiloCategoria  style={{margin:'2% 5% 0% 0%', paddingTop:'0.3rem'}}>
                     <FontAwesomeIcon onClick={() => setModalCriarTask(true)} style={{marginLeft: "0.5rem", cursor: "pointer"}} icon={faPlus} size="lg" />
                     <div style={{marginTop:'0.5rem', cursor:'pointer'}}>
-                        <Titulo fontSize={28}>{nome}</Titulo>
+                        <h3>{nome}</h3>
                     </div>
                     <FontAwesomeIcon onClick={() => setModalAtualizar(true)} style={{marginRight: "0.5rem", cursor:"pointer"}} icon={faPen} size="lg"/>
                 </EstiloCategoria>

@@ -62,12 +62,12 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'320px', width:'570px'}}>
+                <DivModal style={{height:'330px', width:'580px'}}>
                     
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
-                            <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Criar Quadro</Titulo>
+                            <div className="col-md-4 mb-2 text-center">
+                                <h3>Criar Quadro</h3>
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">

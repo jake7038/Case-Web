@@ -57,14 +57,13 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'320px', width:'630px'}}>
+                <DivModal style={{height:'320px', width:'620px'}}>
                     
                     <div className="row pt-4">
-                        <div className="col-md-4"></div>
-                            <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Atualizar Quadro</Titulo>
+                        <div className="col-md-2"></div>
+                            <div className="col-md-8 text-center">
+                                <h3>Atualizar Quadro</h3>
                             </div>
-                            <div className="col-md-2"></div>
                             <div className="col-md-2">
                                 <FontAwesomeIcon icon={faX} onClick={closeButton} color="#e14c4c" style={{cursor:'pointer'}}></FontAwesomeIcon>
                             </div>

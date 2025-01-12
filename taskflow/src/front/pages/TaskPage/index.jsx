@@ -63,7 +63,7 @@ const TaskPage = () => {
             <div className="row flex-row gx-0">
                     <div className="col-md-10 p-4">
                         <div style={{display:'flex', justifyContent:'center'}}>
-                            <Titulo fontSize={45}>
+                            <Titulo fontSize={70}>
                                 <img src="src/front/assets/logo.png" width={90}/>
                                 TaskFlow
                             </Titulo>

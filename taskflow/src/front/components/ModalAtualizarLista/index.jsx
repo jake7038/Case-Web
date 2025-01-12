@@ -87,11 +87,11 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'300px', width:'550px'}}>
+                <DivModal style={{height:'300px', width:'620px'}}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Atualizar Lista</Titulo>
+                                <h3>Atualizar Lista</h3>
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">

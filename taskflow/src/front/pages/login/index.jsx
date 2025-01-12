@@ -19,12 +19,12 @@ import FormEntrar from "../../components/FormEntrar";
             }
         };
 
-        const TrocaForm = (elemento1) =>{
+        const TrocaForm = (elemento1) => {
             if (elemento1 === true){
             return(  
                 <div>
                     <DivConteudo>
-                        <Titulo fontSize={24}>Criar Conta</Titulo>
+                        <h3>Criar Conta</h3>
                     </DivConteudo>
         
                     <DivConteudo>
@@ -39,7 +39,7 @@ import FormEntrar from "../../components/FormEntrar";
         }else if (elemento1 === false){
             return(<div>
                 <DivConteudo>
-                    <Titulo fontSize={24}>Bem Vindo (a)!</Titulo>
+                    <h3>Bem Vindo (a)!</h3>
                 </DivConteudo>
     
                 <DivConteudo>
@@ -58,7 +58,9 @@ import FormEntrar from "../../components/FormEntrar";
 
     return(
     <>
-    <h1 className="text-center">TaskFlow</h1>
+    <div style={{display:'flex', justifyContent:'center'}}>
+        <Titulo fontSize={70}>TaskFlow</Titulo>
+    </div>
     <Estilo>
         
         <DivTitulo>

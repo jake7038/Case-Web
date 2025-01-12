@@ -84,11 +84,11 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     if (isOpen) {
         return (
             <DivOverlay>
-                <DivModal onSubmit={submit} style={{height:'470px', width:'600px'}}>
+                <DivModal onSubmit={submit} style={{height:'470px', width:'610px'}}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 text-center">
-                            <Titulo fontSize={24}>Atualizar Task</Titulo>
+                            <h3>Atualizar Task</h3>
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">

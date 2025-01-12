@@ -143,8 +143,8 @@ const ModalPerfil = ({ isOpen, userId, closeModal }) => {
                 <DivModal onSubmit={submit}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
-                        <div className="col-md-4 text-center">
-                            <Titulo fontSize={24}>Alterar Perfil</Titulo>
+                        <div className="col-md-4 mb-2 text-center">
+                            <h3>Alterar Perfil</h3>
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">

@@ -95,7 +95,7 @@ const Tarefa = ({nome, descricao, data, etapa1, etapa2, etapa3, estado, idTask})
         <>
             <EstiloTarefa style={{backgroundColor: taskDate.getTime() == dateToday.getTime() && estado == false ? "#f0f8ff" : taskDate.getTime() < dateToday.getTime() && estado == false ? "#ffe4e4" : estado == true ? "#e4ffe4" :  "#fffee4" }}>
             <div style={{display:'flex', justifyContent:'space-between'}}>
-                <Titulo  fontSize={22}>{nome}</Titulo>
+                <h4>{nome}</h4>
                 <div style={{display:'flex'}}>
                     <div  style={{marginRight:'0.7rem'}}><FontAwesomeIcon onClick={() => setModalAtualizar(true)} style={{cursor: "pointer", display: estado == true ? "none" :  "auto"}} icon={faPen}  color="#54CDD0"/></div>
                     <div style={{marginRight:'0.2rem'}}><FontAwesomeIcon onClick={() => deleteTask()} style={{cursor: "pointer"}} icon={faTrash} color="#e14c4c"/></div>

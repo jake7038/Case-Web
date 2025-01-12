@@ -61,11 +61,11 @@ const ModalCriarLista  = ({isOpen, quadroId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'240px', width:'500px'}}>
+                <DivModal style={{height:'250px', width:'500px'}}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
-                            <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Criar Lista</Titulo>
+                            <div className="col-md-4 mb-2 text-center">
+                                <h3>Criar Lista</h3>
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
@@ -85,7 +85,7 @@ const ModalCriarLista  = ({isOpen, quadroId, closeModal}) => {
                             
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button  className="btn mt-2 btn-primary w-75" onClick={Submit}>
+                                <button  className="btn mt-1 btn-primary w-75" onClick={Submit}>
                                     Salvar as mudanças
                                 </button>
                             </div>
