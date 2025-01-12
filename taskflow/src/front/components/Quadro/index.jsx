@@ -18,7 +18,7 @@ const Quadro = ({quadroId, nome, descricao}) => {
     } 
 
     const goTask = () => {
-        changeurl("/task" , {state: {quadroId}}); //chamando a página das tasks e mandando o quadroId
+        changeurl("/task" , {state: {quadroId, nome}}); //chamando a página das tasks e mandando o quadroId
     };
 
     const deleteQuadro = async() => {
