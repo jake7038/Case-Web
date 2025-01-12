@@ -15,8 +15,11 @@ const Form = () =>  {
     
         const handleSubmit = async (e) => {
             e.preventDefault(); 
-            if(formData.senha.length < 4 || formData.senha === "1234" || formData.senha === "4321" || !/[a-zA-Z]/.test(formData.senha) || !/[0-9]/.test(formData.senha)){
-                toast.error("Senha muito fraca. Ela deve conter ao menos um número e uma letra!");
+            if (!formData.nome || !formData.email || !formData.senha) {
+                toast.error("Um ou mais campos estão vazios")
+            }
+            else if((formData.senha.length < 4 && formData.senha.length > 0)|| formData.senha === "1234" || formData.senha === "4321" || !/[a-zA-Z]/.test(formData.senha) || !/[0-9]/.test(formData.senha)){
+                toast.error("Senha muito fraca, ela deve conter ao menos um número e uma letra!");
             }else{
                 try {
                     const response = await fetch("http://localhost:3000/user", {
