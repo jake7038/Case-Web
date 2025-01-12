@@ -43,6 +43,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
             const data = await response.json();
             if (response.ok) {
                 alert("Quadro Alterado com sucesso!");
+                window.location.reload();
             } else {
                 alert(`Erro: ${data.erro}`);
             }
