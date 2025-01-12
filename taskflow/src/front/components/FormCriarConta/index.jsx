@@ -66,7 +66,7 @@ const Form = () =>  {
     
 
     
-    <div className="row mb-3 w-100">
+    <div className="row w-100">
     <input  type="password"
             name="senha"
             className="form-control form-control-sm"

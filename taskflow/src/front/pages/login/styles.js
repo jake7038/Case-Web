@@ -12,7 +12,7 @@ export const Estilo = styled.div`
     margin-bottom: 0px;
     margin-top: 64px;
     max-width: 570px;
-    height: 430px;
+    height: 420px;
     border-radius: 10px;
     border-width: 2px;
     box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.3);

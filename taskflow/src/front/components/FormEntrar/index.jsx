@@ -46,10 +46,6 @@ const FormEntrar = () => {
         }
     };
 
-    const MudaJanela = () => {
-        janela("/esqueci-senha"); 
-    };
-
     return (
     <form onSubmit={handleSubmit} className="grid">
         <div className="row mb-3 w-100">
@@ -85,9 +81,6 @@ const FormEntrar = () => {
         </div>
 
         <div className="text-center pt-4">
-        <div onClick={MudaJanela}>
-            <Paragrafo cursor="pointer">Esqueceu a Senha?</Paragrafo>
-        </div>
         </div>
         <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
     </form>
