@@ -32,7 +32,7 @@ Além disso, a aplicação conta com um sistema de estado das tarefas definido p
 - **Card com cor normal**: A tarefa não passou da data de vencimento.
 - **Card com cor azul**: A tarefa vence hoje.
 - **Card com cor vermelha**: A tarefa está atrasada.
-- **Card com cor verde**: A tarefa foi concluída
+- **Card com cor verde**: A tarefa foi concluída. Todas as etapas de uma tarefa precisam ser cumpridas para que o usuário possa concluí-la.
 
 ### Finalidade
 
@@ -93,8 +93,7 @@ No terminal que você iniciou o front-end, aperte SHIFT+O e uma aba será aberta
 - **Luiz Felipe Ribeiro Zuim Teixeira**: Líder geral atual, atuando no design e desenvolvimento front-end.
 - **Allan Ribeiro de Souza**: Assessor de gestão, auxiliando na organização da equipe.
 - **Rafael do Amaral Costa**: Líder de desenvolvimento, atuando no design, revisão da modelagem do banco de dados, desenvolvimento front-end e desenvolvimento back-end.
-- **Erick Martins Silva**: Membro técnico, atuando no design, revisão da modelagem do banco de dados e desenvolvimento back-end.
+- **Erick Martins Silva**: Membro técnico, atuando no design, revisão da modelagem do banco de dados e desenvolvimento front-end.
 - **Ennya Gomes Oliveira Campos**: Membro técnico, atuando no design, revisão da modelagem do banco de dados, desenvolvimento front-end e desenvolvimento back-end.
 - **Luiz Antonio de Souza da Silva**: Membro técnico, atuando no design e desenvolvimento front-end.
 - Agradecimentos especiais aos assessores técnicos **Gustavo Barros Rosa de Andrade** e **João Pedro Weydt Faria** por auxiliar os trainees durante o desenvolvimento. Obrigado!
-- 
