@@ -3,6 +3,15 @@
   <img alt="ReactJS" src="https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black">
   <img alt="Node.js" src="https://img.shields.io/badge/Node.js-5FA04E.svg?style=for-the-badge&logo=nodedotjs&logoColor=white">
   <img alt="Express.js" src="https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white">
+  
+</p>
+
+<p align="center">
+  <a href="#introdu%C3%A7%C3%A3o">Introdução</a> |
+  <a href="#recursos">Recursos</a> |
+  <a href="#finalidade">Finalidade</a> |
+  <a href="#como-utilizar">Como utilizar</a> |
+  <a href="#cr%C3%A9ditos">Créditos</a>
 </p>
 
 ### Introdução
@@ -88,3 +97,4 @@ No terminal que você iniciou o front-end, aperte SHIFT+O e uma aba será aberta
 - **Ennya Gomes Oliveira Campos**: Membro técnico, atuando no design, revisão da modelagem do banco de dados, desenvolvimento front-end e desenvolvimento back-end.
 - **Luiz Antonio de Souza da Silva**: Membro técnico, atuando no design e desenvolvimento front-end.
 - Agradecimentos especiais aos assessores técnicos **Gustavo Barros Rosa de Andrade** e **João Pedro Weydt Faria** por auxiliar os trainees durante o desenvolvimento. Obrigado!
+- 
