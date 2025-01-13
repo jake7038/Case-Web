@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import e from "cors";
-
+import { ToastContainer,toast } from "react-toastify";
 
 const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
 
@@ -26,7 +26,7 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
         e.preventDefault(); 
 
         if (!formData.nome) {
-            alert("digite um novo nome");
+            toast.error("Digite um novo nome para a lista!");
             return;
         }
 
@@ -44,20 +44,21 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Lista Alterada com sucesso!");
-                window.location.reload();
+                toast.success("Lista alterada com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
-                alert(`Erro: ${data.erro}`);
+                toast.error(`Erro: ${data.erro}`);
             }
         } catch (error) {
-            alert("Erro ao alterar a lista: " + error.message);
+            toast.error("Erro ao alterar a lista: " + error.message);
         }
     };
 
     const deleteLista = async(e) => {
         e.preventDefault();
 
-        const resp = confirm("Tem certeza que deseja excluir Toda a Lista? As tasks atreladas a ela também serão excluidas.");
+        const resp = confirm("Tem certeza que deseja excluir a lista? As tasks atreladas a ela também serão excluidas.");
         if(resp){
             
                 try {
@@ -70,15 +71,16 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                     });
         
                     if (response.ok) {
-                        alert("Lista Deletada com sucesso!");
-                        window.location.reload();
+                        toast.success("Lista excluída com sucesso!", {
+                            onClose: () => window.location.reload()
+                        });
                     } else {
                         const data = await response.json();
-                        alert(`Erro ao deletar Lista: ${data.message}`);
+                        toast.error(`Erro ao deletar Lista: ${data.message}`);
                     }
                 } catch (error) {
                     console.error("Erro ao deletar Lista:", error);
-                    alert("Erro ao deletar a Lista.");
+                    toast.error("Erro ao deletar a Lista.");
                 }
             }
         };
@@ -86,11 +88,11 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'330px'}}>
-                    <div  className="row pt-4">
+                <DivModal style={{height:'300px', width:'620px'}}>
+                    <div className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Atualizar Lista</Titulo>
+                                <h3>Atualizar Lista</h3>
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
@@ -101,7 +103,7 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="nome"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-4 form-control-sm w-100"
                                     placeholder="Nome da Lista"
                                     value={formData.nome}
                                     onChange={handleChange}
@@ -109,10 +111,10 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button onClick={Submit}   className="btn mt-2 btn-primary w-100">
+                                <button onClick={Submit}   className="btn mt-2 btn-primary w-75">
                                     Salvar as mudanças
                                 </button>
-                                <button onClick={deleteLista} className="btn mt-3 btn-danger w-100">
+                                <button onClick={deleteLista} className="btn mt-3 btn-danger w-75">
                                     Excluir Lista
                                 </button>
                             </div>
@@ -120,6 +122,7 @@ const ModalAtualizarLista  = ({isOpen, listaId, closeModal}) => {
                     </div>
     
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
     
         );

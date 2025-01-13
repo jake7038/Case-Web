@@ -1,9 +1,7 @@
 import Titulo from "../../components/Titulo";
 import CategoriaTarefas from "../../components/CategoriaTarefas";
-import Tarefa from "../../components/Tarefa";
-import { ListaTarefas, GridListas} from "./styles";
+import {  GridListas} from "./styles";
 import MenuSlideBar from "../../components/MenuSideBar";
-import ModalCriarTask from "../../components/ModalCriarTask";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -13,16 +11,12 @@ import { useLocation } from "react-router-dom";
 const TaskPage = () => {
 
     const location = useLocation();
-    const quadroId = location.state?.quadroId; //pega a variavel do quadro
+    console.log(location.state)
+    const quadroId = location.state.quadroId; //pega a variavel do quadro
+    const nome = location.state.nome;
     const [erro, setErro] = useState("");
     
     const [listas, setListas] = useState([]); //armazena as listas
-
-    const [modalCriarTask, setModalCriarTask] = useState(false);
-
-        const closeModal = () =>{
-            setModalCriarTask(false);
-        } 
 
 
         useEffect(() => {
@@ -69,22 +63,29 @@ const TaskPage = () => {
             <div className="row flex-row gx-0">
                     <div className="col-md-10 p-4">
                         <div style={{display:'flex', justifyContent:'center'}}>
-                            <Titulo fontSize={45}>
+                            <Titulo fontSize={70}>
                                 <img src="src/front/assets/logo.png" width={90}/>
                                 TaskFlow
                             </Titulo>
                         </div>
                         <hr style={{marginTop:'1rem'}}></hr>
                         <div className="row gx-0">
-                            <GridListas>
+                            {erro ? (
+                                <div div style={{ display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center', margin:'auto',width:'100%', height:'74vh', color: "#787878" }}>
+                                    <h1>Bem-vindo ao quadro "{nome}"!</h1>
+                                    <p>Comece criando listas no menu lateral e tarefas a partir dessas listas</p>
+                                </div>
+                            ) : (
+                                <GridListas>
                                     {listas.map((lista) => (
                                         <CategoriaTarefas 
                                             listaId={lista.id} 
                                             nome={lista.nome} 
                                         />
                                     ))}
+                                </GridListas>
+                            )}
                             
-                            </GridListas>
                             
                         </div>
                     </div>

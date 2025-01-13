@@ -3,7 +3,6 @@ import userService from "../service/userService.js";
 async function readUser(req, res) {
     try {
         const usuarios = await userService.readUser();
-
         res.json({ registros: usuarios });
     } catch (e) {
         res.json({ erro: e.message });
@@ -14,7 +13,6 @@ async function readUserById(req,res){
     try{
         const id = req.id;
         const usuario = await userService.readUserById(id);
-
         res.json({registro: usuario})
     } catch(e){
         res.json({erro: e.message})
@@ -31,9 +29,9 @@ async function createUser(req,res){
         const message = await userService.createUser(nome, email, senha, foto);
 
         res.json({message: message})
-
+        
     } catch(e){
-        res.json({erro: e.message})
+        res.status(401).json({erro: e.message})
     }
 }
 

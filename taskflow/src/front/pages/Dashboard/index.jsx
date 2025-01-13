@@ -52,7 +52,7 @@ const Dashboard = () => {
             <div className="row flex-row gx-0">
                 <div className="col-md-10 p-4">
                     <div style={{display:'flex', justifyContent:'center'}}>
-                        <Titulo fontSize={45}>
+                        <Titulo fontSize={70}>
                             <img src="src/front/assets/logo.png" width={90} alt="TaskFlow Logo"/>
                             TaskFlow
                         </Titulo>
@@ -60,22 +60,22 @@ const Dashboard = () => {
                     <hr style={{marginTop:'1rem'}}></hr>
                     <div className="row flex-row gx-0">
                         <div style={{ display: "flex"}}>
-                            <GridQuadros>
                                 {erro ? (
-                                    <div style={{ textAlign: "left", color: "#787878", marginTop: "15rem" }}>
+                                    <div style={{ display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center', margin:'auto',width:'100%', height:'74vh', color: "#787878" }}>
                                         <h1>Bem-vindo ao TaskFlow!</h1>
                                         <p>Comece criando seu primeiro quadro no menu lateral</p>
                                     </div>
                                 ) : (
-                                    quadros.map((quadro) => (
-                                        <Quadro 
-                                            quadroId={quadro.id} 
-                                            nome={quadro.nome} 
-                                            descricao={quadro.descricao}
-                                        />
-                                    ))
+                                    <GridQuadros>
+                                        {quadros.map((quadro) => (
+                                            <Quadro 
+                                                quadroId={quadro.id} 
+                                                nome={quadro.nome} 
+                                                descricao={quadro.descricao}
+                                            />
+                                        ))}
+                                    </GridQuadros>
                                 )}
-                            </GridQuadros>
                         </div>
                     </div>
                 </div>

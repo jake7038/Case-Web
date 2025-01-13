@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import {ToastContainer, toast} from "react-toastify";
 
 const Form = () =>  {
         const [formData, setFormData] = useState({
@@ -15,8 +15,11 @@ const Form = () =>  {
     
         const handleSubmit = async (e) => {
             e.preventDefault(); 
-            if( formData.senha.length < 4 || formData.senha === "1234" || formData.senha === "4321" || !/[a-zA-Z]/.test(formData.senha) || !/[0-9]/.test(formData.senha)){
-                alert("senha Muito Fraca. Ela deve conter ao menos um número e uma letra!");
+            if (!formData.nome || !formData.email || !formData.senha) {
+                toast.error("Um ou mais campos estão vazios")
+            }
+            else if((formData.senha.length < 4 && formData.senha.length > 0)|| formData.senha === "1234" || formData.senha === "4321" || !/[a-zA-Z]/.test(formData.senha) || !/[0-9]/.test(formData.senha)){
+                toast.error("Senha muito fraca, ela deve conter ao menos um número e uma letra!");
             }else{
                 try {
                     const response = await fetch("http://localhost:3000/user", {
@@ -29,12 +32,12 @@ const Form = () =>  {
         
                     const data = await response.json();
                     if (response.ok) {
-                        alert("Conta criada com sucesso!");
+                        toast.success("Conta criada com sucesso!");
                     } else {
-                        alert(`Erro: ${data.erro}`);
+                        toast.error(`Erro: ${data.erro}`);
                     }
                 } catch (error) {
-                    alert("Erro ao criar conta: " + error.message);
+                    toast.error("Erro ao criar conta: " + error.message);
                 }
             }
             
@@ -63,7 +66,7 @@ const Form = () =>  {
     
 
     
-    <div className="row mb-3 w-100">
+    <div className="row w-100">
     <input  type="password"
             name="senha"
             className="form-control form-control-sm"
@@ -80,7 +83,7 @@ const Form = () =>  {
     <div className="col-md-3"></div>
     </div>
     
-    
+    <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
     </form>
 
 );

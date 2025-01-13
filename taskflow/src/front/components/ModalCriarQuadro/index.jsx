@@ -4,6 +4,7 @@ import Paragrafo from "../Paragrafo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { ToastContainer, toast} from "react-toastify";
 
 const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
     const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
 
 
         if (!formData.nome) {
-            alert("Nome do Quadro é necessário para criar o quadro!");
+            toast.error("O quadro precisa de um nome para ser criado!");
             return;
         }
 
@@ -47,25 +48,26 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Quadro criado com sucesso!");
-                window.location.reload();
+                toast.success("Quadro criado com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
-                alert(`Erro: ${data.erro}`);
+                toast.error(`Erro: ${data.erro}`);
             }
         } catch (error) {
-            alert("Erro ao criar quadro: " + error.message);
+            toast.error("Erro ao criar quadro: " + error.message);
         }
     };
 
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'390px'}}>
+                <DivModal style={{height:'330px', width:'580px'}}>
                     
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
-                            <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Criar Quadro</Titulo>
+                            <div className="col-md-4 mb-2 text-center">
+                                <h3>Criar Quadro</h3>
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-2">
@@ -76,7 +78,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="nome"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-3 form-control-sm w-100"
                                     placeholder="Nome"
                                     value={formData.nome}
                                     onChange={handleChange}
@@ -86,7 +88,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="descricao"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-3 form-control-sm w-100"
                                     placeholder="Descrição"
                                     value={formData.descricao}
                                     onChange={handleChange}
@@ -94,7 +96,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button onClick={Submit} className="btn mt-2 btn-primary w-100">
+                                <button onClick={Submit} className="btn mt-2 btn-primary w-50">
                                     Salvar as mudanças
                                 </button>
                             </div>
@@ -102,6 +104,7 @@ const ModalCriarQuadro  = ({isOpen, userId, closeModal}) => {
                     </div>
     
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
             
         );
