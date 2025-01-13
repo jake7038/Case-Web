@@ -26,17 +26,17 @@ async function readUserById(id){
 
 async function createUser(nome, email, senha, foto) {
 
-    const val = 0
+    let val = 0
     const existingUser = await database("usuario").where({ email: email }).first();
 
 
     if (existingUser) {
         val = 1;
-        return "Este email já está registrado!";
+        throw new Error("Email já registrado");
     }
     
     if(val == 0){
-         const salt = bcrypt.genSaltSync();
+    const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(senha, salt);
 
     const usuario = {
@@ -50,7 +50,7 @@ async function createUser(nome, email, senha, foto) {
 
     return "Registrado!"
     }
-       
+    
     
     
 }
