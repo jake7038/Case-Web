@@ -17,8 +17,11 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     });
 
     const modificaData = (data) => {
-        const [dia, mes, ano] = data.split("/"); 
-        return `${ano}-${mes}-${dia}`; 
+        if(data === "") 
+        {return ""}else{
+            const [dia, mes, ano] = data.split("/"); 
+            return `${ano}-${mes}-${dia}`; 
+        }
     };
 
     const closeButton = () => {
@@ -33,11 +36,11 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
+                }, 
                 body: JSON.stringify({
                     nome: formData.nomeTask,
                     descricao: formData.descricaoTask,
-                    data: modificaData(formData.data),
+                    data:  modificaData(formData.data) || "",
                     etapa1: formData.etapas[0] || "",
                     etapa2: formData.etapas[1] || "",
                     etapa3: formData.etapas[2] || "",
@@ -46,6 +49,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
             });
 
             if (response.ok) {
+                console.log(formData.data);
                 toast.success("Task atualizada com sucesso!", {
                     onClose: () => window.location.reload()
                 });
@@ -84,7 +88,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     if (isOpen) {
         return (
             <DivOverlay>
-                <DivModal onSubmit={submit} style={{height:'470px', width:'610px'}}>
+                <DivModal onSubmit={submit} style={{height:'auto', width:'610px'}}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 text-center">
