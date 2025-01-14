@@ -61,7 +61,7 @@ const ModalCriarLista  = ({isOpen, quadroId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'250px', width:'500px'}}>
+                <DivModal>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                             <div className="col-md-4 mb-2 text-center">

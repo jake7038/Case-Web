@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Titulo from "../Titulo";
 import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
 import InputMask from "react-input-mask";
@@ -88,7 +87,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     if (isOpen) {
         return (
             <DivOverlay>
-                <DivModal onSubmit={submit} style={{height:'auto', width:'610px'}}>
+                <DivModal onSubmit={submit}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 text-center">

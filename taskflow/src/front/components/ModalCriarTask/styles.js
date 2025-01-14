@@ -23,11 +23,6 @@ export const DivModal = styled.form`
 
     .btn-danger {
         background-color: #ff4d4d;
-        border: none;
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 4px;
         transition: background-color 0.3s ease;
 
         &:hover {
@@ -37,50 +32,20 @@ export const DivModal = styled.form`
 
     .btn-primary {
         background-color: #007bff;
-        border: none;
-        padding: 10px 15px;
-        font-size: 18px;
-        cursor: pointer;
-        border-radius: 4px;
         transition: background-color 0.3s ease;
 
         &:hover {
-            background-color: #0056b3;
+            background-color: #026cdd;
         }
     }
 
     .btn-success {
         background-color: #28a745;
-        border: none;
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 4px;
         transition: background-color 0.3s ease;
 
         &:hover {
             background-color: #218838;
         }
-    }
-
-    .form-control {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 8px 10px;
-        font-size: 16px;
-        width: 100%;
-    }
-
-    .form-control:focus {
-        outline: none;
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
-
-    .foto img {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-top: 10px;
     }
 `;
 

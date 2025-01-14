@@ -57,7 +57,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'320px', width:'620px'}}>
+                <DivModal>
                     
                     <div className="row pt-4">
                         <div className="col-md-2"></div>

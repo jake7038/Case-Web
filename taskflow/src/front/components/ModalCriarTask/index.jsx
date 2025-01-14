@@ -155,6 +155,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                             <button
                                 type="button"
                                 className="btn btn-success btn-sm mt-3"
+                                style={{marginLeft:'4rem'}}
                                 onClick={() => {
                                     if(formData.etapas.length < 3){
                                         adicionarEtapa()

@@ -13,8 +13,7 @@ export const DivOverlay = styled.div`
 
 
 export const DivModal = styled.form`
-    width: 700px;
-    height: 600px;
+    width: 40rem;
     top: 50%;
     left: 50%;
     position: absolute ;
@@ -23,6 +22,24 @@ export const DivModal = styled.form`
     background-color: #ffff;
     padding: 16px;
     z-index: 999;
+
+    .btn-primary {
+        background-color: #007bff;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #026cdd;
+        }
+    }
+
+    .btn-danger {
+        background-color: #ff4d4d;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #e63939;
+        }
+    }
 
     position: absolute; /* Permite ajustar a posição */
     top: 50%; /* Posição central vertical */
