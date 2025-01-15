@@ -1,7 +1,7 @@
 import { Router } from "express";
 import multer from "multer";
 import path from "path";
-import { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo  } from "./back/controller/userController.js";
+import { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo, handleSendEmail  } from "./back/controller/userController.js";
 import { createQuadro, readQuadros, updateQuadro, deleteQuadro  } from "./back/controller/quadroController.js";
 import { createLista, readListas, updateLista, deleteLista } from "./back/controller/listaController.js";
 import {createTask, readTasks, updateTask, deleteTask} from "./back/controller/taskController.js"
@@ -35,7 +35,7 @@ router.get("/user/info", auth,readUserInfo) //retorna todas as informações do 
 router.post("/user", createUser)
 router.patch("/user/:id",  updateUser)
 router.delete("/user/:id", deleteUser)
-
+router.post("/send-email", handleSendEmail); //recuperasenha
 router.post("/login", login);
 
 //rotas do quadro, somente usuarios autenticados podem criar um quadro

@@ -1,4 +1,5 @@
 import userService from "../service/userService.js";
+import { sendEmail } from "../email/index.js";
 
 async function readUser(req, res) {
     try {
@@ -88,5 +89,24 @@ async function readUserInfo(req, res) {
     }
 }
 
+    const handleSendEmail = async (req, res) => {
+    const { email: recipientEmail, senha } = req.body;
+    if (!recipientEmail || !senha) {
+        return res.status(400).json({ error: "Email e senha são obrigatórios." });
+    }
+        
+    try {
+        await sendEmail(recipientEmail, senha);
+        await userService.updateSenha(recipientEmail,senha);
+        res.status(200).json({ message: "Email enviado com sucesso!" });
 
-export { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo };
+    } catch (error) {
+        console.error("Erro ao enviar email:", error);
+        res.status(500).json({ error: "Erro ao enviar email. Tente novamente mais tarde." });
+    }
+    };
+
+
+
+
+export { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo, handleSendEmail };

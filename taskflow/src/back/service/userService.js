@@ -92,6 +92,31 @@ async function updateUser(id, nome, email, senha, foto) {
 }
 
 
+async function updateSenha(email, senha) {
+
+    const busca = await database("usuario").select("*").where({email:email}).first();
+
+    if(!busca){
+        throw new Error("Desconhecido");
+    }
+    
+    let hash
+    if(senha){
+        const salt = bcrypt.genSaltSync();
+        hash = bcrypt.hashSync(senha, salt)
+    }
+
+    const usuario_novo = {
+        senha: hash || busca.senha,
+    }
+
+    await database("usuario").update(usuario_novo).where({email:email})
+
+    return "Atualizado!"
+
+}
+
+
 async function deleteUser(id){
     const usuario = await database("usuario").select("*").where({id:id}).first();
 
@@ -137,4 +162,4 @@ async function readUserInfo(id) { //puxa as informações do usuário... embora 
 }
 
 
-export default { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo } ;
+export default { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo, updateSenha } ;

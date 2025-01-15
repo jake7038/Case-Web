@@ -73,10 +73,15 @@ const FormEntrar = () => {
         <div className="row pt-4">
         <div className="col-md-3"></div>
         <div className="col-md-6 text-center">
-            <button type="submit" className="btn btn-primary w-50">
+            <button type="submit" className="btn btn-primary w-50 mb-3">
             Entrar
             </button>
+            <div onClick={()=> janela("/esqueci-senha")}>
+            <Paragrafo cursor="pointer" >Esqueceu a Senha?</Paragrafo>
+            </div>
+            
         </div>
+
         <div className="col-md-3"></div>
         </div>
 

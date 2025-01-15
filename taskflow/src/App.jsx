@@ -4,7 +4,7 @@ import Login from './front/pages/login'
 import EstiloGlobal, { Container , Bodylogin } from './styles'
 import Dashboard from "./front/pages/Dashboard";
 import TaskPage from "./front/pages/TaskPage";
-
+import EsqueciSenha from "./front/pages/EsqueciSenha";
 function App() {
   return (
     <Router>
@@ -29,6 +29,13 @@ function App() {
           <>
           <TaskPage>
           </TaskPage>
+          </>
+        } />
+
+        <Route path="/esqueci-senha" element={
+          <>
+          <EsqueciSenha>
+          </EsqueciSenha>
           </>
         } />
 
