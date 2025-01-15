@@ -19,7 +19,7 @@ export const sendEmail = async (recipientEmail, senha) => {
         from: process.env.EMAIL_USER,
         to: recipientEmail,
         subject: "Recuperação de Senha - TaskFlow",
-        html: `<h1>Olá!</h1>
+        html: `<h1>Esse é um E-mail automático do TaskFlow</h1>
             <p>Sua nova senha é: <strong>${senha}</strong></p>
             <p>Por favor, faça login e altere sua senha o mais rápido possível.</p>`,
     };

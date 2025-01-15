@@ -33,10 +33,10 @@ function App() {
         } />
 
         <Route path="/esqueci-senha" element={
-          <>
+          <Bodylogin>
           <EsqueciSenha>
           </EsqueciSenha>
-          </>
+          </Bodylogin>
         } />
 
       </Routes>
