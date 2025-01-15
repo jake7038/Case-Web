@@ -1,5 +1,5 @@
 import  {Estilo}   from "./styles"
-import { EstiloTitulo, DivTitulo , DivConteudo } from "./styles"
+import { EstiloTitulo, DivTitulo , DivConteudo, Footer } from "./styles"
 import  { useState } from 'react';
 import Titulo from "../../components/Titulo";
 import Paragrafo from "../../components/Paragrafo";
@@ -73,8 +73,10 @@ import FormEntrar from "../../components/FormEntrar";
         {TrocaForm(elemento1)}
 
         
-        
     </Estilo>
+        <Footer>
+            <p style={{color:'#fff'}}>Aplicação desenvolvida com o esforço coletivo de Ennya Costa, Erick Martins, Luiz Felipe, Luiz Antonio e Rafael Costa</p>
+        </Footer>
     </>
 )
     }

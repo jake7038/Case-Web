@@ -50,3 +50,15 @@ export const EstiloTitulo = styled.h2`
     text-underline-offset: 8px;
 
 `
+
+export const Footer = styled.div`
+    text-align: center;
+    font-size: 12px;
+    background: #282a35;
+    padding: 5px;
+    width: 100%;
+    right: 0%;
+    left: 0%;
+    position: absolute;
+    bottom: 0;
+`
