@@ -82,7 +82,7 @@ const MenuSlideBar = ({req, quadroId, setTema}) => {
             </div>
             <div className="col-md-8 text-start pt-2">
             <Paragrafo  marginb={0} tipo="preto" fontSize={18}>{nomeUsuario}</Paragrafo>
-            <Paragrafo  marginb={0} tipo="preto" fontSize={emailUsuario.length > 20 ? 16 : 20}>{emailUsuario}</Paragrafo>
+            <Paragrafo  marginb={0} tipo="preto" fontSize={emailUsuario.length > 20 && emailUsuario.length <= 25 ? 15 : emailUsuario.length > 25 ? 12 : 20}>{emailUsuario}</Paragrafo>
             </div>
             </div>
         </div>
