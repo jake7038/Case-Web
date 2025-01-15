@@ -9,6 +9,7 @@ const Dashboard = () => {
     // Estados para armazenar os quadros do usuário
     const [quadros, setQuadros] = useState([]); //armazena os quadros
     const [erro, setErro] = useState(""); //estado que pega o erro para mandar a mensagem de quando não tem quadro
+    const [tema, setTema] = useState(true);
 
     useEffect(() => {
         const fetchQuadros = async () => {
@@ -48,16 +49,16 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <body className="">
+        <body className="" style={{backgroundColor: tema === true? "#fff" : "#282a35"}}>
             <div className="row flex-row gx-0">
                 <div className="col-md-10 p-4">
                     <div style={{display:'flex', justifyContent:'center'}}>
-                        <Titulo fontSize={70}>
+                        <Titulo tipo={tema === true? "principal" : "alter" } fontSize={70}>
                             <img src="src/front/assets/logo.png" width={90} alt="TaskFlow Logo"/>
                             TaskFlow
                         </Titulo>
                     </div>
-                    <hr style={{marginTop:'1rem'}}></hr>
+                    <hr style={{marginTop:'1rem', color: tema === false? "white" : "#282a35"}}></hr>
                     <div className="row flex-row gx-0">
                         <div style={{ display: "flex"}}>
                                 {erro ? (
@@ -80,7 +81,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div style={{position: "sticky", top: "0", height: "100vh", overflowY: "auto"}} className="min-vh-100 col-md-2 p-0 text-center">
-                    <MenuSlideBar req={true}  />
+                    <MenuSlideBar req={true} setTema={setTema}  />
                 </div>
             </div>
         </body>

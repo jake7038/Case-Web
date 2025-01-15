@@ -9,7 +9,7 @@ import ModalCriarLista from "../ModalCriarLista";
 
 import { useNavigate } from "react-router-dom"; 
 
-const MenuSlideBar = ({req, quadroId}) => {
+const MenuSlideBar = ({req, quadroId, setTema}) => {
     const [nomeUsuario, setNomeUsuario] = useState("");
     const [emailUsuario, setEmailUsuario] = useState("");
     const [fotoUsuario, setFotoUsuario] = useState("../../assets/4foto.jpeg");
@@ -105,7 +105,7 @@ const MenuSlideBar = ({req, quadroId}) => {
         </Divrow>
 
         <Divrow className=" mb-4 mt-4  p-3 ">
-            <div className="d-flex flex-row w-0 gap-3">
+            <div onClick={() => setTema((prev) => !prev)} className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}><FontAwesomeIcon icon={faMoon} /></Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Alterar Aparência</Paragrafo>
             </div>

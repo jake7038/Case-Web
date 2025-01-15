@@ -12,6 +12,6 @@ import "@fontsource/bebas-neue";
 export const P = styled.h1`    
     font-family: "Bebas Neue", serif;
     font-size:${(props) => (props.fontSize ? props.fontSize + 'px' : '24px')}; 
-    color: ${(props) => (props.tipo === 'principal' ? '#282a35' : '#949494')};
+    color: ${(props) => (props.tipo === 'principal' ? '#282a35' : props.tipo === 'alter' ? "#ffff" : '#949494')};
     line-height: auto;
 `

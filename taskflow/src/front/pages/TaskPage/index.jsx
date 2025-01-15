@@ -15,7 +15,8 @@ const TaskPage = () => {
     const quadroId = location.state.quadroId; //pega a variavel do quadro
     const nome = location.state.nome;
     const [erro, setErro] = useState("");
-    
+    const [tema, setTema] = useState(true);
+
     const [listas, setListas] = useState([]); //armazena as listas
 
 
@@ -59,16 +60,16 @@ const TaskPage = () => {
 
 
     return (
-        <body className="">
+        <body  style={{backgroundColor: tema === true? "#fff" : "#282a35"}}>
             <div className="row flex-row gx-0">
                     <div className="col-md-10 p-4">
                         <div style={{display:'flex', justifyContent:'center'}}>
-                            <Titulo fontSize={70}>
+                            <Titulo tipo={tema === true? "principal" : "alter" } fontSize={70}>
                                 <img src="src/front/assets/logo.png" width={90}/>
                                 TaskFlow
                             </Titulo>
                         </div>
-                        <hr style={{marginTop:'1rem'}}></hr>
+                        <hr style={{marginTop:'1rem', color: tema === false? "white" : "#282a35"}}></hr>
                         <div className="row gx-0">
                             {erro ? (
                                 <div div style={{ display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center', margin:'auto',width:'100%', height:'74vh', color: "#787878" }}>
@@ -90,7 +91,7 @@ const TaskPage = () => {
                         </div>
                     </div>
                     <div style={{position: "sticky", top: "0", height: "100vh", overflowY: "auto"}} className=" bg-dark  col-md-2  p-0 text-center">
-                        <MenuSlideBar req={false} quadroId={quadroId}></MenuSlideBar>
+                        <MenuSlideBar req={false} setTema={setTema} quadroId={quadroId}></MenuSlideBar>
                     </div>
         </div>
         </body>
