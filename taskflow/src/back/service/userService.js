@@ -26,17 +26,17 @@ async function readUserById(id){
 
 async function createUser(nome, email, senha, foto) {
 
-    const val = 0
+    let val = 0
     const existingUser = await database("usuario").where({ email: email }).first();
 
 
     if (existingUser) {
         val = 1;
-        return "Este email já está registrado!";
+        throw new Error("Email já registrado");
     }
     
     if(val == 0){
-         const salt = bcrypt.genSaltSync();
+    const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(senha, salt);
 
     const usuario = {
@@ -50,7 +50,7 @@ async function createUser(nome, email, senha, foto) {
 
     return "Registrado!"
     }
-       
+    
     
     
 }
@@ -89,6 +89,31 @@ async function updateUser(id, nome, email, senha, foto) {
 
     return "Atualizado!"
 }
+}
+
+
+async function updateSenha(email, senha) {
+
+    const busca = await database("usuario").select("*").where({email:email}).first();
+
+    if(!busca){
+        throw new Error("Desconhecido");
+    }
+    
+    let hash
+    if(senha){
+        const salt = bcrypt.genSaltSync();
+        hash = bcrypt.hashSync(senha, salt)
+    }
+
+    const usuario_novo = {
+        senha: hash || busca.senha,
+    }
+
+    await database("usuario").update(usuario_novo).where({email:email})
+
+    return "Atualizado!"
+
 }
 
 
@@ -137,4 +162,4 @@ async function readUserInfo(id) { //puxa as informações do usuário... embora 
 }
 
 
-export default { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo } ;
+export default { readUser, createUser, readUserById, updateUser, deleteUser, login, readUserInfo, updateSenha } ;

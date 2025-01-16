@@ -5,7 +5,8 @@ import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
 import InputMask from "react-input-mask";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import { faX, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer,toast } from "react-toastify";
 
 const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     const [formData, setFormData] = useState({
@@ -16,8 +17,11 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     });
 
     const modificaData = (data) => {
-        const [dia, mes, ano] = data.split("/"); 
-        return `${ano}-${mes}-${dia}`; 
+        if(data === "") 
+        {return ""}else{
+            const [dia, mes, ano] = data.split("/"); 
+            return `${ano}-${mes}-${dia}`; 
+        }
     };
 
     const closeButton = () => {
@@ -32,11 +36,11 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
+                }, 
                 body: JSON.stringify({
                     nome: formData.nomeTask,
                     descricao: formData.descricaoTask,
-                    data: modificaData(formData.data),
+                    data:  modificaData(formData.data) || "",
                     etapa1: formData.etapas[0] || "",
                     etapa2: formData.etapas[1] || "",
                     etapa3: formData.etapas[2] || "",
@@ -45,15 +49,17 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
             });
 
             if (response.ok) {
-                alert("Task atualizada com sucesso!");
-                window.location.reload();
+                console.log(formData.data);
+                toast.success("Task atualizada com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
                 const data = await response.json();
-                alert(`Erro ao criar task: ${data.message}`);
+                toast.error(`Erro ao criar task: ${data.message}`);
             }
         } catch (error) {
             console.error("Erro ao criar task:", error);
-            alert("Erro ao criar a tarefa.");
+            toast.error("Erro ao criar a tarefa.");
         }
     };
 
@@ -82,11 +88,11 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
     if (isOpen) {
         return (
             <DivOverlay>
-                <DivModal onSubmit={submit} style={{height:'500px'}}>
+                <DivModal onSubmit={submit} style={{height:'auto', width:'610px'}}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 text-center">
-                            <Titulo fontSize={24}>Atualizar a Task</Titulo>
+                            <h3>Atualizar Task</h3>
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">
@@ -105,7 +111,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                             />
 
                             <Paragrafo>Descrição da Task</Paragrafo>
-                            <textarea
+                            <input
                                 name="descricaoTask"
                                 className="form-control mb-4 form-control-sm w-100"
                                 placeholder="Descrição"
@@ -117,7 +123,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                                 mask="99/99/9999"
                                 type="text"
                                 name="data"
-                                className="form-control mb-4 form-control-sm w-100"
+                                className="form-control form-control-sm w-100"
                                 placeholder="dd/mm/aaaa"
                                 value={formData.data}
                                 onChange={handleInputChange}
@@ -151,7 +157,7 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                                     if(formData.etapas.length < 3){
                                         adicionarEtapa()
                                     }else{
-                                        alert("Você só pode adicionar até 3 etapas.");
+                                        toast.error("Você só pode adicionar até 3 etapas.");
                                     }
 
                                 }}
@@ -159,16 +165,20 @@ const ModalAtualizarTask = ({ isOpen, closeModal, taskId }) => {
                                 Adicionar Etapa
                             </button>
                         </div>
-
+                        <div className="mt-3"style={{display:'flex'}}>
+                                <FontAwesomeIcon icon={faCircleInfo} size="xs" color="#949494" style={{marginRight:'5px', marginTop:'4px'}}></FontAwesomeIcon>
+                                <Paragrafo>Tasks podem ter, no máximo, três etapas.</Paragrafo>
+                        </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-8 text-center">
-                            <button type="submit" className="btn mt-5 btn-primary w-100">
+                            <button type="submit" className="btn mt-3 btn-primary w-50">
                                 Salvar as mudanças
                             </button>
                         </div>
                         <div className="col-md-2"></div>
                     </div>
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
         );
     }

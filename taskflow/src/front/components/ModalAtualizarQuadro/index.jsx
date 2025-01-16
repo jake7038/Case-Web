@@ -4,6 +4,7 @@ import Paragrafo from "../Paragrafo";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import {ToastContainer,toast} from "react-toastify";
 
 const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
     
@@ -42,27 +43,27 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Quadro Alterado com sucesso!");
-                window.location.reload();
+                toast.success("Quadro alterado com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
-                alert(`Erro: ${data.erro}`);
+                toast.error(`Erro: ${data.erro}`);
             }
         } catch (error) {
-            alert("Erro ao criar quadro: " + error.message);
+            toast.error("Erro ao criar quadro: " + error.message);
         }
     };
 
     if(isOpen){
         return (
             <DivOverlay>
-                <DivModal style={{height:'390px'}}>
+                <DivModal style={{height:'320px', width:'620px'}}>
                     
                     <div className="row pt-4">
-                        <div className="col-md-4"></div>
-                            <div className="col-md-4 text-center">
-                                <Titulo fontSize={24}>Atualizar Quadro</Titulo>
+                        <div className="col-md-2"></div>
+                            <div className="col-md-8 text-center">
+                                <h3>Atualizar Quadro</h3>
                             </div>
-                            <div className="col-md-2"></div>
                             <div className="col-md-2">
                                 <FontAwesomeIcon icon={faX} onClick={closeButton} color="#e14c4c" style={{cursor:'pointer'}}></FontAwesomeIcon>
                             </div>
@@ -71,7 +72,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="nome"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-3 form-control-sm w-100"
                                     placeholder="Nome"
                                     value={formData.nome}
                                     onChange={handleChange}
@@ -81,7 +82,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                                 <input
                                     type="text"
                                     name="descricao"
-                                    className="form-control mb-5 form-control-sm w-100"
+                                    className="form-control mb-3 form-control-sm w-100"
                                     placeholder="Descrição"
                                     value={formData.descricao}
                                     onChange={handleChange}
@@ -89,7 +90,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                             </div>
                             <div className="col-md-2"></div>
                             <div className="col-md-8 text-center">
-                                <button onClick={Submit} className="btn mt-2 btn-primary w-100">
+                                <button onClick={Submit} className="btn mt-2 btn-primary w-50">
                                     Salvar as mudanças
                                 </button>
                             </div>
@@ -97,6 +98,7 @@ const ModalAtualizarQuadro  = ({isOpen, quadroId, closeModal}) => {
                     </div>
     
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
             
         );

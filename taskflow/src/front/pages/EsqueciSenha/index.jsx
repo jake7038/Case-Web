@@ -5,10 +5,10 @@ import FormEsqueciSenha from "../../components/FormEsqueciSenha";
 
 const EsqueciSenha = () => {
     return (
-        <Estilo style={{ height: '300px',paddingTop:'50px' }}>
+        <Estilo style={{ height: 'auto',paddingTop:'50px' }}>
             <div>
                 <DivConteudo>
-                    <Titulo fontSize={24}>Esqueci minha senha</Titulo>
+                    <Titulo fontSize={24}>Esqueceu sua Senha?</Titulo>
                 </DivConteudo>
                 <DivConteudo>
                     <Paragrafo fontSize={14}>Enviaremos um link de acesso à sua conta por e-mail</Paragrafo>

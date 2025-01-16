@@ -12,7 +12,8 @@ export const DivFlex = styled.div`
     display: flex;
     flex-direction: column; 
     justify-content: flex-start; 
-    height: 80%;
+    height: 70%;
+    margin-top: 12vh;
     
 `
 

@@ -23,11 +23,6 @@ export const DivModal = styled.form`
 
     .btn-danger {
         background-color: #ff4d4d;
-        border: none;
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 4px;
         transition: background-color 0.3s ease;
 
         &:hover {
@@ -37,11 +32,6 @@ export const DivModal = styled.form`
 
     .btn-primary {
         background-color: #007bff;
-        border: none;
-        padding: 10px 15px;
-        font-size: 18px;
-        cursor: pointer;
-        border-radius: 4px;
         transition: background-color 0.3s ease;
 
         &:hover {
@@ -50,12 +40,8 @@ export const DivModal = styled.form`
     }
 
     .btn-success {
+        margin-left: 4rem;
         background-color: #28a745;
-        border: none;
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 4px;
         transition: background-color 0.3s ease;
 
         &:hover {

@@ -2,10 +2,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from './front/pages/login'
 import EstiloGlobal, { Container , Bodylogin } from './styles'
-import EsqueciSenha from "./front/pages/EsqueciSenha";
 import Dashboard from "./front/pages/Dashboard";
 import TaskPage from "./front/pages/TaskPage";
-import ModalPerfil from "./front/components/ModalPerfil";
+import EsqueciSenha from "./front/pages/EsqueciSenha";
 function App() {
   return (
     <Router>
@@ -17,14 +16,8 @@ function App() {
             <Container> 
               <Login/>
             </Container>
-          </Bodylogin>} />
-        <Route path="/esqueci-senha" element={
-          <Bodylogin>
-          <Container>
-            <EsqueciSenha/>
-          </Container>
-          </Bodylogin>
-        } />
+          </Bodylogin>} 
+          />
 
         <Route path="/dashboard" element={
           <>
@@ -38,11 +31,12 @@ function App() {
           </TaskPage>
           </>
         } />
-        <Route path="/teste" element={
-          <>
-          <ModalPerfil>
-          </ModalPerfil>
-          </>
+
+        <Route path="/esqueci-senha" element={
+          <Bodylogin>
+          <EsqueciSenha>
+          </EsqueciSenha>
+          </Bodylogin>
         } />
 
       </Routes>

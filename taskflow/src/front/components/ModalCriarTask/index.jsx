@@ -5,7 +5,8 @@ import { DivModal, DivOverlay } from "./styles";
 import Paragrafo from "../Paragrafo";
 import InputMask from "react-input-mask";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import { faX, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import {ToastContainer, toast} from "react-toastify";
 
 
 const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
@@ -29,7 +30,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
     const submit = async (e) => {
         e.preventDefault();
         if(!formData.nomeTask || !formData.data){
-            alert("Tasks tem que ter ao menos Nome e Data!")
+            toast.error("Tasks precisam ter ao menos nome e data!")
             return
         }
         try {
@@ -50,15 +51,16 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
             });
 
             if (response.ok) {
-                alert("Task criada com sucesso!");
-                window.location.reload();
+                toast.success("Task criada com sucesso!", {
+                    onClose: () => window.location.reload()
+                });
             } else {
                 const data = await response.json();
-                alert(`Erro ao criar task: ${data.message}`);
+                toast.error(`Erro ao criar task: ${data.message}`);
             }
         } catch (error) {
             console.error("Erro ao criar task:", error);
-            alert("Erro ao criar a tarefa.");
+            toast.error("Erro ao criar a tarefa.");
         }
     };
 
@@ -90,8 +92,8 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                 <DivModal onSubmit={submit}>
                     <div className="row pt-4">
                         <div className="col-md-4"></div>
-                        <div className="col-md-4 text-center">
-                            <Titulo fontSize={24}>Criar Task</Titulo>
+                        <div className="col-md-4 mb-2 text-center">
+                            <h3>Criar Task</h3>
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-2">
@@ -157,7 +159,7 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                                     if(formData.etapas.length < 3){
                                         adicionarEtapa()
                                     }else{
-                                        alert("Você só pode adicionar até 3 etapas.");
+                                        toast.error("Você só pode adicionar até 3 etapas.");
                                     }
 
                                 }}
@@ -166,15 +168,21 @@ const ModalCriarTask = ({ isOpen, listaId, closeModal }) => {
                             </button>
                         </div>
 
+                        <div style={{display:'flex'}}>
+                                <FontAwesomeIcon icon={faCircleInfo} size="xs" color="#949494" style={{marginRight:'5px', marginTop:'4px'}}></FontAwesomeIcon>
+                                <Paragrafo>Tasks podem ter, no máximo, três etapas.</Paragrafo>
+                        </div>
+
                         <div className="col-md-2"></div>
                         <div className="col-md-8 text-center">
-                            <button type="submit" className="btn mt-5 btn-primary w-100">
+                            <button type="submit" className="btn mt-2 btn-primary w-75">
                                 Salvar as mudanças
                             </button>
                         </div>
                         <div className="col-md-2"></div>
                     </div>
                 </DivModal>
+                <ToastContainer autoClose={2000} position="top-center"></ToastContainer>
             </DivOverlay>
         );
     }
