@@ -75,7 +75,7 @@ import FormEntrar from "../../components/FormEntrar";
         
     </Estilo>
         <Footer>
-            <p style={{color:'#fff'}}>Aplicação desenvolvida com o esforço coletivo de Ennya Costa, Erick Martins, Luiz Felipe, Luiz Antonio e Rafael Costa</p>
+            <p style={{color:'#fff', margin: "0px"}}>Aplicação desenvolvida com o esforço coletivo de Ennya Costa, Erick Martins, Luiz Felipe, Luiz Antonio e Rafael Costa</p>
         </Footer>
     </>
 )

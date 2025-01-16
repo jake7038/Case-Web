@@ -104,8 +104,8 @@ const MenuSlideBar = ({req, quadroId, setTema}) => {
             </div>
         </Divrow>
 
-        <Divrow className=" mb-4 mt-4  p-3 ">
-            <div onClick={() => setTema((prev) => !prev)} className="d-flex flex-row w-0 gap-3">
+        <Divrow onClick={() => setTema((prev) => !prev)} className=" mb-4 mt-4  p-3 ">
+            <div  className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}><FontAwesomeIcon icon={faMoon} /></Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Alterar Aparência</Paragrafo>
             </div>

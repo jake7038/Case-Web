@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 dotenv.config({ path: '../../../.env' });
 
 export const sendEmail = async (recipientEmail, senha) => {
-    console.log("entrou aqui");
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
@@ -23,6 +22,5 @@ export const sendEmail = async (recipientEmail, senha) => {
             <p>Sua nova senha é: <strong>${senha}</strong></p>
             <p>Por favor, faça login e altere sua senha o mais rápido possível.</p>`,
     };
-    console.log(`olha eu aqui ${recipientEmail}`);
     await transporter.sendMail(mailOptions);
 };
