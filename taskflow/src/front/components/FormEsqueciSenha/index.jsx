@@ -50,7 +50,7 @@ const FormEsqueciSenha = () => {
                 <div className="row pt-4">
                     <div className="col-md-3"></div>
                     <div className="col-md-6 text-center">
-                        <button type="submit"  className="btn btn-primary w-100">Enviar</button>    
+                        <button type="submit"  className="btn btn-primary w-50">Enviar</button>    
                     </div>
                     <div className="col-md-3"></div>
                     <div className="col-md-3"></div>
