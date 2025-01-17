@@ -91,7 +91,7 @@ const TaskPage = () => {
                         </div>
                     </div>
                     <div style={{position: "sticky", top: "0", height: "100vh", overflowY: "auto"}} className=" bg-dark  col-md-2  p-0 text-center">
-                        <MenuSlideBar req={false} setTema={setTema} quadroId={quadroId}></MenuSlideBar>
+                        <MenuSlideBar req={false} tema={tema} setTema={setTema} quadroId={quadroId}></MenuSlideBar>
                     </div>
         </div>
         </body>

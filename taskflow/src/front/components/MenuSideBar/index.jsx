@@ -9,7 +9,7 @@ import ModalCriarLista from "../ModalCriarLista";
 
 import { useNavigate } from "react-router-dom"; 
 
-const MenuSlideBar = ({req, quadroId, setTema}) => {
+const MenuSlideBar = ({req, quadroId, tema, setTema}) => {
     const [nomeUsuario, setNomeUsuario] = useState("");
     const [emailUsuario, setEmailUsuario] = useState("");
     const [fotoUsuario, setFotoUsuario] = useState("../../assets/4foto.jpeg");
@@ -36,6 +36,13 @@ const MenuSlideBar = ({req, quadroId, setTema}) => {
 
     const goQuadro = () => {
         changeurl("/dashboard"); 
+    };
+
+    const changeTema = ({tema, setTema}) => {
+        setTema((prev) => !prev);
+        if(tema == true) {
+            localStorage.setItem('tema', 'escuro');
+        } else localStorage.setItem('tema', 'claro');
     };
 
     useEffect(() => {
@@ -70,6 +77,16 @@ const MenuSlideBar = ({req, quadroId, setTema}) => {
             }
         };
 
+        const fetchTema = () => {
+            if(localStorage.getItem('tema') == null) {
+                localStorage.setItem('tema','claro');
+            }
+            if(localStorage.getItem('tema') == 'claro') {
+                setTema(true);
+            } else setTema(false);
+        }
+
+        fetchTema();
         fetchUsuario();
         
     }, []);
@@ -104,7 +121,7 @@ const MenuSlideBar = ({req, quadroId, setTema}) => {
             </div>
         </Divrow>
 
-        <Divrow onClick={() => setTema((prev) => !prev)} className=" mb-4 mt-4  p-3 ">
+        <Divrow onClick={() => changeTema({tema, setTema})} className=" mb-4 mt-4  p-3 ">
             <div  className="d-flex flex-row w-0 gap-3">
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}><FontAwesomeIcon icon={faMoon} /></Paragrafo>
                 <Paragrafo cursor="pointer" marginb={0} tipo="branco" fontSize={16}>Alterar Aparência</Paragrafo>
