@@ -6,6 +6,9 @@
   
 </p>
 
+![image](https://github.com/user-attachments/assets/1cef315b-48c4-4e52-849d-cc53cdfed1f8)
+
+
 <p align="center">
   <a href="#introdu%C3%A7%C3%A3o">Introdução</a> |
   <a href="#recursos">Recursos</a> |
@@ -85,7 +88,7 @@ Em outro terminal, também na pasta taskflow, inicie o front-end:
 ```
 npm run dev
 ```
-No terminal que você iniciou o front-end, aperte SHIFT+O e uma aba será aberta no seu navegador contendo a aplicação.
+No terminal que você iniciou o front-end, aperte O e depois Enter e uma aba será aberta no seu navegador contendo a aplicação.
 
 ### Créditos
 
